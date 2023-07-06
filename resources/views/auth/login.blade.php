@@ -78,7 +78,7 @@
             <span>  <img src="{{ asset('images/hail.png') }}" style="height:150px !important;"> </span>
 
         </div>
-        <h3 class="text-center">WelCome To Hail A Taxi </h3>
+        <h3 class="text-center">Welcome To Hail A Taxi </h3>
         <h4 class="text-center  ">Login Form</h4>
         <form  method="POST" action="{{ route('login') }}">
             @csrf
