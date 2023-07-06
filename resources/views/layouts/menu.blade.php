@@ -146,4 +146,4 @@
     </ul>
 </nav>
 
-<p class="webversion">V:<?php echo $app_setting->web_version; ?></p>
+{{--  <p class="webversion">V:<?php echo $app_setting->web_version; ?></p>  --}}
