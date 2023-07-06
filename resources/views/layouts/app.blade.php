@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Hail A Taxi</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo-light-icon.png') }}">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -228,7 +228,7 @@
     <?php if(str_replace('_', '-', app()->getLocale()) == 'ar' || @$_COOKIE['is_rtl'] == 'true'){ ?>
     	<link href="{{asset('css/style_rtl.css')}}" rel="stylesheet">
     <?php } ?>
-    
+
     <?php
     $app_setting = App\Models\Settings::first();
 	?>
