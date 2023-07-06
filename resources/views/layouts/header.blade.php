@@ -1,7 +1,7 @@
 
 
 <div class="navbar-collapse" >
-    <h1 class=" text-white mt-1" style="margin-left: 1% !important;">Hail a Taxi</h1>
+    <h1 class=" text-white mt-1" style="margin-left: 1% !important;">Hail A Taxi</h1>
     <ul class="navbar-nav mr-auto mt-md-0">
 
         <li class="nav-item "> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
