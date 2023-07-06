@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/updateDriverStatus/{id}', [App\Http\Controllers\HomeController::class, 'updateDriverStatus'])->name('updatestatus');
 Route::get('home/sales_overview', [App\Http\Controllers\HomeController::class, 'getSalesOverview']);
@@ -178,7 +178,7 @@ Route::prefix('settings')->group(function () {
     Route::get('app/adminCommission', [App\Http\Controllers\SettingsController::class, 'adminCommission'])->name('settings.app.adminCommission');
     Route::get('app/radiosConfiguration', [App\Http\Controllers\SettingsController::class, 'radiosConfiguration'])->name('settings.app.radiosConfiguration');
     Route::get('app/notifications', [App\Http\Controllers\SettingsController::class, 'notifications'])->name('settings.app.notifications');
-    
+
     Route::get('payment/stripe', [App\Http\Controllers\SettingsController::class, 'stripe'])->name('payment.stripe');
     Route::put('payment/stripeUpdate/{id}', [App\Http\Controllers\SettingsController::class, 'stripeUpdate'])->name('payment.stripeUpdate');
     Route::get('payment/applepay', [App\Http\Controllers\SettingsController::class, 'applepay'])->name('payment.applepay');
@@ -229,7 +229,7 @@ Route::prefix('administration_tools')->group(function () {
     Route::get('/currency/changeStatus/{id}', [App\Http\Controllers\CurrencyController::class, 'changeStatus'])->name('currency.changeStatus');
     Route::get('/currency/delete/{id}', [App\Http\Controllers\CurrencyController::class, 'delete'])->name('currency.delete');
 	Route::get('/currency/change/{id}', [App\Http\Controllers\CurrencyController::class, 'currencyEdit'])->name('edit_currency');
-	
+
     Route::get('/payment_method', [App\Http\Controllers\PaymentMethodController::class, 'index'])->name('payment_method');
     Route::get('/payment_method/show/{id}', [App\Http\Controllers\PaymentMethodController::class, 'show'])->name('payment_method.show');
     Route::get('/payment_method/changeStatus/{id}', [App\Http\Controllers\PaymentMethodController::class, 'changeStatus'])->name('payment_method.changeStatus');

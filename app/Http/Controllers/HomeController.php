@@ -19,10 +19,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -31,6 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      //  dd('sadsad');
         $date_start = date('Y-m-d 00:00:00');
         $date_end = date('Y-m-d 23:59:59');
 
@@ -174,7 +175,8 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        return view('welcome');
+       // dd('sadsad');
+        return view('index');
     }
 
     public function dashboard()
