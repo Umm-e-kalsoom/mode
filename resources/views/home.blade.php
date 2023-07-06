@@ -7,7 +7,7 @@
         <!-- start container-->
 
         <div class="container-fluid">
- 
+
             <!-- start row -->
             <div class="card mb-3 mt-4 business-analytics">
                 <div class="card-body">
@@ -230,9 +230,9 @@
 
             <!-- start row -->
             <div class="card mb-3 mt-4 business-analytics">
-            	
+
                 <div class="card-body">
-                	
+
                 	<div class="row trip-info today top">
 
 	                    <!-- column -->
@@ -242,115 +242,115 @@
 
 	                    <!-- column -->
 	                    <div class="col-lg-4">
-	
+
 	                        <div class="card">
 	                        <a href="{{ route('users') }}" >
 	                            <div class="card-body d-flex icon-blue">
-	
+
 	                                <div class="card-left">
-	
+
 	                                    <h3 class="m-b-0 text-dark font-medium mb-2">{{ $today_users }}</h3>
-	
+
 	                                    <h5 class="text-dark m-b-0 small">{{trans('lang.dashboard_today_users')}}</h5>
-	
+
 	                                </div>
-	
+
 	                                <div class="card-right ml-auto">
-	
+
 	                                    <i class="mdi mdi-account-multiple-plus"></i>
-	
+
 	                                </div>
-	
+
 	                            </div>
 	                        </a>
 	                        </div>
-	
+
 	                    </div>
-	
+
 	                    <!-- column -->
 	                    <div class="col-lg-4">
-	
+
 	                        <div class="card">
 	                        <a href="{{ route('drivers') }}" >
 	                            <div class="card-body d-flex icon-red">
-	
+
 	                                <div class="card-left">
-	
+
 	                                    <h3 class="m-b-0 text-dark font-medium mb-2">{{ $today_drivers }}</h3>
-	
+
 	                                    <h5 class="text-dark m-b-0 small">{{trans('lang.dashboard_today_drivers')}}</h5>
-	
+
 	                                </div>
-	
+
 	                                <div class="card-right ml-auto">
-	
+
 	                                    <i class="mdi mdi-car"></i>
-	
+
 	                                </div>
-	
+
 	                            </div>
 	                        </a>
 	                        </div>
-	
+
 	                    </div>
-	
+
 	                    <!-- column -->
 	                    <div class="col-lg-4">
-	
+
 	                        <div class="card">
 	                            <a href="{{ route('rides.completed') }}" >
 	                                <div class="card-body d-flex icon-red">
-	
+
 	                                    <div class="card-left">
-	
+
 	                                        <h3 class="m-b-0 text-dark font-medium mb-2">{{ $currency->symbole." ".number_format($today_earnings,$currency->decimal_digit) }}</h3>
-	
+
 	                                        <h5 class="text-dark m-b-0 small">{{trans('lang.dashboard_total_earnings')}}</h5>
-	
+
 	                                    </div>
-	
+
 	                                    <div class="card-right ml-auto">
-	
+
 	                                        <i class="mdi mdi-car"></i>
-	
+
 	                                    </div>
-	
+
 	                                </div>
 	                            </a>
 	                        </div>
-	
+
 	                    </div>
 	                    <!-- column -->
-	
+
 	                    <div class="col-lg-4">
-	
+
 	                        <div class="card">
 	                            <a href="{{ route('rides.completed') }}" >
 	                                <div class="card-body d-flex icon-orange">
-	
+
 	                                    <div class="card-left">
-	
+
 	                                        <h3 class="m-b-0 text-dark font-medium mb-2 admin_commission"
 	                                            id="admin_commission">{{ $currency->symbole." ".number_format($today_admin_commission,$currency->decimal_digit) }}</h3>
-	
+
 	                                        <h5 class="text-dark m-b-0 small">{{trans('lang.dashboard_total_admin_commission')}}</h5>
-	
+
 	                                    </div>
-	
+
 	                                    <div class="card-right ml-auto">
-	
+
 	                                        <i class="mdi mdi-wallet"></i>
-	
+
 	                                    </div>
-	
+
 	                                </div>
 	                            </a>
 	                        </div>
-	
+
 	                    </div>
 
                 	</div>
-                    
+
                     <!-- start row -->
                     <div class="row trip-info today bottom">
 
@@ -444,13 +444,13 @@
 
                     </div>
                     <!-- end row -->
-              </div>
-		</div>
+                    </div>
+		    </div>
         <!-- end row -->
 
 		<!--charts Start-->
 		<div class="row daes-sec-sec">
-			
+
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header no-border">
@@ -660,7 +660,7 @@
                     hoverOffset: 4
                 }]
 
-            }; 
+            };
             return new Chart('commissions', {
                 type: 'doughnut',
                 data: data,

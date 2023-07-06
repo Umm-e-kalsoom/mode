@@ -3,7 +3,7 @@
     <ul id="sidebarnav">
 
         <li >
-        	<a class="waves-effect waves-dark" href="{!! url('/dashboard') !!}">
+        	<a class="waves-effect waves-dark   " href="{!! url('/dashboard') !!}">
         	 	<i class="mdi mdi-home"></i>
         	 	<span class="hide-menu">Dashboard</span>
         	</a>
@@ -27,7 +27,7 @@
                 <li><a href="{!! url('drivers/pending') !!}">{{trans('lang.pending_drivers')}}</a></li>
             </ul>
         </li>
-        
+
         <li>
           <a class="" href="{!! url('coupons') !!}">
                 <i class="mdi mdi-sale"></i>
@@ -49,7 +49,7 @@
                 <li><a href="{!! url('rides/rejected') !!}">{{trans('lang.canceland_reject')}}</a></li>
             </ul>
         </li>
-        
+
         <li class="nav-subtitle"><span class="nav-subtitle-span">{{trans('lang.other_services')}}</span></li>
 
         <li>
@@ -116,7 +116,7 @@
 			    <i class="mdi mdi-settings"></i>
                 <span class="hide-menu">{{trans('lang.administration_tools')}}</span>
             </a>
-            
+
             <ul aria-expanded="false" class="collapse">
                 <li><a href="{!! url('administration_tools/country') !!}">{{trans('lang.administration_tools_country')}}</a></li>
                 <li><a href="{!! url('administration_tools/currency') !!}">{{trans('lang.administration_tools_currency')}}</a></li>
@@ -131,7 +131,7 @@
                 <li><a href="{!! url('settings/payment/stripe') !!}">{{trans('lang.administration_payment_methods')}}</a></li>
             </ul>
         </li>
-        
+
         <li>
 	  		<a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                 <i class="mdi mdi-calendar-check"></i>
