@@ -35,6 +35,12 @@
             </a>
         </li>
 
+        <li>
+            <a class="" href="{{ route('tokens.index') }}">
+                  <i class="mdi mdi-sale"></i>
+                  <span class="hide-menu">Tokens</span>
+              </a>
+        </li>
       <li>
         <a class="has-arrow waves-effect waves-dark" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                 <i class="mdi mdi-calendar-check"></i>
@@ -67,7 +73,7 @@
         </li>
 
 
-        <li>
+        {{-- <li>
          	<a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                 <i class="mdi mdi-car-connected"></i>
                 <span class="hide-menu">{{trans('lang.vehicle_rental')}}</span>
@@ -76,7 +82,7 @@
                 <li><a href="{!! url('vehicle-rental-type/index') !!}">{{trans('lang.rental_vehicle_type')}}</a></li>
                 <li><a href="{!! url('vehicle/vehicle-rent') !!}">{{trans('lang.rented_vehicle_booking')}}</a></li>
             </ul>
-        </li>
+        </li> --}}
         <li>
          	<a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                 <i class="mdi mdi-car-connected"></i>

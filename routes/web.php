@@ -307,3 +307,5 @@ Route::post('driver/getbankdetails', [App\Http\Controllers\PayoutRequestControll
 Route::post('withdrawal/accept', [App\Http\Controllers\PayoutRequestController::class, 'acceptWithdrawal']);
 Route::post('withdrawal/reject', [App\Http\Controllers\PayoutRequestController::class, 'rejectWithdrawal']);
 Route::get('/get-settings', [App\Http\Controllers\SettingsController::class, 'getSettings'])->name('get-settings');
+Route::resource('tokens', App\Http\Controllers\TokenController::class);
+Route::get('/delete_tokens/{id}', [App\Http\Controllers\TokenController::class, 'delete_tokens'])->name('delete_tokens');
