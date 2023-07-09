@@ -143,6 +143,7 @@ Route::group(['middleware' => ['envKeyAuth']], function () {
     Route::get('v1/testkey/', [UserLoginController::class, 'testkey']);
     Route::post('v1/user/', [UserController::class, 'register']);
     Route::post('v1/user-login/', [UserLoginController::class, 'login']);
+    Route::get('v1/buy_token/', [UserLoginController::class, 'tokens']);
 
     Route::post('v1/existing-user/', [ExistingUserController::class, 'getData']);
     Route::post('v1/update-user-nic/', [UserNicController::class, 'updateUserNic']);

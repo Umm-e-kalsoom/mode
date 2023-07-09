@@ -8,6 +8,7 @@ use App\Models\Driver;
 use App\Models\DriversDocuments;
 use App\Models\UserApp;
 use Illuminate\Http\Request;
+use App\Models\Tokens;
 use DB;
 
 class UserLoginController extends Controller
@@ -245,5 +246,8 @@ class UserLoginController extends Controller
 
         return "Success";
     }
-
+    public function tokens(){
+        $tokens = Token::lateest()->get();
+        return response()->json($tokens);
+    }
 }
