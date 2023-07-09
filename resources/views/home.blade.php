@@ -333,7 +333,7 @@
 	                                        <h3 class="m-b-0 text-dark font-medium mb-2 admin_commission"
 	                                            id="admin_commission">{{ $currency->symbole  ?? ''." ".number_format($today_admin_commission  ?? '',$currency->decimal_digit  ?? '') }}</h3>
 
-	                                        <h5 class="text-dark m-b-0 small">{{trans('lang.dashboard_total_admin_commission  ?? ''')}}</h5>
+	                                        <h5 class="text-dark m-b-0 small">{{trans('lang.dashboard_total_admin_commission )}}</h5>
 
 	                                    </div>
 
