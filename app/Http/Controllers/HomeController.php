@@ -127,7 +127,7 @@ class HomeController extends Controller
         $today_earnings = $this->getTotalEarnings('today');
         //$today_drivers_earnings = $this->getEarnings('today','driver');
 
-        $admin_commision = $currency->symbole ?? '0';
+        $admin_commision = $currency->symbole ?? '$';
         //DB::enableQueryLog();
 
         $vehicles = Vehicle::leftjoin('tj_type_vehicule', 'tj_type_vehicule.id', '=', 'tj_vehicule.id_type_vehicule')->where('statut', 'yes')->groupBy('brand')->inRandomOrder()->limit(10)->get();
