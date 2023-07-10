@@ -12,10 +12,10 @@ use DB;
 class DriverController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->limit = 20;
-    }
+    // public function __construct()
+    // {
+    //     $this->limit = 20;
+    // }
 
     /**
      * Display a listing of the resource.
