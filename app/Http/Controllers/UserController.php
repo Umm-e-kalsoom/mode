@@ -19,10 +19,7 @@ use Validator;
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     public function index(Request $request)
     {
@@ -66,12 +63,11 @@ class UserController extends Controller
 
 
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
-            $doc_validation = "mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
-            $doc_validation = "required|mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+
 
         }
         $validator = Validator::make($request->all(), $rules = [
@@ -115,7 +111,7 @@ class UserController extends Controller
         $user->phone = $request->input('phone');
 
         $user->statut = $request->has('statut') ? 'yes' : 'no';
-      
+
         $user->photo = '';
         $user->photo_nic = '';
 
@@ -234,7 +230,7 @@ class UserController extends Controller
         $prenom = $request->input('prenom');
         $phone = $request->input('phone');
         $device_id = $request->input('device_id');
-       
+
         // $gender = $request->input('gender');
         if ($request->input('statut')) {
             $status = "yes";
