@@ -65,10 +65,10 @@ class VehicleTypeRentalController extends Controller
     {
         // dd($request);
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         }
 
@@ -147,15 +147,15 @@ class VehicleTypeRentalController extends Controller
             'prix' => 'required',
             'image' => $image_validation,
             'no_of_passenger'=>'required',
-           
-            
+
+
 
         ], $messages = [
             'libelle.required' => 'The Vehicle Type field is required!',
             'prix.required' => 'The price field is required!',
             'image.required' => 'The Image field is required!',
             'no_of_passenger.required' => 'The Number of Passenger field is required!'
-            
+
 
         ]);
         if ($validator->fails()) {
@@ -211,11 +211,11 @@ class VehicleTypeRentalController extends Controller
 
     public function delete($id)
     {
-        
+
         if ($id != "") {
-            
+
             $id = json_decode($id);
-           
+
             if (is_array($id)) {
 
                 for ($i = 0; $i < count($id); $i++) {
@@ -229,14 +229,14 @@ class VehicleTypeRentalController extends Controller
                         $rental->delete();
                     }
 
-                   
+
                     $user = RentalVehicleType::find($id[$i]);
                     $user->delete();
 
                 }
 
             } else {
-                
+
                 // $rental = VehicleRental::where('id_type_vehicule_rental', $id)->get();
                 // foreach($rental as $row)
                 // {
@@ -247,7 +247,7 @@ class VehicleTypeRentalController extends Controller
                         $location->delete();
 
                     }
-                    
+
                 // }
                 // $rental = VehicleRental::where('id_type_vehicule_rental', $id);
                 // $rental->delete();
@@ -258,11 +258,11 @@ class VehicleTypeRentalController extends Controller
                 //     $rental->delete();
                 // }
 
-               
-               
-                
+
+
+
                 // DB::table('tj_vehicule_rental')->where('id_type_vehicule_rental', $id)->delete();
-               
+
             }
 
         }
