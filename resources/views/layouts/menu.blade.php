@@ -132,9 +132,9 @@
                 <li><a href="{!! url('administration_tools/tax') !!}">{{trans('lang.administration_tools_tax')}}</a></li>
                 <li><a href="{!! url('administration_tools/driver_document') !!}">{{trans('lang.administration_tools_driver_document')}}</a></li>
 				<li><a href="{!! url('administration_tools/settings') !!}">{{trans('lang.administration_tools_settings')}}</a></li>
-                <li><a href="{!! url('administration_tools/homepageTemplate') !!}">{{trans('lang.homepageTemplate')}}</a></li>
-                <li><a href="{!! url('administration_tools/terms_condition') !!}">{{trans('lang.administration_tools_terms_condition')}}</a></li>
-                <li><a href="{!! url('administration_tools/privacy_policy') !!}">{{trans('lang.administration_tools_privacy_policy')}}</a></li>
+                {{-- <li><a href="{!! url('administration_tools/homepageTemplate') !!}">{{trans('lang.homepageTemplate')}}</a></li> --}}
+                {{-- <li><a href="{!! url('administration_tools/terms_condition') !!}">{{trans('lang.administration_tools_terms_condition')}}</a></li> --}}
+                {{-- <li><a href="{!! url('administration_tools/privacy_policy') !!}">{{trans('lang.administration_tools_privacy_policy')}}</a></li> --}}
                 <li><a href="{!! url('language') !!}">{{trans('lang.language')}}</a></li>
                 <li><a href="{!! url('settings/payment/stripe') !!}">{{trans('lang.administration_payment_methods')}}</a></li>
             </ul>
