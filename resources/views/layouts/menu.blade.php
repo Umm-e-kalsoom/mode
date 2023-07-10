@@ -98,7 +98,9 @@
 
          <li class="nav-subtitle"><span class="nav-subtitle-span">{{trans('lang.other_settings')}}</span></li>
 
-        <li>
+        {{--
+
+            <li>
         	<a class="" href="{!! url('cms') !!}">
                 <i class="mdi mdi-book-open-page-variant"></i>
                 <span class="hide-menu">{{trans('lang.cms_plural')}}</span>
@@ -115,7 +117,7 @@
                 <li><a href="{!! url('payoutRequest') !!}">{{trans('lang.payout_request')}}</a></li>
                 <li><a href="{!! url('walletstransaction') !!}">{{trans('lang.wallet_transaction')}}</a></li>
             </ul>
-        </li>
+        </li> --}}
 
         <li>
         	<a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
