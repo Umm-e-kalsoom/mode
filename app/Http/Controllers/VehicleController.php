@@ -75,10 +75,10 @@ class VehicleController extends Controller
     {
         // dd($request);
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         }
 
