@@ -194,12 +194,12 @@ class UserController extends Controller
 
 
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
-            $doc_validation = "mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+            $doc_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
-            $doc_validation = "required|mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+            $doc_validation = "required";
 
         }
         $validator = Validator::make($request->all(), $rules = [

@@ -345,12 +345,13 @@ class DriverController extends Controller
     {
         // dd($request->all());
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
-            $doc_validation = "mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+
+            $doc_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
-            $doc_validation = "required|mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+            $doc_validation = "required";
 
         }
 
@@ -527,12 +528,13 @@ class DriverController extends Controller
     {
 
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
-            $doc_validation = "mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+
+            $doc_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
-            $doc_validation = "required|mimes:doc,pdf,docx,zip,txt";
+            $image_validation = "required";
+            $doc_validation = "required";
 
         }
 
@@ -749,7 +751,7 @@ class DriverController extends Controller
     {
 
         $validator = Validator::make($request->all(), $rules = [
-            'document_path' => "mimes:doc,pdf,docx,zip,txt,jpeg,png,jpg",
+            'document_path' => "required,
 
         ], $messages = [
             'document_path.required' => 'The docuemnt field is required!',

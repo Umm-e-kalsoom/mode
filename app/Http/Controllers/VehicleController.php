@@ -159,10 +159,10 @@ class VehicleController extends Controller
     public function vehicleTypeUpdate(Request $request, $id)
     {
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         }
 
@@ -307,10 +307,10 @@ class VehicleController extends Controller
     public function create(Request $request)
     {
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         }
 
@@ -378,10 +378,10 @@ class VehicleController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->id > 0) {
-            $image_validation = "mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         } else {
-            $image_validation = "required|mimes:jpeg,jpg,png";
+            $image_validation = "required";
 
         }
 
