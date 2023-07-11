@@ -138,7 +138,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('v1/reset-password-otp/', [SendResetPasswordOtpController::class, 'resetPasswordOtp']);
 Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPassword']);
 
-Route::group(['middleware' => ['envKeyAuth']], function () {
+
     /*Guest Request*/
     Route::get('v1/testkey/', [UserLoginController::class, 'testkey']);
     Route::post('v1/user/', [UserController::class, 'register']);
@@ -160,7 +160,7 @@ Route::group(['middleware' => ['envKeyAuth']], function () {
 
     Route::get('v1/get-ride-review/', [RideDetailsController::class, 'getRideReview']);   // get ride reviews of users or driver
 
-});
+
 
 Route::group(['middleware' => ['apiKeyAuth']], function () {
     /*Auth Request*/
