@@ -751,7 +751,7 @@ class DriverController extends Controller
     {
 
         $validator = Validator::make($request->all(), $rules = [
-            'document_path' => "required,
+            'document_path' => "required",
 
         ], $messages = [
             'document_path.required' => 'The docuemnt field is required!',
