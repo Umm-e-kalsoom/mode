@@ -14,10 +14,6 @@ use DB;
 class UserLoginController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->limit = 20;
-    }
 
     /**
      * Display a listing of the resource.
@@ -28,7 +24,7 @@ class UserLoginController extends Controller
 
     public function login(Request $request)
     {
-        dd($request->all());
+
 
         $date_heure = date('Y-m-d H:i:s');
         $id_user = "";
