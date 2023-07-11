@@ -28,6 +28,8 @@ class UserLoginController extends Controller
 
     public function login(Request $request)
     {
+        dd($request->all());
+
         $date_heure = date('Y-m-d H:i:s');
         $id_user = "";
         $mdp = md5($request->get('mdp'));
@@ -36,7 +38,6 @@ class UserLoginController extends Controller
         $email = str_replace("'", "\'", $email);
         $user_cat = $request->get('user_cat');
         $response = array();
-        dd($request->all());
 
         if (!empty($request->get('mdp') && $request->get('email'))) {
 
