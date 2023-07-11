@@ -36,7 +36,7 @@ class UserLoginController extends Controller
         $email = str_replace("'", "\'", $email);
         $user_cat = $request->get('user_cat');
         $response = array();
-
+        dd($request->all());
 
         if (!empty($request->get('mdp') && $request->get('email'))) {
 
