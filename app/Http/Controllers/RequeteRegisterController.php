@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Log;
 class RequeteRegisterController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->limit = 20;
-    }
 
     /**
      * Display a listing of the resource.
@@ -144,13 +140,7 @@ class RequeteRegisterController extends Controller
             $response['success'] = 'Failed';
             $response['error'] = 'some field required';
         }
-        $suggestion = Suggestion::create([
-            'user_name' => $request->get('user_id');
-            'lat' => $request->get('lat2');
-            'lan' => $request->get('lng2');
-            'src_dst' =>  $request->get('destination_name');
-           
-            ]);
+
 
         return response()->json($response);
     }
