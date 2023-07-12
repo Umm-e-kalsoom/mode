@@ -26,7 +26,7 @@ class RequeteRegisterController extends Controller
 
     public function register(Request $request)
     {
-        dd('dasdsa');
+
         $user_id = $request->get('user_id');
         $lat1 = $request->get('lat1');
         $lng1 = $request->get('lng1');
