@@ -162,7 +162,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
 
 
 
-Route::group(['middleware' => ['apiKeyAuth']], function () {
+
     /*Auth Request*/
     // Route::get('v1/testdev/', [UserController::class, 'test']);
     Route::get('v1/users/', [UserController::class, 'index']);
@@ -310,7 +310,7 @@ Route::group(['middleware' => ['apiKeyAuth']], function () {
     Route::post('v1/pay-requete/', [PayRequeteController::class, 'UpdatePayRequete']);
     Route::post('v1/complaints/', [AddComplaintsController::class, 'register']);
 
-});
+
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);
 

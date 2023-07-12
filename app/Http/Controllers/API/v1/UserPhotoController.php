@@ -9,10 +9,7 @@ use DB;
 class UserPhotoController extends Controller
 {
 
-   public function __construct()
-   {
-      $this->limit=20;
-   }
+
   /**
     * Display a listing of the resource.
     *
