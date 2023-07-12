@@ -8,7 +8,7 @@ use App\Models\Driver;
 use App\Models\DriversDocuments;
 use App\Models\UserApp;
 use Illuminate\Http\Request;
-use App\Models\Tokens;
+use App\Models\Token;
 use DB;
 
 class UserLoginController extends Controller
