@@ -10,15 +10,8 @@ use DB;
 class UserPreNameController extends Controller
 {
 
-   public function __construct()
-   {
-      $this->limit=20;
-   }
-  /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
+
+
 
   public function UpdateUserPreName(Request $request)
   {
