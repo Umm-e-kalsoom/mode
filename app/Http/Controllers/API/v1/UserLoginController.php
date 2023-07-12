@@ -244,7 +244,7 @@ class UserLoginController extends Controller
         return "Success";
     }
     public function tokens(){
-        $tokens = Token::lateest()->get();
+        $tokens = Token::latest()->get();
         return response()->json($tokens);
     }
 }
