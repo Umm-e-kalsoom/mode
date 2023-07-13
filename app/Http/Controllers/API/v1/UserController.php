@@ -112,9 +112,9 @@ class UserController extends Controller
                     $row['accesstoken'] = $this->adduseraccess($row['id'], 'customer');
                     /*$get_currency = mysqli_query($con, "select * from tj_currency where statut='yes' limit 1");
                     $row_currency = $get_currency->fetch_assoc();*/
-                    $get_currency = Currency::where('statut', 'yes')->first();
-                    $row_currency = $get_currency->toArray();
-                    $row['currency'] = $row_currency['symbole'];
+                    // $get_currency = Currency::where('statut', 'yes')->first();
+                    // $row_currency = $get_currency->toArray();
+                    $row['currency'] = "$";
                     $row['decimal_digit'] = $row_currency['decimal_digit'];
 
                     /*$get_country = mysqli_query($con, "select * from tj_country where statut='yes' limit 1");
