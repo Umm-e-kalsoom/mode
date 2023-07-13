@@ -6,6 +6,7 @@ use App\Models\Requests;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\v1\GcmController;
+use Illuminate\Support\Facades\Log;
 use DB;
 class ConfirmRequeteController extends Controller
 {
@@ -94,6 +95,10 @@ class ConfirmRequeteController extends Controller
             }
         }
         $temp = array();
+        if (count($tokens) > 0) {
+            Log::info('inside');
+            GcmController::send_notification($tokens, $message, $temp);
+        }
         if (count($tokens) > 0) {
             $data = DB::table('tj_requete')
                 ->crossjoin('tj_conducteur')
