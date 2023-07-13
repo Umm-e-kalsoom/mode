@@ -115,7 +115,7 @@ class UserController extends Controller
                     // $get_currency = Currency::where('statut', 'yes')->first();
                     // $row_currency = $get_currency->toArray();
                     $row['currency'] = "$";
-                    $row['decimal_digit'] = $row_currency['decimal_digit'];
+                    $row['decimal_digit'] = '0';
 
                     /*$get_country = mysqli_query($con, "select * from tj_country where statut='yes' limit 1");
                     $row_country = $get_country->fetch_assoc();*/
