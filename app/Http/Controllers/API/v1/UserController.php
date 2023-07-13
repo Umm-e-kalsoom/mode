@@ -119,10 +119,10 @@ class UserController extends Controller
 
                     /*$get_country = mysqli_query($con, "select * from tj_country where statut='yes' limit 1");
                     $row_country = $get_country->fetch_assoc();*/
-                    $get_country = Country::where('statut', 'yes')->first();
-                    $row_country = $get_country->toArray();
+                    // $get_country = Country::where('statut', 'yes')->first();
+                    // $row_country = $get_country->toArray();
 
-                    $row['country'] = $row_country['code'];
+                    $row['country'] = "+61";
                     $get_admin_commission = DB::table('tj_commission')->select('*')->where('statut', '=', 'yes')->get();
                     foreach ($get_admin_commission as $row_commission) {
                         $row['admin_commission'] = $row_commission->value;
