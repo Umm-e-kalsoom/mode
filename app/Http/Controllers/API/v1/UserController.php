@@ -275,8 +275,9 @@ class UserController extends Controller
 
     public static function url()
     {
-        $actual_link = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $site_url = preg_replace('/^www\./', '', parse_url($actual_link, PHP_URL_HOST));
+        // $actual_link = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $site_url = 'hailataxi.au';
+        return "https://" . $site_url;
         if (($_SERVER['HTTPS'] && $_SERVER['HTTPS'] === 'on')) {
             return "https://" . $site_url;
         } else {
