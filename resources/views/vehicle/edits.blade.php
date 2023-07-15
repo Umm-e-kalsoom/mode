@@ -71,7 +71,7 @@
                                                            onchange="readURL(this);">
                                                     @if (file_exists('assets/images/type_vehicle'.'/'.$type->image) && !empty($type->image))
                                                         <img class="rounded" style="width:50px" id="uploding_image"
-                                                             src="{{asset('assets/images/type_vehicle')}}.'/'.{{ $type->image }}"
+                                                             src="{{asset('assets/images/type_vehicle')}}/{{ $type->image }}"
                                                              alt="image">
                                                     @else
                                                         <img class="rounded" style="width:50px" id="uploding_image"

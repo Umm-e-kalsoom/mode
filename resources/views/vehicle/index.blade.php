@@ -110,7 +110,7 @@
                                     @if (file_exists('assets/images/type_vehicle'.'/'.$type->image) &&
                                     !empty($type->image))
                                     <td><img class="rounded" style="width:50px"
-                                             src="{{asset('my-assets/images/type_vehicle').'/'.$type->image}}" alt="image">
+                                             src="{{asset('assets/images/type_vehicle').'/'.$type->image}}" alt="image">
                                     </td>
                                     @else
                                     <td><img class="rounded" style="width:50px"
