@@ -89,7 +89,7 @@
                                             <div class="form-group row width-100">
 
 
-                                                <label class="col-3 control-label">($) Day Rate Per {{$delivery_distance}}</label>
+                                                <label class="col-3 control-label"> Day Rate Per {{$delivery_distance}}</label>
                                                 <div class="col-7">
                                                     <input type="number" class="form-control"
                                                            value="{{ Request::old('day_charges_per_km') }}"
@@ -99,7 +99,7 @@
                                             </div>
 
                                             <div class="form-group row width-100">
-                                                <label class="col-3 control-label">($) Overnight Rate Per {{$delivery_distance}}</label>
+                                                <label class="col-3 control-label"> Overnight Rate Per {{$delivery_distance}}</label>
                                                 <div class="col-7">
                                                     <input type="number" class="form-control"
                                                            name="overnight_charges_per_km"
@@ -109,7 +109,7 @@
                                             </div>
 
                                             <div class="form-group row width-100">
-                                                <label class="col-3 control-label">($) Peak Rate Per {{$delivery_distance}}</label>
+                                                <label class="col-3 control-label">Peak Rate Per {{$delivery_distance}}</label>
                                                 <div class="col-7">
                                                     <input type="number" class="form-control"
                                                            name="peak_charges_km"
