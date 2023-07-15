@@ -85,16 +85,16 @@ class VehicleController extends Controller
         $validator = Validator::make($request->all(), $rules = [
             'libelle' => 'required',
             'image' => $image_validation,
-            'delivery_charge_per_km'=>'required',
-            'minimum_delivery_charge'=>'required',
-            'minimum_delivery_charge_within_km'=>'required',
+            'day_charges_per_km'=>'required',
+            'overnight_charges_per_km'=>'required',
+            'peak_charges_km'=>'required',
 
         ], $messages = [
             'libelle.required' => 'The Vehicle Type field is required!',
             'image.required' => 'The Image field is required!',
-            'delivery_charge_per_km.required'=>'Delivery Charges per Miles is required!',
-            'minimum_delivery_charge.required' => 'Minimum Delivery Charges is required!',
-            'minimum_delivery_charge_within_km.required'=>'Minimum Delivery Charges Within Miles is required!',
+            'day_charges_per_km.required'=>'Delivery Charges per Miles is required!',
+            'overnight_charges_per_km.required' => 'Minimum Delivery Charges is required!',
+            'peak_charges_km.required'=>'Minimum Delivery Charges Within Miles is required!',
 
 
         ]);
@@ -125,9 +125,9 @@ class VehicleController extends Controller
         $vedicleType_id = $vehicle->id;
 
         $delivery = new DeliveryCharges;
-        $delivery->delivery_charges_per_km = $request->input('delivery_charge_per_km');
-        $delivery->minimum_delivery_charges = $request->input('minimum_delivery_charge');
-        $delivery->minimum_delivery_charges_within_km = $request->input('minimum_delivery_charge_within_km');
+        $delivery->day_charges_per_km = $request->input('day_charges_per_km');
+        $delivery->overnight_charges_per_km = $request->input('overnight_charges_per_km');
+        $delivery->peak_charges_km = $request->input('peak_charges_km');
         $delivery->id_vehicle_type = $vedicleType_id;
         $delivery->created = date('Y-m-d H:i:s');
         $delivery->modifier = date('Y-m-d H:i:s');
@@ -158,6 +158,7 @@ class VehicleController extends Controller
 
     public function vehicleTypeUpdate(Request $request, $id)
     {
+
         if ($request->id > 0) {
             $image_validation = "required";
 
@@ -169,17 +170,16 @@ class VehicleController extends Controller
         $validator = Validator::make($request->all(), $rules = [
             'libelle' => 'required',
             'image' => $image_validation,
-            'delivery_charge_per_km'=>'required',
-            'minimum_delivery_charge'=>'required',
-            'minimum_delivery_charge_within_km'=>'required',
-
+            'day_charges_per_km'=>'required',
+            'overnight_charges_per_km'=>'required',
+            'peak_charges_km'=>'required',
 
         ], $messages = [
             'libelle.required' => 'The Vehicle Type field is required!',
             'image.required' => 'The Image field is required!',
-            'delivery_charge_per_km.required'=>'Delivery Charges per Miles is required!',
-            'minimum_delivery_charge.required' => 'Minimum Delivery Charges is required!',
-            'minimum_delivery_charge_within_km.required'=>'Minimum Delivery Charges Within Miles is required!',
+            'day_charges_per_km.required'=>'Delivery Charges per Miles is required!',
+            'overnight_charges_per_km.required' => 'Minimum Delivery Charges is required!',
+            'peak_charges_km.required'=>'Minimum Delivery Charges Within Miles is required!',
 
 
         ]);
@@ -217,21 +217,23 @@ class VehicleController extends Controller
             }
             $vehicle->save();
 
-            $delivery_charge_per_km = $request->input('delivery_charge_per_km');
-            $minimum_delivery_charge = $request->input('minimum_delivery_charge');
-            $minimum_delivery_charge_within_km = $request->input('minimum_delivery_charge_within_km');
+            $day_charges_per_km = $request->input('day_charges_per_km');
+            $overnight_charges_per_km = $request->input('overnight_charges_per_km');
+            $peak_charges_km = $request->input('peak_charges_km');
             $delivery = DeliveryCharges::where('id_vehicle_type', $id)->first();
             if ($delivery) {
-                $delivery->delivery_charges_per_km = $delivery_charge_per_km;
-                $delivery->minimum_delivery_charges = $minimum_delivery_charge;
-                $delivery->minimum_delivery_charges_within_km = $minimum_delivery_charge_within_km;
+                $delivery->day_charges_per_km = $day_charges_per_km;
+                $delivery->overnight_charges_per_km = $overnight_charges_per_km;
+                $delivery->peak_charges_km = $peak_charges_km;
+
                 $delivery->modifier = date('Y-m-d H:i:s');
 
             } else {
                 $delivery = new DeliveryCharges;
-                $delivery->delivery_charges_per_km = $delivery_charge_per_km;
-                $delivery->minimum_delivery_charges = $minimum_delivery_charge;
-                $delivery->minimum_delivery_charges_within_km = $minimum_delivery_charge_within_km;
+                $delivery->day_charges_per_km = $day_charges_per_km;
+                $delivery->overnight_charges_per_km = $overnight_charges_per_km;
+                $delivery->peak_charges_km = $peak_charges_km;
+
                 $delivery->id_vehicle_type = $id;
                 $delivery->created = date('Y-m-d H:i:s');
                 $delivery->modifier = date('Y-m-d H:i:s');
@@ -359,6 +361,7 @@ class VehicleController extends Controller
 
     public function vehiclecreates()
     {
+
         $rental = VehicleRental::all();
         $vehicle = RentalVehicleType::all();
         //$vehicle = VehicleType::all('libelle', 'id');

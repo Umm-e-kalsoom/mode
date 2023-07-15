@@ -16,7 +16,7 @@
                 <li class="breadcrumb-item active">{{trans('lang.create_vehicle')}}</li>
 			</ol>
 		</div>
-   </div> 
+   </div>
 
 		<div class="container-fluid">
       <div class="row">
@@ -24,7 +24,7 @@
           <div class="card pb-4">
 
 			<div class="card-body">
-				
+
 				<div id="data-table_processing" class="dataTables_processing panel panel-default" style="display: none;">{{trans('lang.processing')}}</div>
         <div class="error_top"></div>
                 @if($errors->any())
@@ -35,7 +35,7 @@
                 @endforeach
             </ul>
         </div>
-        @endif				
+        @endif
         <form action="{{route('vehicle.create')}}" method="post" enctype="multipart/form-data">
           @csrf
       <div class="row restaurant_payout_create">
@@ -43,7 +43,7 @@
 
           <fieldset>
             <legend>{{trans('lang.create_vehicle')}}</legend>
-            
+
             <div class="form-group row width-50">
               <label class="col-3 control-label">{{trans('lang.vehicle_type')}}</label>
               <div class="col-7">
@@ -54,7 +54,7 @@
                 </select>
               </div>
             </div>
-            
+
             <div class="form-group row width-50">
               <label class="col-3 control-label">{{trans('lang.price')}}</label>
               <div class="col-7">
@@ -124,7 +124,7 @@
 @endsection
 
 @section('scripts')
-    
+
     <script type="text/javascript">
 
 
@@ -136,7 +136,7 @@
             $("#example24 .is_open").prop('checked', $(this).prop('checked'));
 
         });
-        
+
         function readURL(input) {
 		console.log(input.files);
         if (input.files && input.files[0]) {
@@ -146,7 +146,7 @@
 				$('#image_preview').show();
                 $('#uploding_image').attr('src', e.target.result);
 
-				
+
             }
 
             reader.readAsDataURL(input.files[0]);
