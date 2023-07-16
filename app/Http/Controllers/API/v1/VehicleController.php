@@ -34,7 +34,7 @@ class VehicleController extends Controller
     /*Register Vehicle */
     public function register(Request $request)
     {
-
+        dd('asd');
         $brand = $request->get('brand');
         $prenom = str_replace("'", "\'", $brand);
         $model = $request->get('model');

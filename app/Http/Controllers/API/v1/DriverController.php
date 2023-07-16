@@ -32,7 +32,7 @@ class DriverController extends Controller
 
     public function getData(Request $request)
     {
-        dd('sdas');
+
         $lat1 = $request->get('lat1');
         $lng1 = $request->get('lng1');
         $lat2 = $request->get('lat2');
