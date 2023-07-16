@@ -14,9 +14,7 @@ class DeliveryCharges extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
     protected $table = 'delivery_charges';
-    protected $fillable = [
-        'id',
-    ];
+    protected $guarded = [ ];
 
- 
+
 }

@@ -34,13 +34,18 @@ class VehicleController extends Controller
     /*Register Vehicle */
     public function register(Request $request)
     {
-        dd('asd');
+
         $brand = $request->get('brand');
         $prenom = str_replace("'", "\'", $brand);
         $model = $request->get('model');
         $color = $request->get('color');
         $numberplate = $request->get('carregistration');
         $passenger = $request->get('passenger');
+
+        $package_weight = $request->get('package_weight') ?? '0';
+        $package_size = $request->get('package_size') ?? '0';
+        $num_of_luggage = $request->get('num_of_luggage') ?? '0';
+        $num_of_pets = $request->get('num_of_pets') ?? '0';
         $id_driver = $request->get('id_driver');
         $id_categorie_vehicle = $request->get('id_categorie_vehicle');
         $date_heure = date('Y-m-d H:i:s');
@@ -87,8 +92,8 @@ class VehicleController extends Controller
                     ]);
                 }
 //                DB::update('update tj_conducteur set model=?',[$vehicleModel->id]);
-                $insertdata = DB::insert("insert into tj_vehicule(passenger,brand,model,color,numberplate,id_conducteur,statut,creer,updated_at,id_type_vehicule,car_make,milage,km)
-	        values('" . $passenger . "','" . $brand . "','" . $vehicleModel->id . "','" . $color . "','" . $numberplate . "','" . $id_driver . "','yes','" .
+                $insertdata = DB::insert("insert into tj_vehicule(passenger,package_size,package_weight,num_of_luggage,package_size,brand,model,color,numberplate,id_conducteur,statut,creer,updated_at,id_type_vehicule,car_make,milage,km)
+	        values('" . $passenger . "','".$package_size."','".$package_weight."','".$num_of_luggage."','".$package_size."'," . $brand . "','" . $vehicleModel->id . "','" . $color . "','" . $numberplate . "','" . $id_driver . "','yes','" .
                     $date_heure . "','" . $date_heure . "','" . $id_categorie_vehicle . "','" . $car_make . "','" . $milage . "','" . $km . "')");
                 $id = DB::getPdo()->lastInsertId();
                 if ($id > 0) {

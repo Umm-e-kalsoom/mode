@@ -311,7 +311,7 @@
 							<a href="tel:552532560235"><img src="https://cabme-landing.siswebapp.com/img/call.png" alt="info"> +55 253 2560 235</a>
 						</li>
 						<li>
-							<a href="mailto:info.cabme@gmail.com"><img src="https://cabme-landing.siswebapp.com/img/mail.png" alt="info"> info.cabme@gmail.com</a>
+							<a href="mailto:abc@abc.com"><img src="https://cabme-landing.siswebapp.com/img/mail.png" alt="info"> abc@abc.com</a>
 						</li>
 
 					</ul>
