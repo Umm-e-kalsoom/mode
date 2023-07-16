@@ -310,7 +310,8 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::post('v1/pay-requete/', [PayRequeteController::class, 'UpdatePayRequete']);
     Route::post('v1/complaints/', [AddComplaintsController::class, 'register']);
 
-
+    //Token Paymeny
+    Route::post('v1/token_pay/', [AddComplaintsController::class, 'token_pay']);
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);
 
