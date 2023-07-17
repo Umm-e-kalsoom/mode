@@ -38,7 +38,7 @@ class DriverController extends Controller
         $query = DB::table('tj_conducteur')
             ->leftJoin('tj_vehicule', 'tj_vehicule.id_conducteur', '=', 'tj_conducteur.id')
             ->leftJoin('tj_type_vehicule', 'tj_type_vehicule.id', '=', 'tj_vehicule.id_type_vehicule')
-            ->select('tj_conducteur.*', 'tj_type_vehicule .*');
+            ->select('tj_conducteur.*', 'tj_type_vehicule.libelle*','tj_vehicule.*');
 
     	if($request->search != '' && $request->selected_search != '') {
     		$keyword = $request->input('search');
