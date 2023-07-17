@@ -318,6 +318,50 @@
               </div>
 
             </div>
+            <div class="form-group row width-50">
+                <label class="col-3 control-label">Number of Luggage</label>
+                <div class="col-7">
+                    <input type="number" class="form-control" name="num_of_luggage"
+                           value="{{$vehicle->num_of_luggage}}">
+                    <div class="form-text text-muted w-50">
+                        {{ trans("num_of_luggage") }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row width-50">
+                <label class="col-3 control-label">Package Weight</label>
+                <div class="col-7">
+                    <input type="number" class="form-control" name="package_weight"
+                           value="{{$vehicle->package_weight}}">
+                    <div class="form-text text-muted w-50">
+                        {{ trans("package_weight") }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row width-50">
+                <label class="col-3 control-label">Package Size</label>
+                <div class="col-7">
+                    <input type="number" class="form-control" name="package_size"
+                           value="{{$vehicle->package_size}}">
+                    <div class="form-text text-muted w-50">
+                        {{ trans("package_size") }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row width-50">
+                <label class="col-3 control-label">Number of Pets</label>
+                <div class="col-7">
+                    <input type="number" class="form-control" name="num_of_pets"
+                           value="{{$vehicle->num_of_pets}}">
+                    <div class="form-text text-muted w-50">
+                        {{ trans("num_of_pets") }}
+                    </div>
+
+                </div>
+            </div>
                <div class="form-group row width-50">
                    <label class="col-3 control-label">{{trans('lang.vehicle_milage')}}</label>
                    <div class="col-7">

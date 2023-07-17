@@ -49,19 +49,17 @@
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.vehicle_type')}}</label>
                                                 <div class="col-7">
-                                                    <input type="text" class="form-control"
-                                                           value="{{ Request::old('libelle') }}" name="libelle">
+                                                    <select  class="form-control brand_id" name="libelle">
+                                                        <option value="">--! Select Type !--</option>
+                                                        <option value="Passenger">Passenger Carry</option>
+                                                        <option value="Pet">Pet Carry</option>
+                                                        <option value="Package">Package Carry</option>
+
+                                                    </select>
                                                     <!-- <div class="form-text text-muted"></div> -->
                                                 </div>
                                             </div>
 
-                                        <!-- <div class="form-group row width-50">
-              <label class="col-3 control-label">{{trans('lang.price')}}</label>
-              <div class="col-7">
-                  <input type="text" class="form-control" name="prix" value="{{ Request::old('prix') }}">
-                   <div class="form-text text-muted"></div> -->
-                                            <!--</div>
-                                          </div> -->
 
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.Image')}}</label>

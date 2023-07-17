@@ -188,7 +188,7 @@
                                                 </div>
                                             </div>
 
-                                      
+
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.vehicle_km')}}</label>
                                                 <div class="col-7">
@@ -205,7 +205,7 @@
                                                     <div class="form-text text-muted">{{trans('lang.vehicle_milage_help')}}</div>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.vehicle_numberplate')}}</label>
                                                 <div class="col-7">
@@ -224,14 +224,58 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.number_of_pessanger')}}</label>
                                                 <div class="col-7">
                                                     <input type="number" class="form-control" name="passenger"
                                                            value="{{Request::old('passenger')}}">
                                                     <div class="form-text text-muted w-50">
-                                                        {{ trans("lang.number_of_passenger_help") }}
+                                                        {{ trans("number_of_passenger_help") }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group row width-50">
+                                                <label class="col-3 control-label">Number of Luggage</label>
+                                                <div class="col-7">
+                                                    <input type="number" class="form-control" name="num_of_luggage"
+                                                           value="{{Request::old('num_of_luggage')}}">
+                                                    <div class="form-text text-muted w-50">
+                                                        {{ trans("num_of_luggage") }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group row width-50">
+                                                <label class="col-3 control-label">Package Weight</label>
+                                                <div class="col-7">
+                                                    <input type="number" class="form-control" name="package_weight"
+                                                           value="{{Request::old('package_weight')}}">
+                                                    <div class="form-text text-muted w-50">
+                                                        {{ trans("package_weight") }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group row width-50">
+                                                <label class="col-3 control-label">Package Size</label>
+                                                <div class="col-7">
+                                                    <input type="number" class="form-control" name="package_size"
+                                                           value="{{Request::old('package_size')}}">
+                                                    <div class="form-text text-muted w-50">
+                                                        {{ trans("package_size") }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group row width-50">
+                                                <label class="col-3 control-label">Number of Pets</label>
+                                                <div class="col-7">
+                                                    <input type="number" class="form-control" name="num_of_pets"
+                                                           value="{{Request::old('num_of_pets')}}">
+                                                    <div class="form-text text-muted w-50">
+                                                        {{ trans("num_of_pets") }}
                                                     </div>
 
                                                 </div>
@@ -377,5 +421,5 @@
 
 
                 </script>
-   
+
 @endsection

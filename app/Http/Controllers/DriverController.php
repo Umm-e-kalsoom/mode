@@ -448,6 +448,10 @@ class DriverController extends Controller
         $vehicle->updated_at = date('Y-m-d H:i:s');
         $vehicle->id_type_vehicule = $request->input('id_type_vehicule');
         $vehicle->passenger = $request->input('passenger');
+        $vehicle->num_of_luggage = $request->input('num_of_luggage');
+        $vehicle->package_weight = $request->input('package_weight');
+        $vehicle->num_of_pets = $request->input('num_of_pets');
+        $vehicle->package_size = $request->input('package_size');
         $vehicle->save();
         $vehicle_id = $vehicle->id;
 
@@ -678,6 +682,10 @@ class DriverController extends Controller
             $vehicle->milage = $milage;
             $vehicle->numberplate = $numberplate;
             $vehicle->passenger = $passenger;
+            $vehicle->num_of_luggage = $request->input('num_of_luggage');
+            $vehicle->package_weight = $request->input('package_weight');
+            $vehicle->num_of_pets = $request->input('num_of_pets');
+            $vehicle->package_size = $request->input('package_size');
             $vehicle->id_type_vehicule=$request->input('id_type_vehicule');
             $vehicle->save();
         }
