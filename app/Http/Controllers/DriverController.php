@@ -520,7 +520,10 @@ class DriverController extends Controller
                 }
 
                 $user = Driver::find($id);
-                $user->delete();
+                if($user){
+                    $user->delete();
+                }
+
             }
 
         }
