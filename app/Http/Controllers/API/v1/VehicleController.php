@@ -93,7 +93,7 @@ class VehicleController extends Controller
                 }
 //                DB::update('update tj_conducteur set model=?',[$vehicleModel->id]);
                 $insertdata = DB::insert("insert into tj_vehicule(passenger,package_size,package_weight,num_of_luggage,package_size,brand,model,color,numberplate,id_conducteur,statut,creer,updated_at,id_type_vehicule,car_make,milage,km)
-	        values('" . $passenger . "','".$package_size."','".$package_weight."','".$num_of_luggage."','".$package_size."'," . $brand . "','" . $vehicleModel->id . "','" . $color . "','" . $numberplate . "','" . $id_driver . "','yes','" .
+	        values('" . $passenger . "','" . $package_size . "','" .$package_weight. "','".$num_of_luggage."','".$package_size."','" . $brand . "','" . $vehicleModel->id . "','" . $color . "','" . $numberplate . "','" . $id_driver . "','yes','" .
                     $date_heure . "','" . $date_heure . "','" . $id_categorie_vehicle . "','" . $car_make . "','" . $milage . "','" . $km . "')");
                 $id = DB::getPdo()->lastInsertId();
                 if ($id > 0) {
