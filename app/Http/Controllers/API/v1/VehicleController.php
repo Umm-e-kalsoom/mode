@@ -390,9 +390,9 @@ class VehicleController extends Controller
                 ->get();
 
             foreach ($get_delivery_chagres as $row_delivery_chagres) {
-                $row->delivery_charges = $row_delivery_chagres->delivery_charges_per_km;
-                $row->minimum_delivery_charges = $row_delivery_chagres->minimum_delivery_charges;
-                $row->minimum_delivery_charges_within = $row_delivery_chagres->minimum_delivery_charges_within_km;
+                $row->day_charges_per_km = $row_delivery_chagres->day_charges_per_km;
+                $row->overnight_charges_per_km = $row_delivery_chagres->overnight_charges_per_km;
+                $row->peak_charges_km = $row_delivery_chagres->peak_charges_km;
             }
 
             $output[] = $row;
