@@ -170,7 +170,7 @@
 										<div class="col-md-6">
 		                                  	<div class="col-group">
 		                                  	  <label for="" class="font-weight-bold">{{trans('lang.wallet_balance')}} :</label>
-		                                    	<span>{{$currency->symbole." ".number_format($driver->amount,$currency->decimal_digit)}}</span>
+		                                    	<span>${{ $driver->amount }}</span>
 		                                	</div>
 										</div>
 

@@ -35,12 +35,12 @@
             </a>
         </li>
 
-        <li>
+        {{--  <li>
             <a class="" href="{{ route('tokens.index') }}">
                   <i class="mdi mdi-sale"></i>
                   <span class="hide-menu">Tokens</span>
               </a>
-        </li>
+        </li>  --}}
       <li>
         <a class="has-arrow waves-effect waves-dark" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                 <i class="mdi mdi-calendar-check"></i>
