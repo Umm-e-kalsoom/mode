@@ -20,7 +20,7 @@ class TokenPaymentController extends Controller
         //         "source" => $request->stripeToken,
         //         "description" => "Test payment from itsolutionstuff.com."
         // ]);
-        if(!empty($stripe)){
+
 
             $token = TokenPayment::create([
                 'user_id'   =>  $request->user_id,
@@ -48,12 +48,7 @@ class TokenPaymentController extends Controller
             $response['error']= null;
             $response['message']= 'Successfully';
             $response['remaining_token'] = $rem;
-        }
-        else{
-            $response['success']= 'Failed';
-            $response['error']= 'Failed';
 
-        }
         return response()->json($response);
 
     }
