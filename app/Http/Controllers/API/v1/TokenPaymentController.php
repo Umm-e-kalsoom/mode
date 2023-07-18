@@ -14,17 +14,17 @@ class TokenPaymentController extends Controller
 
         Stripe\Stripe::setApiKey('sk_test_51M1CQcBXbn9BsZ0hPR23i3B0mIBWnYI9rX1woVhgMyjT81ySeRUhX3BPwUQluen4ku4ljsI2ydOpGCS5ZNqdd3BO00y60S864r');
 
-        $stripe = Stripe\Charge::create ([
-                "amount" => $request->amount * 100,
-                "currency" => "usd",
-                "source" => $request->stripeToken,
-                "description" => "Test payment from itsolutionstuff.com."
-        ]);
+        // $stripe = Stripe\Charge::create ([
+        //         "amount" => $request->amount * 100,
+        //         "currency" => "usd",
+        //         "source" => $request->stripeToken,
+        //         "description" => "Test payment from itsolutionstuff.com."
+        // ]);
         if(!empty($stripe)){
 
             $token = TokenPayment::create([
                 'user_id'   =>  $request->user_id,
-                'stripe_id' =>  $stripe->id,
+                'stripe_id' =>  $request->stripe_id,
                 'tokens'    => $request->tokens,
                 'amount'    => $request->amount,
             ]);
