@@ -42,6 +42,7 @@ use App\Http\Controllers\API\v1\LaunguageController;
 use App\Http\Controllers\API\v1\LocationController;
 use App\Http\Controllers\API\v1\ModelListController;
 use App\Http\Controllers\API\v1\NoteController;
+use App\Http\Controllers\API\v1\TokenPaymentController;
 use App\Http\Controllers\API\v1\NotificationListController;
 use App\Http\Controllers\API\v1\NotifyController;
 use App\Http\Controllers\API\v1\OldUserPhotoController;
