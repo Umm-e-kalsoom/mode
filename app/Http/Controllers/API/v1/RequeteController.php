@@ -324,15 +324,15 @@ class RequeteController extends Controller
                     }
                     $row->photo_path = $image_user;
                 }
-                if ($row->payment_image != '') {
-                    if (file_exists('assets/images/payment_method' . '/' . $row->payment_image)) {
-                        $image = asset('my-assets/images/payment_method') . '/' . $row->payment_image;
-                    } else {
-                        $image = asset('assets/images/placeholder_image.jpg');
+                // if ($row->payment_image != '') {
+                //     if (file_exists('assets/images/payment_method' . '/' . $row->payment_image)) {
+                //         $image = asset('my-assets/images/payment_method') . '/' . $row->payment_image;
+                //     } else {
+                //         $image = asset('assets/images/placeholder_image.jpg');
 
-                    }
-                    $row->payment_image = $image;
-                }
+                //     }
+                //     $row->payment_image = $image;
+                // }
 
                 if ($row->statut == "new") {
                     $output[] = $row;
