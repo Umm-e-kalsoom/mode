@@ -55,7 +55,7 @@ class TokenPaymentController extends Controller
     public function remain_token(Request $request){
 
 
-        $rem =RemainingToken::where('user_id',$token->user_id)->first();
+        $rem =RemainingToken::where('user_id',$request->user_id)->first();
 
         if(!empty($rem)){
 
