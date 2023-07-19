@@ -44,7 +44,6 @@ class RequeteController extends Controller
             $sql = DB::table('tj_requete')
                 ->Join('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
                 ->Join('tj_conducteur','tj_conducteur.id','=','tj_requete.id_conducteur')
-                ->Join('tj_payment_method','tj_payment_method.id','=','tj_requete.id_payment_method')
                 ->select('tj_requete.id', 'tj_requete.id_user_app','tj_requete.distance_unit',
                     'tj_requete.depart_name', 'tj_requete.destination_name',
                     'tj_requete.latitude_depart', 'tj_requete.longitude_depart',
