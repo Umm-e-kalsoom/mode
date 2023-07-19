@@ -40,7 +40,7 @@ class RequeteController extends Controller
 
 
         $id_driver = $request->get('id_driver');
-        dd($id_driver);
+
         if (!empty($id_driver)) {
             $sql = DB::table('tj_requete')
                 ->Join('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
@@ -68,7 +68,7 @@ class RequeteController extends Controller
                 ->orderBy('tj_requete.id', 'desc')
                 ->get();
 
-
+                dd($sql);
             foreach ($sql as $row) {
 
                 $id_user_app = $row->id_user_app;
