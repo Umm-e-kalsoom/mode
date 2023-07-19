@@ -42,8 +42,8 @@ class RequeteController extends Controller
         $id_driver = $request->get('id_driver');
         if (!empty($id_driver)) {
             $sql = DB::table('tj_requete')
-                ->Join('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
-                ->Join('tj_conducteur','tj_conducteur.id','=','tj_requete.id_conducteur')
+                ->leftJoin('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
+                ->leftJoin('tj_conducteur','tj_conducteur.id','=','tj_requete.id_conducteur')
                 ->select('tj_requete.id', 'tj_requete.id_user_app','tj_requete.distance_unit',
                     'tj_requete.depart_name', 'tj_requete.destination_name',
                     'tj_requete.latitude_depart', 'tj_requete.longitude_depart',
@@ -55,8 +55,6 @@ class RequeteController extends Controller
                     'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur',
                     'tj_conducteur.phone as driverPhone', 'tj_requete.date_retour', 'tj_requete.heure_retour',
                     'tj_requete.statut_round', 'tj_requete.montant', 'tj_requete.duree', 'tj_user_app.id as userId',
-                    'tj_requete.statut_paiement', 'tj_payment_method.libelle as payment',
-                    'tj_payment_method.image as payment_image', 'tj_requete.trip_objective',
                     'tj_requete.age_children1', 'tj_requete.age_children2', 'tj_requete.age_children3')
                 //->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
                 //->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
