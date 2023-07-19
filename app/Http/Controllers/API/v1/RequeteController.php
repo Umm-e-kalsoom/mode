@@ -59,7 +59,7 @@ class RequeteController extends Controller
                 ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
                 ->where('tj_requete.id_conducteur', '=', DB::raw($id_driver))
                 ->where('tj_requete.statut', '=', 'new')
-                ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
+               // ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
                 ->orderBy('tj_requete.id', 'desc')
                 ->get();
 
