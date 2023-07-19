@@ -64,13 +64,13 @@ class RequeteController extends Controller
                 ->get();
 
 
-            foreach ($sql as $row) {
-
+            foreach($sql as $row) {
+                dd($row);
                 $id_user_app = $row->id_user_app;
                 $lat = $row->latitude_depart;
                 $long = $row->longitude_depart;
 
-                dd($row);
+
                $ride_id = $row->id;
                 if ($id_user_app != 0) {
 
