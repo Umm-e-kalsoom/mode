@@ -62,7 +62,7 @@ class RequeteController extends Controller
                     'tj_requete.age_children1', 'tj_requete.age_children2', 'tj_requete.age_children3')
                 ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
                 ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
-                ->where('tj_requete.id_conducteur', '=', DB::raw($id_driver))
+               // ->where('tj_requete.id_conducteur', '=', DB::raw($id_driver))
                 ->where('tj_requete.statut', '=', 'new')
                 //->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
                 ->orderBy('tj_requete.id', 'desc')
