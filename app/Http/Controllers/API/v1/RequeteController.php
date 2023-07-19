@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Requests;
 use Carbon\Carbon;
 use DB;
-use App\Models\Rides;
 use Illuminate\Http\Request;
 
 class RequeteController extends Controller
@@ -41,35 +40,32 @@ class RequeteController extends Controller
 
 
         $id_driver = $request->get('id_driver');
-
         if (!empty($id_driver)) {
-            $sql =Rides::where('id_conducteur',$id_driver)->first();
-            dd($sql);
-            // $sql = DB::table('tj_requete')
-            //     ->Join('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
-            //     ->Join('tj_conducteur','tj_conducteur.id','=','tj_requete.id_conducteur')
-            //     ->Join('tj_payment_method','tj_payment_method.id','=','tj_requete.id_payment_method')
-            //     ->select('tj_requete.id', 'tj_requete.id_user_app','tj_requete.distance_unit',
-            //         'tj_requete.depart_name', 'tj_requete.destination_name',
-            //         'tj_requete.latitude_depart', 'tj_requete.longitude_depart',
-            //         'tj_requete.latitude_arrivee', 'tj_requete.longitude_arrivee',
-            //         'tj_requete.number_poeple', 'tj_requete.place', 'tj_requete.statut',
-            //         'tj_requete.id_conducteur', 'tj_requete.creer', 'tj_requete.trajet',
-            //         'tj_requete.feel_safe_driver', 'tj_user_app.nom', 'tj_user_app.prenom',
-            //         'tj_requete.distance', 'tj_user_app.phone', 'tj_user_app.photo_path',
-            //         'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur',
-            //         'tj_conducteur.phone as driverPhone', 'tj_requete.date_retour', 'tj_requete.heure_retour',
-            //         'tj_requete.statut_round', 'tj_requete.montant', 'tj_requete.duree', 'tj_user_app.id as userId',
-            //         'tj_requete.statut_paiement', 'tj_payment_method.libelle as payment',
-            //         'tj_payment_method.image as payment_image', 'tj_requete.trip_objective',
-            //         'tj_requete.age_children1', 'tj_requete.age_children2', 'tj_requete.age_children3')
-            //     ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
-            //     ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
-            //     ->where('tj_requete.id_conducteur', '=', DB::raw($id_driver))
-            //     ->where('tj_requete.statut', '=', 'new')
-            //     //->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
-            //     ->orderBy('tj_requete.id', 'desc')
-            //     ->get();
+            $sql = DB::table('tj_requete')
+                ->Join('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
+                ->Join('tj_conducteur','tj_conducteur.id','=','tj_requete.id_conducteur')
+                ->Join('tj_payment_method','tj_payment_method.id','=','tj_requete.id_payment_method')
+                ->select('tj_requete.id', 'tj_requete.id_user_app','tj_requete.distance_unit',
+                    'tj_requete.depart_name', 'tj_requete.destination_name',
+                    'tj_requete.latitude_depart', 'tj_requete.longitude_depart',
+                    'tj_requete.latitude_arrivee', 'tj_requete.longitude_arrivee',
+                    'tj_requete.number_poeple', 'tj_requete.place', 'tj_requete.statut',
+                    'tj_requete.id_conducteur', 'tj_requete.creer', 'tj_requete.trajet',
+                    'tj_requete.feel_safe_driver', 'tj_user_app.nom', 'tj_user_app.prenom',
+                    'tj_requete.distance', 'tj_user_app.phone', 'tj_user_app.photo_path',
+                    'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur',
+                    'tj_conducteur.phone as driverPhone', 'tj_requete.date_retour', 'tj_requete.heure_retour',
+                    'tj_requete.statut_round', 'tj_requete.montant', 'tj_requete.duree', 'tj_user_app.id as userId',
+                    'tj_requete.statut_paiement', 'tj_payment_method.libelle as payment',
+                    'tj_payment_method.image as payment_image', 'tj_requete.trip_objective',
+                    'tj_requete.age_children1', 'tj_requete.age_children2', 'tj_requete.age_children3')
+                ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
+                ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
+                ->where('tj_requete.id_conducteur', '=', DB::raw($id_driver))
+                ->where('tj_requete.statut', '=', 'new')
+                ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
+                ->orderBy('tj_requete.id', 'desc')
+                ->get();
 
 
             foreach ($sql as $row) {
