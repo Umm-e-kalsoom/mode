@@ -40,6 +40,7 @@ class RequeteController extends Controller
 
 
         $id_driver = $request->get('id_driver');
+        dd("sdas");
         if (!empty($id_driver)) {
             $sql = DB::table('tj_requete')
                 ->Join('tj_user_app','tj_user_app.id','=','tj_requete.id_user_app')
@@ -198,7 +199,7 @@ class RequeteController extends Controller
 
                 $currentDateTime = Carbon::now();
 
-                if ($trip_accept_reject_driver_time_sec != '') {
+                if($trip_accept_reject_driver_time_sec != '') {
                     $date = Date("Y-m-d H:i:s", strtotime("$trip_accept_reject_driver_time_sec seconds", strtotime($row->creer)));
 
                     if ($currentDateTime > $date) {
