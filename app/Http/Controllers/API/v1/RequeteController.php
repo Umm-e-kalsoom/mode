@@ -62,7 +62,7 @@ class RequeteController extends Controller
                 ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
                 ->orderBy('tj_requete.id', 'desc')
                 ->get();
-            //dd($sql);
+
 
             foreach ($sql as $row) {
 
@@ -70,7 +70,7 @@ class RequeteController extends Controller
                 $lat = $row->latitude_depart;
                 $long = $row->longitude_depart;
 
-
+                dd($row);
                $ride_id = $row->id;
                 if ($id_user_app != 0) {
 
