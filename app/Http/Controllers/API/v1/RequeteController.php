@@ -65,7 +65,7 @@ class RequeteController extends Controller
 
            // dd($sql);
             foreach($sql as $row) {
-                dd($row);
+
                 $id_user_app = $row->id_user_app;
                 $lat = $row->latitude_depart;
                 $long = $row->longitude_depart;
