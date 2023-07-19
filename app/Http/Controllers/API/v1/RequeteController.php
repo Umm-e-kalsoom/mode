@@ -63,7 +63,7 @@ class RequeteController extends Controller
                 //->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
                 ->orderBy('tj_requete.id', 'desc')
                 ->get();
-            dd($sql);
+            //dd($sql);
 
             foreach ($sql as $row) {
 
