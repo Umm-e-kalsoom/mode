@@ -63,9 +63,9 @@ class RequeteController extends Controller
                 ->orderBy('tj_requete.id', 'desc')
                 ->get();
 
-
+            dd($sql);
             foreach($sql as $row) {
-                dd($row);
+
                 $id_user_app = $row->id_user_app;
                 $lat = $row->latitude_depart;
                 $long = $row->longitude_depart;
