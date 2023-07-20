@@ -47,7 +47,7 @@ class RequeteUserappConfirmationController extends Controller
             ->where('tj_requete.id_user_app', '=', DB::raw($id_user_app))
             ->where('tj_requete.statut', '=', 'confirmed')
             ->orWhere('tj_requete.statut', '=', 'on ride')
-            ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
+           // ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
             ->orderBy('tj_requete.id', 'desc')
             ->first();
         if (empty($sql)) {
