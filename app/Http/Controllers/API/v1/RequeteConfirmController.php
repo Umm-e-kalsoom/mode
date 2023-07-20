@@ -210,18 +210,18 @@ class RequeteConfirmController extends Controller
                    }
                    $row->trajet = $image_tranjet;
                }
-               if($row->payment_image != ''){
-                   if(file_exists('assets/images/payment_method'.'/'.$row->payment_image ))
-                   {
-                       $image_payment = asset('my-assets/images/payment_method').'/'. $row->payment_image;
-                   }
-                   else
-                   {
-                       $image_payment =asset('assets/images/placeholder_image.jpg');
+            //    if($row->payment_image != ''){
+            //        if(file_exists('assets/images/payment_method'.'/'.$row->payment_image ))
+            //        {
+            //            $image_payment = asset('my-assets/images/payment_method').'/'. $row->payment_image;
+            //        }
+            //        else
+            //        {
+            //            $image_payment =asset('assets/images/placeholder_image.jpg');
 
-                   }
-                   $row->payment_image = $image_payment;
-               }
+            //        }
+            //        $row->payment_image = $image_payment;
+            //    }
                $output[]= $row;
            if(!empty($row)){
                $response['success']= 'success';
