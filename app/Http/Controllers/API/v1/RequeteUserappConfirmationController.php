@@ -30,7 +30,7 @@ class RequeteUserappConfirmationController extends Controller
         $sql = DB::table('tj_requete')
             ->Join('tj_user_app', 'tj_user_app.id', '=', 'tj_requete.id_user_app')
             ->Join('tj_conducteur', 'tj_conducteur.id', '=', 'tj_requete.id_conducteur')
-            ->Join('tj_payment_method', 'tj_payment_method.id', '=', 'tj_requete.id_payment_method')
+            //->Join('tj_payment_method', 'tj_payment_method.id', '=', 'tj_requete.id_payment_method')
             ->select('tj_requete.id', 'tj_requete.id_user_app',
                 'tj_requete.distance_unit',
                 'tj_requete.depart_name', 'tj_requete.otp',
@@ -40,10 +40,10 @@ class RequeteUserappConfirmationController extends Controller
                 'tj_requete.creer', 'tj_requete.trajet', 'tj_requete.trip_objective', 'tj_requete.trip_category',
                 'tj_user_app.nom', 'tj_user_app.prenom', 'tj_requete.distance', 'tj_user_app.phone',
                 'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur', 'tj_conducteur.phone as driverPhone',
-                'tj_conducteur.photo_path', 'tj_requete.date_retour', 'tj_requete.heure_retour', 'tj_requete.statut_round',
-                'tj_requete.montant', 'tj_requete.duree', 'tj_requete.statut_paiement', 'tj_payment_method.libelle as payment', 'tj_payment_method.image as payment_image')
+                'tj_conducteur.photo_path', 'tj_requete.date_retour', 'tj_requete.heure_retour', 'tj_requete.statut_round')
+                //'tj_requete.montant', 'tj_requete.duree', 'tj_requete.statut_paiement', 'tj_payment_method.libelle as payment', 'tj_payment_method.image as payment_image')
             ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
-            ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
+          //  ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
             ->where('tj_requete.id_user_app', '=', DB::raw($id_user_app))
             ->where('tj_requete.statut', '=', 'confirmed')
             ->orWhere('tj_requete.statut', '=', 'on ride')
@@ -71,7 +71,7 @@ class RequeteUserappConfirmationController extends Controller
             $row->km = $row_vehicle->km;
             $id = DB::table('tj_vehicule')->where('id_conducteur', DB::raw($sql->id_conducteur))->first()->id_type_vehicule;
              $row->category = DB::table('tj_type_vehicule')->select('id','libelle')->where('id',DB::raw($id))->first();
-             
+
             $row->color = $row_vehicle->color;
             $row->numberplate = $row_vehicle->numberplate;
             $row->passenger = $row_vehicle->passenger;
@@ -94,15 +94,15 @@ class RequeteUserappConfirmationController extends Controller
             }
             $row->photo_path = $image_user;
         }
-        if ($row->payment_image != '') {
-            if (file_exists('assets/images/payment_method' . '/' . $row->payment_image)) {
-                $image = asset('my-assets/images/payment_method') . '/' . $row->payment_image;
-            } else {
-                $image = asset('assets/images/placeholder_image.jpg');
+        // if ($row->payment_image != '') {
+        //     if (file_exists('assets/images/payment_method' . '/' . $row->payment_image)) {
+        //         $image = asset('my-assets/images/payment_method') . '/' . $row->payment_image;
+        //     } else {
+        //         $image = asset('assets/images/placeholder_image.jpg');
 
-            }
-            $row->payment_image = $image;
-        }
+        //     }
+        //     $row->payment_image = $image;
+        // }
         if ($id_conducteur != 0) {
             $sql_cond = DB::table('tj_conducteur')
                 ->select('nom as nomConducteur', 'prenom as prenomConducteur')
