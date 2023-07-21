@@ -77,31 +77,9 @@ class TokenPaymentController extends Controller
     }
 
     public function store_coupon(Request $request){
-        $validator = Validator::make($request->all(), $rules = [
-            'code' => 'required',
-            'discount' => 'required',
-            'type' => 'required',
-            'expire_at' => 'required|date',
-            'discription'=>'required',
-        ], $messages = [
-            'code.required' => 'The Code field is required!',
-            'discount.required' => 'The Discount field is required!',
-            'type.required' => 'The Discount Type is required!',
-            'expire_at.required' => 'The Expire date field is required!',
-            'discription.required' => 'The Description field is required'
 
 
-        ]);
-
-        if ($validator->fails()) {
-
-                $response['success']= 'Failed';
-                $response['error']= 'Failed to store data';
-                $response['remaining_token'] = $messages;
-                return response()->json($response);
-        }
-
-        $code = $request->input('code');
+        $code = $request->input('code') ;
         $discount = $request->input('discount');
         $type = $request->input('type');
         $expire_at = $request->input('expire_at');
