@@ -119,6 +119,7 @@ use App\Http\Controllers\API\v1\VehicleNumberplateController;
 use App\Http\Controllers\API\v1\wallet;
 use App\Http\Controllers\API\v1\DriverRideReviewController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\v1\CouponController;
 use Illuminate\Support\Facades\Route;
 
 //use App\Http\Controllers\api\v1\UserController;
