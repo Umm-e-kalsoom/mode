@@ -318,6 +318,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::put('/coupons/update/{id}', [App\Http\Controllers\API\v1\CouponController::class, 'updateDiscount']);
     Route::post('/coupons/store', [App\Http\Controllers\API\v1\CouponController::class, 'store']);
     Route::post('get/coupons/{id}', [App\Http\Controllers\API\v1\CouponController::class, 'get_coupen']);
+    Route::post('coupem/{code}', [App\Http\Controllers\API\v1\CouponController::class, 'coupen']);
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);
 

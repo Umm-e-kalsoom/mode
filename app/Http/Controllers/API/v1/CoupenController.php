@@ -161,4 +161,19 @@ class CoupenController extends Controller
         return response()->json($response);
 
     }
+    public function coupen(Request $request,$code){
+        $discounts = Discount::where('code',$code)->first();
+        if(!empty($discounts)){
+
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= 'Successfully get';
+            $response['remaining_token'] = $discounts;
+        }else{
+            $response['success']= 'Failed';
+            $response['error']= 'Coupen Not Found';
+            $response['remaining_token'] = $discounts;
+        }
+        return response()->json($response);
+    }
 }
