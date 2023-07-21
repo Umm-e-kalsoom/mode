@@ -317,7 +317,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::post('v1/remaining_token/', [TokenPaymentController::class, 'remain_token']);
     //Coupen
     Route::post('v1/coupons/update/{id}', [CouponController::class, 'updateDiscount']);
-    Route::post('v1/coupons/store', [CouponController::class, 'store_coupon']);
+    Route::post('v1/coupons/store', 'CouponController@store_coupon');
     Route::post('v1/get/coupons/{id}', [CouponController::class, 'get_coupen']);
     Route::post('v1/coupens/{code}', [CouponController::class, 'coupen']);
 
