@@ -314,6 +314,10 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     //Token Paymeny
     Route::post('v1/token_pay/', [TokenPaymentController::class, 'token_pay']);
     Route::post('v1/remaining_token/', [TokenPaymentController::class, 'remain_token']);
+    //Coupen
+    Route::put('/coupons/update/{id}', [App\Http\Controllers\API\v1\CouponController::class, 'updateDiscount']);
+    Route::post('/coupons/store', [App\Http\Controllers\API\v1\CouponController::class, 'store']);
+    Route::post('get/coupons/{id}', [App\Http\Controllers\API\v1\CouponController::class, 'get_coupen']);
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);
 

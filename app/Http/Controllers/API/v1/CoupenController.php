@@ -1,47 +1,86 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\v1;
 
-use App\Models\Discount;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Discount;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 
-class CouponController extends Controller
+
+class CoupenController extends Controller
 {
+    public function store(Request $request){
+        $validator = Validator::make($request->all(), $rules = [
+            'code' => 'required',
+            'discount' => 'required',
+            'type' => 'required',
+            'expire_at' => 'required|date',
+            'discription'=>'required',
+        ], $messages = [
+            'code.required' => 'The Code field is required!',
+            'discount.required' => 'The Discount field is required!',
+            'type.required' => 'The Discount Type is required!',
+            'expire_at.required' => 'The Expire date field is required!',
+            'discription.required' => 'The Description field is required'
 
 
-    public function index(Request $request)
-    {
-        $today = Carbon::now();
-        if ($request->has('search') && $request->search != '' && $request->selected_search == 'code') {
-            $search = $request->input('search');
-            $discounts = DB::table('tj_discount')
-                ->where('tj_discount.code', 'LIKE', '%' . $search . '%')
-                ->paginate(20);
-        } else if ($request->has('search') && $request->search != '' && $request->selected_search == 'discount') {
-            $search = $request->input('search');
-            $discounts = DB::table('tj_discount')
-                ->where('tj_discount.discount', 'LIKE', '%' . $search . '%')
-                ->paginate(20);
-        } else {
-            $discounts =  DB::table('tj_discount')
-            ->paginate(20);
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)->with(['message' => $messages])
+                ->withInput();
         }
-        return view("coupons.index")->with('discounts', $discounts);
+
+        $code = $request->input('code');
+        $discount = $request->input('discount');
+        $type = $request->input('type');
+        $expire_at = $request->input('expire_at');
+        $description = $request->input('discription');
+        $user_id = auth()->user()->id;
+
+        $statut = $request->input('statut');
+        $date = date('Y-m-d H:i:s');
+        if ($statut == "on") {
+            $statut = "yes";
+        } else {
+            $statut = "no";
+        }
+
+        $discounts = new Discount;
+
+        if ($discounts) {
+            $discounts->code = $code;
+            $discounts->discount = $discount;
+            $discounts->type = $type;
+            $discounts->expire_at = $expire_at;
+            $discounts->discription = $description;
+            $discounts->user_id = $user_id;
+
+            $discounts->statut = $statut;
+            $discounts->creer = $date;
+            $discounts->modifier = $date;
+            $discounts->save();
+        }
+
+
+        if(!empty($discounts)){
+
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= 'Successfully Stored';
+            $response['remaining_token'] = $discounts;
+        }else{
+            $response['success']= 'Failed';
+            $response['error']= 'Failed to store data';
+            $response['remaining_token'] = $discounts;
+        }
+        return response()->json($response);
     }
-
-    public function edit($id)
-    {
-        $discount = Discount::where('id', "=", $id)->first();
-        return view('coupons.edit')->with('discount', $discount);
-    }
-
-    public function updateDiscount(Request $request, $id)
-    {
-
+    public function updateDiscount(Request $request, $id){
 
         $validator = Validator::make($request->all(), $rules = [
             'code' => 'required',
@@ -92,127 +131,34 @@ class CouponController extends Controller
             $discounts->modifier = $date;
             $discounts->save();
         }
+        if(!empty($discounts)){
 
-
-        return redirect('coupons');
-    }
-
-    public function create()
-    {
-        return view('coupons.create');
-    }
-
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), $rules = [
-            'code' => 'required',
-            'discount' => 'required',
-            'type' => 'required',
-            'expire_at' => 'required|date',
-            'discription'=>'required',
-        ], $messages = [
-            'code.required' => 'The Code field is required!',
-            'discount.required' => 'The Discount field is required!',
-            'type.required' => 'The Discount Type is required!',
-            'expire_at.required' => 'The Expire date field is required!',
-            'discription.required' => 'The Description field is required'
-
-
-        ]);
-
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)->with(['message' => $messages])
-                ->withInput();
-        }
-
-        $code = $request->input('code');
-        $discount = $request->input('discount');
-        $type = $request->input('type');
-        $expire_at = $request->input('expire_at');
-        $description = $request->input('discription');
-
-        $statut = $request->input('statut');
-        $date = date('Y-m-d H:i:s');
-        if ($statut == "on") {
-            $statut = "yes";
-        } else {
-            $statut = "no";
-        }
-
-        $discounts = new Discount;
-
-        if ($discounts) {
-            $discounts->code = $code;
-            $discounts->discount = $discount;
-            $discounts->type = $type;
-            $discounts->expire_at = $expire_at;
-            $discounts->discription = $description;
-
-            $discounts->statut = $statut;
-            $discounts->creer = $date;
-            $discounts->modifier = $date;
-            $discounts->save();
-        }
-
-
-        return redirect('coupons');
-    }
-
-    public function show($id)
-    {
-        $discount = Discount::where('id', "=", $id)->first();
-        return view('coupons.show')->with('discount', $discount);
-    }
-
-    public function changeStatus($id)
-    {
-        $discount = Discount::find($id);
-        if ($discount->statut == 'no') {
-            $discount->statut = 'yes';
-        } else {
-            $discount->statut = 'no';
-        }
-
-        $discount->save();
-        return redirect()->back();
-
-    }
-
-    public function delete($id)
-    {
-
-        if ($id != "") {
-
-            $id = json_decode($id);
-
-            if (is_array($id)) {
-
-                for ($i = 0; $i < count($id); $i++) {
-                    $user = Discount::find($id[$i]);
-                    $user->delete();
-                }
-
-            } else {
-                $user = Discount::find($id);
-                $user->delete();
-            }
-
-        }
-
-        return redirect()->back();
-    }
-    public function toggalSwitch(Request $request){
-        $ischeck=$request->input('ischeck');
-        $id=$request->input('id');
-        $discount = Discount::find($id);
-
-        if($ischeck=="true"){
-          $discount->statut = 'yes';
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= 'Successfully update';
+            $response['remaining_token'] = $discounts;
         }else{
-          $discount->statut = 'no';
+            $response['success']= 'Failed';
+            $response['error']= 'Failed to supdatetore data';
+            $response['remaining_token'] = $discounts;
         }
-          $discount->save();
+        return response()->json($response);
 
-}
+    }
+    public function get_coupen($id){
+        $discounts = Discount::find($id);
+        if(!empty($discounts)){
+
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= 'Successfully get';
+            $response['remaining_token'] = $discounts;
+        }else{
+            $response['success']= 'Failed';
+            $response['error']= 'Failed to get data';
+            $response['remaining_token'] = $discounts;
+        }
+        return response()->json($response);
+
+    }
 }
