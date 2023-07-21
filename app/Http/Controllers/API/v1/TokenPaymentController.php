@@ -84,7 +84,7 @@ class TokenPaymentController extends Controller
         $type = $request->input('type');
         $expire_at = $request->input('expire_at');
         $description = $request->input('discription');
-        $user_id = auth()->user()->id;
+        $user_id = $request->input('user_id');
 
         $statut = $request->input('statut');
         $date = date('Y-m-d H:i:s');
