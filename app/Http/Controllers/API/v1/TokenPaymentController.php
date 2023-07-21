@@ -125,29 +125,7 @@ class TokenPaymentController extends Controller
         return response()->json($response);
     }
     public function updateDiscount(Request $request, $id){
-
-        $validator = Validator::make($request->all(), $rules = [
-            'code' => 'required',
-            'discount' => 'required',
-            'type' => 'required',
-            'expire_at' => 'required|date',
-            'discription'=>'required',
-        ], $messages = [
-            'code.required' => 'The Code field is required!',
-            'discount.required' => 'The Discount field is required!',
-            'type.required' => 'The Discount Type is required!',
-            'expire_at.required' => 'The Expire date field is required!',
-            'discription.required' => 'The Description field is required'
-
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)->with(['message' => $messages])
-                ->withInput();
-        }
-
-
+        dd('sasd');
         $code = $request->input('code');
         $discount = $request->input('discount');
         $type = $request->input('type');
