@@ -316,10 +316,10 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::post('v1/token_pay/', [TokenPaymentController::class, 'token_pay']);
     Route::post('v1/remaining_token/', [TokenPaymentController::class, 'remain_token']);
     //Coupen
-    Route::post('coupons/update/{id}', [CouponController::class, 'updateDiscount']);
-    Route::post('coupons/store', [CouponController::class, 'store']);
-    Route::post('get/coupons/{id}', [CouponController::class, 'get_coupen']);
-    Route::post('coupem/{code}', [CouponController::class, 'coupen']);
+    Route::post('v1/coupons/update/{id}', [CouponController::class, 'updateDiscount']);
+    Route::post('v1/coupons/store', [CouponController::class, 'store']);
+    Route::post('v1/get/coupons/{id}', [CouponController::class, 'get_coupen']);
+    Route::post('v1/coupens/{code}', [CouponController::class, 'coupen']);
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);
 
