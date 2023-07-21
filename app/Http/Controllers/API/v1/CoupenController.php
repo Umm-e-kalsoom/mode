@@ -12,7 +12,7 @@ use Carbon\Carbon;
 
 class CoupenController extends Controller
 {
-    public function store(Request $request){
+    public function store_coupon(Request $request){
         $validator = Validator::make($request->all(), $rules = [
             'code' => 'required',
             'discount' => 'required',
@@ -30,9 +30,11 @@ class CoupenController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)->with(['message' => $messages])
-                ->withInput();
+
+                $response['success']= 'Failed';
+                $response['error']= 'Failed to store data';
+                $response['remaining_token'] = $messages;
+                return response()->json($response);
         }
 
         $code = $request->input('code');
