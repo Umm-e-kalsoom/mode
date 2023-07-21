@@ -125,7 +125,7 @@ class TokenPaymentController extends Controller
         return response()->json($response);
     }
     public function updateDiscount(Request $request, $id){
-        dd('sasd');
+
         $code = $request->input('code');
         $discount = $request->input('discount');
         $type = $request->input('type');
