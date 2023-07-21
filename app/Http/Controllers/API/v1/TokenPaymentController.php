@@ -79,7 +79,7 @@ class TokenPaymentController extends Controller
     public function store_coupon(Request $request){
 
 
-        $code = $request->input('code') ;
+        $code = $request->input('code');
         $discount = $request->input('discount');
         $type = $request->input('type');
         $expire_at = $request->input('expire_at');
