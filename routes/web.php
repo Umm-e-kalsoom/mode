@@ -309,3 +309,7 @@ Route::post('withdrawal/reject', [App\Http\Controllers\PayoutRequestController::
 Route::get('/get-settings', [App\Http\Controllers\SettingsController::class, 'getSettings'])->name('get-settings');
 Route::resource('tokens', App\Http\Controllers\TokenController::class);
 Route::get('/delete_tokens/{id}', [App\Http\Controllers\TokenController::class, 'delete_tokens'])->name('delete_tokens');
+
+//Ride Setting
+Route::get('/ride_setting', [App\Http\Controllers\RideSettingController::class, 'index'])->name('ride_setting');
+Route::post('/ride_settings', [App\Http\Controllers\RideSettingController::class, 'store'])->name('ride_setting_save');

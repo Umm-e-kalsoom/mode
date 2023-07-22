@@ -66,12 +66,11 @@
         </li>
 
         <li>
-            <a class="waves-effect waves-dark" href="{!! url('sos') !!}">
-                <i class="fa fa-heartbeat"></i>
-                <span class="hide-menu">{{trans('lang.sos')}}</span>
+            <a class="waves-effect waves-dark" href="{{ route('ride_setting') }}">
+                <i class="fa fa-list-alt"></i>
+                <span class="hide-menu">Ride Settings</span>
             </a>
         </li>
-
 
         {{-- <li>
          	<a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
