@@ -10,6 +10,7 @@ use App\Models\Discount;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use App\Models\RideSetting;
 
 use Stripe;
 
@@ -195,6 +196,21 @@ class TokenPaymentController extends Controller
             $response['success']= 'Failed';
             $response['error']= 'Coupen Not Found';
             $response['remaining_token'] = $discounts;
+        }
+        return response()->json($response);
+    }
+    public function settings(){
+        $setting = RideSetting::latest()->first();
+        if(!empty($setting)){
+
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= 'Successfully get setting';
+            $response['remaining_token'] = $setting;
+        }else{
+            $response['success']= 'Failed';
+            $response['error']= 'setting Not Found';
+            $response['remaining_token'] = $setting;
         }
         return response()->json($response);
     }
