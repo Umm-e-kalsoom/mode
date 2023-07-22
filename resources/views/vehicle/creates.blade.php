@@ -74,12 +74,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row width-50">
-                                  						<div class="form-check">
-                                  							<input type="checkbox" class="user_active" id="user_active" name="status" value="Yes">
-                                  							<label class="col-3 control-label" for="user_active">{{trans('lang.active')}}</label>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="user_active" id="user_active" name="status" value="Yes">
+                                                    <label class="col-3 control-label" for="user_active">{{trans('lang.active')}}</label>
 
-                                  						</div>
-                                  					</div>
+                                                </div>
+                                            </div>
 
                                         </fieldset>
                                         <fieldset>
@@ -115,6 +115,7 @@
                                                     <!-- <div class="form-text text-muted"></div> -->
                                                 </div>
                                             </div>
+
 
                                         </fieldset>
                                     </div>
