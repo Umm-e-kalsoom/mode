@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\v1\GcmController;
 use Illuminate\Support\Facades\Log;
 use DB;
+use App\Models\RemainingToken;
+
 class ConfirmRequeteController extends Controller
 {
 
