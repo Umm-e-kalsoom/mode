@@ -64,8 +64,8 @@ class DriverController extends Controller
                 $model_id = $row->model;
                 $b = Brand::where('id',$brand_id)->first();
                 $c = CarModel::where('id',$model_id)->first();
-                $row->brand = $b->name;
-                $row->model = $c->name;
+                $row->brand = $b->name ?? '';
+                $row->model = $c->name ?? '';
                 $id_conducteur = $row->id;
                 if ($row->latitude != '' && $row->longitude != '')
                     $row->distance = DriverController::distance($row->latitude, $row->longitude, $lat1, $lng1);
