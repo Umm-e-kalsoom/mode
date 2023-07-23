@@ -44,7 +44,6 @@ class UserLoginController extends Controller
 
 				if (!empty($checkuser)) {
 
-                    // $checkaccount = UserApp::where('email', $email)->where('statut', 'yes')->first();
                     $checkaccount = UserApp::where('email', $email)->first();
                     if (!empty($checkaccount)) {
 

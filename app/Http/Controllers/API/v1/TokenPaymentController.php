@@ -127,14 +127,14 @@ class TokenPaymentController extends Controller
     }
     public function updateDiscount(Request $request, $id){
 
-        $code = $request->input('code');
-        $discount = $request->input('discount');
-        $type = $request->input('type');
-        $expire_at = $request->input('expire_at');
-        $description = $request->input('discription');
+        $code = $request->input('code') ?? '';
+        $discount = $request->input('discount')?? '';
+        $type = $request->input('type') ?? '';
+        $expire_at = $request->input('expire_at') ?? '';
+        $description = $request->input('discription') ?? '';
 
-        $statut = $request->input('statut');
-        $date = date('Y-m-d H:i:s');
+        $statut = $request->input('statut') ?? '';
+        $date = date('Y-m-d H:i:s') ;
         if ($statut == "on") {
             $statut = "yes";
         } else {
