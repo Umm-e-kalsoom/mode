@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\VehicleType;
+use App\Models\Brand;
+use App\Models\CArModel;
 use App\Models\DeliveryCharges;
 use Illuminate\Http\Request;
 use DB;
