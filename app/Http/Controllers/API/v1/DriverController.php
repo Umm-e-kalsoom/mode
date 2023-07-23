@@ -41,13 +41,11 @@ class DriverController extends Controller
         $sql = DB::table('tj_type_vehicule')
             ->crossJoin('tj_vehicule')
             ->leftJoin('delivery_charges', 'delivery_charges.id_vehicle_type', '=', 'tj_vehicule.id')
-            ->crossJoin('brands', 'brands.vehicle_id', '=', 'tj_vehicule.id')
-            ->crossJoin('car_model', 'car_model.brand_id', '=', 'brands.id')
             ->crossJoin('tj_conducteur')
             ->select('tj_conducteur.id', 'tj_conducteur.nom', 'tj_conducteur.wheel_chair', 'tj_type_vehicule.libelle', 'tj_type_vehicule.status', 'tj_type_vehicule.currency',
                 'tj_type_vehicule.prix', 'tj_conducteur.prenom', 'tj_conducteur.phone', 'tj_conducteur.email',
                 'tj_conducteur.online', 'tj_conducteur.photo_path as photo', 'tj_conducteur.latitude', 'tj_conducteur.longitude',
-                'tj_vehicule.id as idVehicule','brands.name as brand_name','car_model.name as model_name', 'tj_vehicule.brand', 'tj_vehicule.model', 'tj_vehicule.color', 'tj_vehicule.numberplate','delivery_charges.day_charges_per_km','delivery_charges.overnight_charges_per_km','delivery_charges.peak_charges_km',
+                'tj_vehicule.id as idVehicule', 'tj_vehicule.brand', 'tj_vehicule.model', 'tj_vehicule.color', 'tj_vehicule.numberplate','delivery_charges.day_charges_per_km','delivery_charges.overnight_charges_per_km','delivery_charges.peak_charges_km',
                 'tj_vehicule.passenger', 'tj_type_vehicule.libelle as typeVehicule')
             ->where('tj_vehicule.id_type_vehicule', '=', DB::raw('tj_type_vehicule.id'))
             ->where('tj_vehicule.id_conducteur', '=', DB::raw('tj_conducteur.id'))
@@ -60,7 +58,12 @@ class DriverController extends Controller
         if ($sql->count() > 0) {
             $output = array();
             foreach ($sql as $row) {
-
+                $brand_id = $row->brand;
+                $model_id = $row->model;
+                $b = Brand::where('id',$brand_id)->first();
+                $c = CarModel::where('id',$model_id)->first();
+                $row->brand = $b->name;
+                $row->model = $c->name;
                 $id_conducteur = $row->id;
                 if ($row->latitude != '' && $row->longitude != '')
                     $row->distance = DriverController::distance($row->latitude, $row->longitude, $lat1, $lng1);
