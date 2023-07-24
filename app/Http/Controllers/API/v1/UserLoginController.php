@@ -114,7 +114,7 @@ class UserLoginController extends Controller
 
                 if (!empty($checkuser)) {
 
-                    $checkaccount = Driver::where('email', $email)->where('statut', 'yes')->first();
+                    $checkaccount = Driver::where('email', $email)->first();
 
                     if (!empty($checkaccount)){
 
