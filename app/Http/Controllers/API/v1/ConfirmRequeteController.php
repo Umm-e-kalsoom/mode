@@ -7,8 +7,10 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\v1\GcmController;
 use Illuminate\Support\Facades\Log;
-use DB;
 use App\Models\RemainingToken;
+use App\Models\RideSetting;
+use DB;
+
 
 class ConfirmRequeteController extends Controller
 {
@@ -101,6 +103,14 @@ class ConfirmRequeteController extends Controller
             Log::info('inside');
             GcmController::send_notification($tokens, $message, $temp);
         }
+        $gift_token =  RideSetting::latest()->first();
+        if($gift_token){
+           $rem =  RemainingToken::where('user_id', $from_id)->first();
+           if($rem){
+            $rem = $rem->tokens + $gift_token->gift_token;
+            $rem->save();
+           }
+        }
         if (count($tokens) > 0) {
             $data = DB::table('tj_requete')
                 ->crossjoin('tj_conducteur')
@@ -137,6 +147,7 @@ class ConfirmRequeteController extends Controller
                 $row['to_id'] = $data['to_id'];
                 $row['from_id'] = $data['from_id'];
                 $row['type'] = $data['type'];
+
         }
         $response['success'] = 'success';
         $response['error'] = null;

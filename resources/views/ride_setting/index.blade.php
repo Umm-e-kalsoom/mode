@@ -72,6 +72,12 @@
                                    <input type="text" class="form-control" name="package_more"  value='{{ $setting->package_more ?? '1'}}'>
                                 </div>
                              </div>
+                            <div class="form-group row width-50">
+                                <label class="col-3 control-label">Coupon Award Token</label>
+                                <div class="col-7">
+                                   <input type="text" class="form-control" name="gift_token"  value='{{ $setting->gift_token ?? '0'}}'>
+                                </div>
+                             </div>
                               {{-- <div class="form-group row width-50">
                                  <div class="form-check">
                                     <input type="checkbox" class="user_active" id="user_active" name="status">
