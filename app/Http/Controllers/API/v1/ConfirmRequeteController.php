@@ -106,8 +106,8 @@ class ConfirmRequeteController extends Controller
         $gift_token =  RideSetting::latest()->first();
         if($gift_token){
            $rem =  RemainingToken::where('user_id', $from_id)->first();
-           if($rem){
-            $rem = $rem->tokens + $gift_token->gift_token;
+           if(!empty($rem) && $rem->tokens > 0){
+            $rem->tokens = $rem->tokens - $gift_token->ride_token;
             $rem->save();
            }
         }
