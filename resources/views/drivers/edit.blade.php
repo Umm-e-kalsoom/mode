@@ -318,7 +318,7 @@
               </div>
 
             </div>
-            <div class="form-group row width-50">
+            {{--  <div class="form-group row width-50">
                 <label class="col-3 control-label">Number of Luggage</label>
                 <div class="col-7">
                     <input type="number" class="form-control" name="num_of_luggage"
@@ -361,8 +361,8 @@
                     </div>
 
                 </div>
-            </div>
-               <div class="form-group row width-50">
+            </div>  --}}
+               {{--  <div class="form-group row width-50">
                    <label class="col-3 control-label">{{trans('lang.vehicle_milage')}}</label>
                    <div class="col-7">
                        <input type="number" class="form-control user_phone" name="milage" value="{{$vehicle->milage}}">
@@ -371,8 +371,8 @@
                        </div>
                    </div>
 
-               </div>
-               <div class="form-group row width-50">
+               </div>  --}}
+               {{--  <div class="form-group row width-50">
                    <label class="col-3 control-label">{{trans('lang.vehicle_km')}}</label>
                    <div class="col-7">
                        <input type="number" class="form-control user_phone" name="km" value="{{$vehicle->km}}">
@@ -381,7 +381,7 @@
                        </div>
                    </div>
 
-               </div>
+               </div>  --}}
 
                <!-- <div class="form-group row width-100">
                    <label class="col-2 control-label">{{trans('lang.car_image')}}</label>

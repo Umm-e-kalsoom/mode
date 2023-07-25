@@ -46,8 +46,8 @@ class DriverController extends Controller
             ->crossJoin('tj_conducteur')
             ->select('tj_conducteur.id', 'tj_conducteur.nom', 'tj_conducteur.wheel_chair', 'tj_type_vehicule.libelle', 'tj_type_vehicule.status', 'tj_type_vehicule.currency',
                 'tj_type_vehicule.prix', 'tj_conducteur.prenom', 'tj_conducteur.phone', 'tj_conducteur.email',
-                'tj_conducteur.online', 'tj_conducteur.photo_path as photo', 'tj_conducteur.latitude', 'tj_conducteur.longitude',
-                'tj_vehicule.id as idVehicule','brands.name as brand_name','car_model.name as model_name', 'tj_vehicule.brand', 'tj_vehicule.model', 'tj_vehicule.color', 'tj_vehicule.numberplate','delivery_charges.day_charges_per_km','delivery_charges.overnight_charges_per_km','delivery_charges.peak_charges_km',
+                'tj_conducteur.online', 'tj_conducteur.photo_path as photo', 'tj_conducteur.latitude', 'tj_conducteur.longitude','delivery_charges.flag_day_rate','delivery_charges.overnight_charges_per_km','delivery_charges.flag_overnight_rate','delivery_charges.peak_charges_km','delivery_charges.flag_peak_rate',
+                'tj_vehicule.id as idVehicule','brands.name as brand_name','car_model.name as model_name', 'tj_vehicule.brand', 'tj_vehicule.model', 'tj_vehicule.color', 'tj_vehicule.numberplate','delivery_charges.day_charges_per_km',',
                 'tj_vehicule.passenger', 'tj_type_vehicule.libelle as typeVehicule')
             ->where('tj_vehicule.id_type_vehicule', '=', DB::raw('tj_type_vehicule.id'))
             ->where('tj_vehicule.id_conducteur', '=', DB::raw('tj_conducteur.id'))

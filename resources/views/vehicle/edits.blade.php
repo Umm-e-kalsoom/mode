@@ -105,7 +105,20 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="form-group row width-100">
+                                                <label class="col-3 control-label">Flag Day Rate </label>
+                                                <div class="col-7">
+                                                    @if(!empty($delivery_charges))
+                                                        <input type="number" class="form-control"
+                                                               value="{{ $delivery_charges->flag_day_rate }}"
+                                                               name="flag_day_rate">
+                                                    @else
+                                                        <input type="number" class="form-control" value=""
+                                                               name="flag_day_rate">
 
+                                                    @endif
+                                                </div>
+                                            </div>
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label">Overnight ate per {{$delivery_distance}}</label>
                                                 <div class="col-7">
@@ -120,7 +133,20 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="form-group row width-100">
+                                                <label class="col-3 control-label">Flag Overnight Rate </label>
+                                                <div class="col-7">
+                                                    @if(!empty($delivery_charges))
+                                                        <input type="number" class="form-control"
+                                                               value="{{ $delivery_charges->flag_overnight_rate }}"
+                                                               name="flag_overnight_rate">
+                                                    @else
+                                                        <input type="number" class="form-control" value=""
+                                                               name="flag_overnight_rate">
 
+                                                    @endif
+                                                </div>
+                                            </div>
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label">Peak Rate {{$delivery_distance}}</label>
                                                 <div class="col-7">
@@ -135,7 +161,20 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="form-group row width-100">
+                                                <label class="col-3 control-label">Flag Peak Rate </label>
+                                                <div class="col-7">
+                                                    @if(!empty($delivery_charges))
+                                                        <input type="number" class="form-control"
+                                                               value="{{ $delivery_charges->flag_peak_rate }}"
+                                                               name="flag_peak_rate">
+                                                    @else
+                                                        <input type="number" class="form-control" value=""
+                                                               name="flag_peak_rate">
 
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </fieldset>
                                     </div>
                                 </div>

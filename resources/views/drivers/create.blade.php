@@ -189,7 +189,7 @@
                                             </div>
 
 
-                                            <div class="form-group row width-50">
+                                            {{--  <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.vehicle_km')}}</label>
                                                 <div class="col-7">
                                                     <input type="text" class="form-control model" name="km"
@@ -204,7 +204,7 @@
                                                            value="{{Request::old('milage')}}">
                                                     <div class="form-text text-muted">{{trans('lang.vehicle_milage_help')}}</div>
                                                 </div>
-                                            </div>
+                                            </div>  --}}
 
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.vehicle_numberplate')}}</label>
@@ -236,7 +236,7 @@
 
                                                 </div>
                                             </div>
-                                            <div class="form-group row width-50">
+                                            {{--  <div class="form-group row width-50">
                                                 <label class="col-3 control-label">Number of Luggage</label>
                                                 <div class="col-7">
                                                     <input type="number" class="form-control" name="num_of_luggage"
@@ -279,7 +279,7 @@
                                                     </div>
 
                                                 </div>
-                                            </div>
+                                            </div>  --}}
                                         </fieldset>
                                         <fieldset>
                                             <legend>{{trans('lang.bank_details')}}</legend>

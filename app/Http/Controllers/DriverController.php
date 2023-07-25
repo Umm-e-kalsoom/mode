@@ -365,8 +365,6 @@ class DriverController extends Controller
             'id_type_vehicule'=>'required',
             'brand'=>'required',
             'model'=>'required',
-            'km'=>'required',
-            'milage'=>'required',
             'car_number'=>'required',
             'color'=>'required',
             'passenger'=>'required',
@@ -381,8 +379,6 @@ class DriverController extends Controller
             'id_type_vehicule.required' => 'The Vehicle type field is required!',
             'brand.required' => 'The brand field is required!',
             'model.required' => 'The model field is required!',
-            'km.required' => 'The km field is required!',
-            'milage.required' => 'The milage field is required!',
             'car_number.required' => 'The NumberPlate field is required!',
             'color.required' => 'The Color field is required!',
             'passenger.required' => 'The Number of Passenger field is required!',
@@ -439,8 +435,8 @@ class DriverController extends Controller
         $vehicle->color = $request->input('color');
         $vehicle->numberplate = $request->input('car_number');
         $vehicle->car_make = '';
-        $vehicle->km = $request->input('km');
-        $vehicle->milage = $request->input('milage');
+        $vehicle->km = $request->input('km') ?? '';
+        $vehicle->milage = $request->input('milage') ?? '';
         $vehicle->id_conducteur = $driver_id;
         $vehicle->statut = 'yes';
         $vehicle->creer = date('Y-m-d H:i:s');
@@ -448,10 +444,10 @@ class DriverController extends Controller
         $vehicle->updated_at = date('Y-m-d H:i:s');
         $vehicle->id_type_vehicule = $request->input('id_type_vehicule');
         $vehicle->passenger = $request->input('passenger');
-        $vehicle->num_of_luggage = $request->input('num_of_luggage');
-        $vehicle->package_weight = $request->input('package_weight');
-        $vehicle->num_of_pets = $request->input('num_of_pets');
-        $vehicle->package_size = $request->input('package_size');
+        // $vehicle->num_of_luggage = $request->input('num_of_luggage') ?? '';
+        // $vehicle->package_weight = $request->input('package_weight');
+        // $vehicle->num_of_pets = $request->input('num_of_pets');
+        // $vehicle->package_size = $request->input('package_size');
         $vehicle->save();
         $vehicle_id = $vehicle->id;
 
@@ -553,8 +549,7 @@ class DriverController extends Controller
             'id_type_vehicule'=>'required',
             'brand'=>'required',
             'model'=>'required',
-            'km'=>'required',
-            'milage'=>'required',
+
             'numberplate'=>'required',
             'color'=>'required',
             'passenger'=>'required',
@@ -568,8 +563,7 @@ class DriverController extends Controller
             'id_type_vehicule.required' => 'The Vehicle type field is required!',
             'brand.required' => 'The brand field is required!',
             'model.required' => 'The model field is required!',
-            'km.required' => 'The km field is required!',
-            'milage.required' => 'The milage field is required!',
+
             'numberplate.required' => 'The NumberPlate field is required!',
             'color.required' => 'The Color field is required!',
             'passenger.required' => 'The Number of Passenger field is required!',
@@ -591,8 +585,8 @@ class DriverController extends Controller
         $brand = $request->input('brand');
         $model = $request->input('model');
         $color = $request->input('color');
-        $km = $request->input('km');
-        $milage = $request->input('milage');
+        $km = $request->input('km') ?? '';
+        $milage = $request->input('milage') ?? '';
         $numberplate = $request->input('numberplate');
         $passenger = $request->input('passenger');
         $bank = $request->input('bank_name');
@@ -685,10 +679,10 @@ class DriverController extends Controller
             $vehicle->milage = $milage;
             $vehicle->numberplate = $numberplate;
             $vehicle->passenger = $passenger;
-            $vehicle->num_of_luggage = $request->input('num_of_luggage');
-            $vehicle->package_weight = $request->input('package_weight');
-            $vehicle->num_of_pets = $request->input('num_of_pets');
-            $vehicle->package_size = $request->input('package_size');
+            // $vehicle->num_of_luggage = $request->input('num_of_luggage');
+            // $vehicle->package_weight = $request->input('package_weight');
+            // $vehicle->num_of_pets = $request->input('num_of_pets');
+            // $vehicle->package_size = $request->input('package_size');
             $vehicle->id_type_vehicule=$request->input('id_type_vehicule');
             $vehicle->save();
         }

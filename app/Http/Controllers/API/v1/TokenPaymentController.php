@@ -10,6 +10,7 @@ use App\Models\Discount;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use App\Models\CouponUse;
 use App\Models\RideSetting;
 
 use Stripe;
@@ -186,12 +187,34 @@ class TokenPaymentController extends Controller
     }
     public function coupen(Request $request,$code){
         $discounts = Discount::where('code',$code)->first();
-        if(!empty($discounts)){
 
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= 'Successfully get';
-            $response['remaining_token'] = $discounts;
+        if(!empty($discounts)){
+            $coupon = CouponUse::where('user_id', $request->user_id)
+                                ->where('driver_id',$discounts->user_id)
+                                ->where('coupon_id',$discounts->id)->first();
+            if(empty($coupon)){
+                CouponUse::create([
+                    'driver_id' => $discounts->user_id,
+                    'coupon_id' => $discounts->id,
+                    'user_id'  => $request->user_id
+                ]);
+                $token_gift = RideSetting::latest()->first();
+                $rem = RemainingToken::where('user_id',$discounts->user_id)->first();
+                $rem->tokens = $rem->tokens +  $token_gift->gift_token;
+                $rem->save();
+
+                $response['success']= 'success';
+                $response['error']= null;
+                $response['message']= 'Successfully get';
+                $response['remaining_token'] = $discounts;
+            }
+            else{
+                $response['success']= 'success';
+                $response['error']= 's';
+                $response['message']= 'You Alreadt Get Award .!!';
+
+            }
+
         }else{
             $response['success']= 'Failed';
             $response['error']= 'Coupen Not Found';

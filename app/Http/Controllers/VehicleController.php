@@ -88,6 +88,9 @@ class VehicleController extends Controller
             'day_charges_per_km'=>'required',
             'overnight_charges_per_km'=>'required',
             'peak_charges_km'=>'required',
+            'flag_day_rate'=>'required',
+            'flag_overnight_rate'=>'required',
+            'flag_peak_rate'=>'required',
 
         ], $messages = [
             'libelle.required' => 'The Vehicle Type field is required!',
@@ -95,7 +98,9 @@ class VehicleController extends Controller
             'day_charges_per_km.required'=>'Delivery Charges per Miles is required!',
             'overnight_charges_per_km.required' => 'Minimum Delivery Charges is required!',
             'peak_charges_km.required'=>'Minimum Delivery Charges Within Miles is required!',
-
+            'flag_day_rate.required'=>'Flag Day Rate is required!',
+            'flag_overnight_rate.required' => 'Flag Overnight Rate is required!',
+            'flag_peak_rate.required'=>'Flag PEak Rate is required!',
 
         ]);
         if ($validator->fails()) {
@@ -124,10 +129,18 @@ class VehicleController extends Controller
         $vehicle->save();
         $vedicleType_id = $vehicle->id;
 
+        $flag_day_rate = $request->input('flag_day_rate');
+        $flag_overnight_rate = $request->input('flag_overnight_rate');
+        $flag_peak_rate = $request->input('flag_peak_rate');
+
+
         $delivery = new DeliveryCharges;
         $delivery->day_charges_per_km = $request->input('day_charges_per_km');
         $delivery->overnight_charges_per_km = $request->input('overnight_charges_per_km');
         $delivery->peak_charges_km = $request->input('peak_charges_km');
+        $delivery->flag_day_rate = $flag_day_rate;
+        $delivery->flag_overnight_rate = $flag_overnight_rate;
+        $delivery->flag_peak_rate = $flag_peak_rate;
         $delivery->id_vehicle_type = $vedicleType_id;
         $delivery->created = date('Y-m-d H:i:s');
         $delivery->modifier = date('Y-m-d H:i:s');
@@ -173,6 +186,9 @@ class VehicleController extends Controller
             'day_charges_per_km'=>'required',
             'overnight_charges_per_km'=>'required',
             'peak_charges_km'=>'required',
+            'flag_day_rate'=>'required',
+            'flag_overnight_rate'=>'required',
+            'flag_peak_rate'=>'required',
 
         ], $messages = [
             'libelle.required' => 'The Vehicle Type field is required!',
@@ -180,6 +196,9 @@ class VehicleController extends Controller
             'day_charges_per_km.required'=>'Delivery Charges per Miles is required!',
             'overnight_charges_per_km.required' => 'Minimum Delivery Charges is required!',
             'peak_charges_km.required'=>'Minimum Delivery Charges Within Miles is required!',
+            'flag_day_rate.required'=>'Flag Day Rate is required!',
+            'flag_overnight_rate.required' => 'Flag Overnight Rate is required!',
+            'flag_peak_rate.required'=>'Flag PEak Rate is required!',
 
 
         ]);
@@ -220,11 +239,17 @@ class VehicleController extends Controller
             $day_charges_per_km = $request->input('day_charges_per_km');
             $overnight_charges_per_km = $request->input('overnight_charges_per_km');
             $peak_charges_km = $request->input('peak_charges_km');
+            $flag_day_rate = $request->input('flag_day_rate');
+            $flag_overnight_rate = $request->input('flag_overnight_rate');
+            $flag_peak_rate = $request->input('flag_peak_rate');
             $delivery = DeliveryCharges::where('id_vehicle_type', $id)->first();
             if ($delivery) {
                 $delivery->day_charges_per_km = $day_charges_per_km;
                 $delivery->overnight_charges_per_km = $overnight_charges_per_km;
                 $delivery->peak_charges_km = $peak_charges_km;
+                $delivery->flag_day_rate = $flag_day_rate;
+                $delivery->flag_overnight_rate = $flag_overnight_rate;
+                $delivery->flag_peak_rate = $flag_peak_rate;
 
                 $delivery->modifier = date('Y-m-d H:i:s');
 
@@ -233,7 +258,9 @@ class VehicleController extends Controller
                 $delivery->day_charges_per_km = $day_charges_per_km;
                 $delivery->overnight_charges_per_km = $overnight_charges_per_km;
                 $delivery->peak_charges_km = $peak_charges_km;
-
+                $delivery->flag_day_rate = $flag_day_rate;
+                $delivery->flag_overnight_rate = $flag_overnight_rate;
+                $delivery->flag_peak_rate = $flag_peak_rate;
                 $delivery->id_vehicle_type = $id;
                 $delivery->created = date('Y-m-d H:i:s');
                 $delivery->modifier = date('Y-m-d H:i:s');
