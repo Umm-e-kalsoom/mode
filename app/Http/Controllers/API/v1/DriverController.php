@@ -57,7 +57,7 @@ class DriverController extends Controller
              ->where('tj_conducteur.latitude', '!=', '')->where('tj_conducteur.longitude', '!=', '')
             ->get();
 //		}
-        dd($sql);
+        //dd($sql);
         $allDistance = array();
         if ($sql->count() > 0) {
             $output = array();
