@@ -50,8 +50,8 @@ class VehicleController extends Controller
         $id_categorie_vehicle = $request->get('id_categorie_vehicle');
         $date_heure = date('Y-m-d H:i:s');
         $car_make = $request->get('car_make');
-        $milage = $request->get('milage');
-        $km = $request->get('km_driven');
+        $milage = $request->get('milage') ?? '';
+        $km = $request->get('km_driven') ?? '';
         $chkdriver = Driver::where('id', $id_driver)->first();
         if (!empty($chkdriver)) {
             $chkid = Vehicle::where('id_conducteur', $id_driver)->first();
