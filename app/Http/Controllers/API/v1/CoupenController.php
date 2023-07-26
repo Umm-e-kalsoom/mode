@@ -38,10 +38,10 @@ class CoupenController extends Controller
         }
 
         $code = $request->input('code');
-        $discount = $request->input('discount');
+        $discount = $request->input('discount') ?? '';
         $type = $request->input('type');
         $expire_at = $request->input('expire_at');
-        $description = $request->input('discription');
+        $description = $request->input('discription')  ?? 'yes';
         $user_id = auth()->user()->id;
 
         $statut = $request->input('statut');
