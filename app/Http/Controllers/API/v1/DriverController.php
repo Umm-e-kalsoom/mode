@@ -53,8 +53,8 @@ class DriverController extends Controller
              ->where('tj_vehicule.id_conducteur', '=', DB::raw('tj_conducteur.id'))
              ->where('tj_vehicule.statut', '=', 'yes')->where('tj_conducteur.statut', '=', 'yes')
              ->where('tj_conducteur.is_verified', '=', '1')->where('tj_conducteur.online', '!=', 'no')
-            // ->where('tj_type_vehicule.status', '=', 'yes')
-            // ->where('tj_conducteur.latitude', '!=', '')->where('tj_conducteur.longitude', '!=', '')
+             ->where('tj_type_vehicule.status', '=', 'yes')
+             ->where('tj_conducteur.latitude', '!=', '')->where('tj_conducteur.longitude', '!=', '')
             ->get();
 //		}
         dd($sql);
