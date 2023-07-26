@@ -322,7 +322,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::post('v1/coupons/{code}', [TokenPaymentController::class, 'coupen']);
     Route::post('v1/user_coupons/{user_id}', [TokenPaymentController::class, 'get_user_coupon']);
 
-
+    Route::post('v1/destination', [destination::class, 'destination']);
     Route::get('v1/ride_settings', [TokenPaymentController::class, 'settings']);
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);

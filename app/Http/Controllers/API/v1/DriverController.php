@@ -170,4 +170,14 @@ class DriverController extends Controller
         }
         return response()->json(['status' => 200, 'message' => $message, 'data' => $table = DB::table('tj_conducteur')->where('id', '=', $request->get('tj_conducteur'))->first()]);
     }
+    public function destination(Request $request){
+
+        $lat1 = $request->get('lat1');
+        $lng1 = $request->get('lng1');
+        $lat2 = $request->get('lat2');
+        $lng2 = $request->get('lng2');
+
+        $destinationDistance = DriverController::distance($lat1, $lng1, $lat2, $lng2);
+        return response()->json(['status' => 200, 'message' => 'this is destination distance', 'data' => $destinationDistance]);
+    }
 }
