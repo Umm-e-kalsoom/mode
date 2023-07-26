@@ -185,6 +185,22 @@ class TokenPaymentController extends Controller
         return response()->json($response);
 
     }
+    public function get_user_coupon($user_id){
+        $discounts = Discount::where('user_id',$user_id)->first();
+        if(!empty($discounts)){
+
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= 'Successfully get';
+            $response['remaining_token'] = $discounts;
+        }else{
+            $response['success']= 'Failed';
+            $response['error']= 'Failed to get data';
+            $response['remaining_token'] = $discounts;
+        }
+        return response()->json($response);
+
+    }
     public function coupen(Request $request,$code){
         $discounts = Discount::where('code',$code)->first();
 
