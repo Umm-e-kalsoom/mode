@@ -393,6 +393,9 @@ class VehicleController extends Controller
                 $row->day_charges_per_km = $row_delivery_chagres->day_charges_per_km;
                 $row->overnight_charges_per_km = $row_delivery_chagres->overnight_charges_per_km;
                 $row->peak_charges_km = $row_delivery_chagres->peak_charges_km;
+                $row->flag_day_rate = $row_delivery_chagres->flag_day_rate;
+                $row->flag_overnight_rate = $row_delivery_chagres->flag_overnight_rate;
+                $row->flag_peak_rate = $row_delivery_chagres->flag_peak_rate;
             }
 
             $output[] = $row;
