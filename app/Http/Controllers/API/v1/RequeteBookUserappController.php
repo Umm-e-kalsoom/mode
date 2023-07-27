@@ -31,10 +31,10 @@ class RequeteBookUserappController extends Controller
         $sql = DB::table('tj_requete_book')
             ->crossJoin('tj_user_app')
             ->crossJoin('tj_conducteur')
-            ->crossJoin('tj_payment_method')
-            ->select('tj_requete_book.id', 'tj_requete_book.id_user_app', 'tj_requete_book.depart_name', 'tj_requete_book.destination_name', 'tj_requete_book.latitude_depart', 'tj_requete_book.longitude_depart', 'tj_requete_book.latitude_arrivee', 'tj_requete_book.longitude_arrivee', 'tj_conducteur.photo_path', 'tj_requete_book.heure_retour', 'tj_requete_book.statut_round', 'tj_requete_book.number_poeple', 'tj_requete_book.place', 'tj_requete_book.statut', 'tj_requete_book.id_conducteur', 'tj_requete_book.creer', 'tj_requete_book.trajet', 'tj_user_app.nom', 'tj_user_app.prenom', 'tj_requete_book.distance', 'tj_user_app.phone', 'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur', 'tj_conducteur.phone as driverPhone', 'tj_requete_book.montant', 'tj_requete_book.duree', 'tj_requete_book.statut_paiement', 'tj_requete_book.date_book', 'tj_requete_book.nb_day', 'tj_requete_book.heure_depart', 'tj_requete_book.cu', 'tj_payment_method.libelle as payment', 'tj_payment_method.image as payment_image')
+            // ->crossJoin('tj_payment_method')
+            ->select('tj_requete_book.id', 'tj_requete_book.id_user_app', 'tj_requete_book.depart_name', 'tj_requete_book.destination_name', 'tj_requete_book.latitude_depart', 'tj_requete_book.longitude_depart', 'tj_requete_book.latitude_arrivee', 'tj_requete_book.longitude_arrivee', 'tj_conducteur.photo_path', 'tj_requete_book.heure_retour', 'tj_requete_book.statut_round', 'tj_requete_book.number_poeple', 'tj_requete_book.place', 'tj_requete_book.statut', 'tj_requete_book.id_conducteur', 'tj_requete_book.creer', 'tj_requete_book.trajet', 'tj_user_app.nom', 'tj_user_app.prenom', 'tj_requete_book.distance', 'tj_user_app.phone', 'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur', 'tj_conducteur.phone as driverPhone', 'tj_requete_book.montant', 'tj_requete_book.duree', 'tj_requete_book.statut_paiement', 'tj_requete_book.date_book', 'tj_requete_book.nb_day', 'tj_requete_book.heure_depart', 'tj_requete_book.cu')
             ->where('tj_requete_book.id_user_app', '=', DB::raw('tj_user_app.id'))
-            ->where('tj_requete_book.id_payment_method', '=', DB::raw('tj_payment_method.id'))
+           // ->where('tj_requete_book.id_payment_method', '=', DB::raw('tj_payment_method.id'))
             ->where('tj_requete_book.id_user_app', '=', DB::raw($id_user_app))
             ->where('tj_requete_book.statut', '=', 'new')
             ->where('tj_requete_book.id_conducteur', '=', DB::raw('tj_conducteur.id'))
@@ -140,7 +140,7 @@ class RequeteBookUserappController extends Controller
         $sql = DB::table('tj_requete')
             ->Join('tj_user_app', 'tj_user_app.id', '=', 'tj_requete.id_user_app')
             ->Join('tj_conducteur', 'tj_conducteur.id', '=', 'tj_requete.id_conducteur')
-            ->Join('tj_payment_method', 'tj_payment_method.id', '=', 'tj_requete.id_payment_method')
+           // ->Join('tj_payment_method', 'tj_payment_method.id', '=', 'tj_requete.id_payment_method')
             ->select('tj_requete.id', 'tj_requete.id_user_app', 'tj_requete.distance_unit',
                 'tj_requete.depart_name', 'tj_requete.destination_name',
                 'tj_requete.latitude_depart', 'tj_requete.longitude_depart',
@@ -152,11 +152,12 @@ class RequeteBookUserappController extends Controller
                 'tj_conducteur.nom as nomConducteur', 'tj_conducteur.prenom as prenomConducteur', 'tj_conducteur.photo_path',
                 'tj_conducteur.phone as driverPhone', 'tj_requete.date_retour', 'tj_requete.heure_retour',
                 'tj_requete.statut_round', 'tj_requete.montant', 'tj_requete.duree', 'tj_user_app.id as userId',
-                'tj_requete.statut_paiement', 'tj_payment_method.libelle as payment',
+                'tj_requete.statut_paiement',
+                // 'tj_payment_method.libelle as payment',
                 'tj_requete.trip_objective',
                 'tj_requete.age_children1', 'tj_requete.age_children2', 'tj_requete.age_children3')
             ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
-            ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
+           // ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
             ->where('tj_requete.id_user_app', '=', DB::raw($id_user_app))
             ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
             ->where(function ($query) {
@@ -169,6 +170,7 @@ class RequeteBookUserappController extends Controller
             $response['error'] = 'No data found';
             return response()->json($response);
         }
+        dd($sql);
         // output data of each row
         foreach ($sql as $row) {
             if (!empty($row->photo_path)) {
@@ -224,7 +226,7 @@ class RequeteBookUserappController extends Controller
 //                    $row->moyenne = $moyenne;
 //
 //                }
-                dd($sql);
+
                 foreach ($sql as $data) {
                     $sql_nb_avis = DB::table('tj_user_note')
                         ->select(DB::raw("COUNT(id) as niveau_driver"), DB::raw("SUM(niveau_driver) as somme"))
