@@ -54,7 +54,7 @@
                                                         <option value="">--! Select Type !--</option>
                                                         <option value="Passenger" @if($type->libelle == "Passenger") selected @endif>Only Passenger Carry</option>
                                                         <option value="Passenger & Pet"  @if($type->libelle == "Passenger & Pet") selected @endif>Passenger & Pet Carry</option>
-                                                        <option value="Passenger & Package"  @if($type->libelle == "Passenger & Package") selected @endif>Passenger & Package Carry</option>
+                                                        <option value="Passenger, Pet & Package"  @if($type->libelle == "Passenger, Pet & Package") selected @endif>Passenger, Pet & Package Carry</option>
 
                                                     </select>
 

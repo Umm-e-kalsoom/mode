@@ -54,7 +54,7 @@
                                                         <option value="Passenger">Only Passenger Carry</option>
                                                         <option value="Passenger & Pet">Passenger & Pet Carry</option>
                                                         <option value="Passenger & Package">Passenger & Package Carry</option>
-
+                                                        <option value="Passenger, Pet & Package">Passenger, Pet & Package Carry</option>
                                                     </select>
                                                     <!-- <div class="form-text text-muted"></div> -->
                                                 </div>
