@@ -224,6 +224,7 @@ class RequeteBookUserappController extends Controller
 //                    $row->moyenne = $moyenne;
 //
 //                }
+                dd($sql);
                 foreach ($sql as $data) {
                     $sql_nb_avis = DB::table('tj_user_note')
                         ->select(DB::raw("COUNT(id) as niveau_driver"), DB::raw("SUM(niveau_driver) as somme"))
