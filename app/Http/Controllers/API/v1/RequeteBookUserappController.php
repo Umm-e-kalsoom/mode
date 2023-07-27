@@ -263,13 +263,13 @@ class RequeteBookUserappController extends Controller
 
             $row->creer = date("d", strtotime($row->creer)) . " " . $months[date("F", strtotime($row->creer))] . ". " . date("Y", strtotime($row->creer));
 
-            $output[] = $row;
+             $row->toArray();
         }
         if (!empty($sql)) {
             $response['success'] = 'success';
             $response['error'] = null;
             $response['message'] = 'successfully';
-            $response['data'] = $output;
+            $response['data'] = $row;
 
         } else {
             $response['success'] = 'Failed';
