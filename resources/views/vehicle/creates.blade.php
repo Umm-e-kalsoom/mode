@@ -51,9 +51,9 @@
                                                 <div class="col-7">
                                                     <select  class="form-control brand_id" name="libelle">
                                                         <option value="">--! Select Type !--</option>
-                                                        <option value="Passenger">Passenger Carry</option>
-                                                        <option value="Pet">Pet Carry</option>
-                                                        <option value="Package">Package Carry</option>
+                                                        <option value="Passenger">Only Passenger Carry</option>
+                                                        <option value="Passenger & Pet">Passenger & Pet Carry</option>
+                                                        <option value="Passenger & Package">Passenger & Package Carry</option>
 
                                                     </select>
                                                     <!-- <div class="form-text text-muted"></div> -->
@@ -94,7 +94,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row width-100">
-                                                <label class="col-3 control-label"> Flaf Day Rate </label>
+                                                <label class="col-3 control-label"> Flag Day Rate </label>
                                                 <div class="col-7">
                                                     <input type="number" class="form-control"
                                                            value="{{ Request::old('flag_day_rate') }}"

@@ -50,8 +50,14 @@
                                             <div class="form-group row width-50">
                                                 <label class="col-3 control-label">{{trans('lang.vehicle_type')}}</label>
                                                 <div class="col-7">
-                                                    <input type="text" class="form-control" name="libelle"
-                                                           value="{{$type->libelle}}">
+                                                    <select  class="form-control brand_id" name="libelle">
+                                                        <option value="">--! Select Type !--</option>
+                                                        <option value="Passenger" @if($type->libelle == "Passenger") selected @endif>Only Passenger Carry</option>
+                                                        <option value="Passenger & Pet"  @if($type->libelle == "Passenger & Pet") selected @endif>Passenger & Pet Carry</option>
+                                                        <option value="Passenger & Package"  @if($type->libelle == "Passenger & Package") selected @endif>Passenger & Package Carry</option>
+
+                                                    </select>
+
                                                     <!-- <div class="form-text text-muted"></div> -->
                                                 </div>
                                             </div>

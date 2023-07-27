@@ -182,7 +182,7 @@ class DriverController extends Controller
         $destinationDistance = DriverController::distance($lat1, $lng1, $lat2, $lng2);
         return response()->json(['status' => 200, 'message' => 'this is destination distance', 'data' => $destinationDistance]);
     }
-    public function get_statut(Request $reuqest){
+    public function get_statut(Request $request){
         $sql = DB::table('tj_conducteur')->where('id',$request->user_id)->first();
         if(!empty($sql)){
             $status = $sql->statut;
