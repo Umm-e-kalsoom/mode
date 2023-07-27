@@ -156,21 +156,22 @@ class RequeteBookUserappController extends Controller
                 // 'tj_payment_method.libelle as payment',
                 'tj_requete.trip_objective',
                 'tj_requete.age_children1', 'tj_requete.age_children2', 'tj_requete.age_children3')
-            ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
+           // ->where('tj_requete.id_user_app', '=', DB::raw('tj_user_app.id'))
            // ->where('tj_requete.id_payment_method', '=', DB::raw('tj_payment_method.id'))
-            ->where('tj_requete.id_user_app', '=', DB::raw($id_user_app))
-            ->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
-            ->where(function ($query) {
-                $query->whereIn('tj_requete.statut', ['rejected', 'completed']);
-            })
+            //->where('tj_requete.id_user_app', '=', DB::raw($id_user_app))
+            //->where('tj_requete.id_conducteur', '=', DB::raw('tj_conducteur.id'))
+            // ->where(function ($query) {
+            //     $query->whereIn('tj_requete.statut', ['rejected', 'completed']);
+            // })
             ->orderBy('tj_requete.id', 'desc')
             ->get();
+            dd($sql);
         if (empty($sql)) {
             $response['success'] = 'Failed';
             $response['error'] = 'No data found';
             return response()->json($response);
         }
-        dd($sql);
+
         // output data of each row
         foreach ($sql as $row) {
             if (!empty($row->photo_path)) {
