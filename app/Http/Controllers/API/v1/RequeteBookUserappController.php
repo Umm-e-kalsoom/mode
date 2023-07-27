@@ -136,7 +136,7 @@ class RequeteBookUserappController extends Controller
         $months = array("January" => 'Jan', "February" => 'Feb', "March" => 'Mar', "April" => 'Apr', "May" => 'May', "June" => 'Jun', "July" => 'Jul', "August" => 'Aug', "September" => 'Sep', "October" => 'Oct', "November" => 'Nov', "December" => 'Dec');
 
         $id_user_app = $request->get('id_user_app');
-
+        dd($id_user_app);
         $sql = DB::table('tj_requete')
             ->Join('tj_user_app', 'tj_user_app.id', '=', 'tj_requete.id_user_app')
             ->Join('tj_conducteur', 'tj_conducteur.id', '=', 'tj_requete.id_conducteur')
