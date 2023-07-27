@@ -162,7 +162,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
 
     Route::get('v1/get-ride-review/', [RideDetailsController::class, 'getRideReview']);   // get ride reviews of users or driver
 
-
+    Route::get('v1/get-status/', [DriverController::class, 'get_statut']);
 
 
     /*Auth Request*/
