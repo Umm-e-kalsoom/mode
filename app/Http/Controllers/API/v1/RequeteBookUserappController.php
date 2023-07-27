@@ -165,7 +165,7 @@ class RequeteBookUserappController extends Controller
             })
             ->orderBy('tj_requete.id', 'desc')
             ->get();
-            dd($sql);
+           // dd($sql);
         if (empty($sql)) {
             $response['success'] = 'Failed';
             $response['error'] = 'No data found';
