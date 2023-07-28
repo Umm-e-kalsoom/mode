@@ -191,7 +191,7 @@
               <label class="col-2 control-label">{{trans('lang.restaurant_image')}}</label>
               <input type="file" class="col-6" name="photo_path" onchange="readURL(this);">
               @if (!empty($driver->photo_path))
-                                        <td><img class="rounded" id="uploding_image" style="width:100px" src="{{asset('assets/images/driver').'/'.$driver->photo_path}}" alt="image"></td>
+                                        <td><img class="rounded" id="uploding_image" style="width:100px" src="{{asset('assets/images/drivers').'/'.$driver->photo_path}}" alt="image"></td>
                                         @else
                                         <td><img class="rounded" id="uploding_image" style="width:100px" src="{{asset('assets/images/placeholder_image.jpg')}}" alt="image"></td>
 
