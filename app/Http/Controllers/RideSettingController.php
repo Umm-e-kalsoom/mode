@@ -19,19 +19,14 @@ class RideSettingController extends Controller
             'token_price' => 'required|numeric|not_in:0',
             'ride_token' => 'required|numeric|not_in:0',
             'gift_token' => 'required|numeric|not_in:0',
-            'passenger_more' => 'required|numeric|not_in:0',
-            'luggage_more' => 'required|numeric|not_in:0',
-            'pet_more' => 'required|numeric|not_in:0',
-            'package_more' => 'required|numeric|not_in:0',
 
+            'pet_more' => 'required|numeric|not_in:0',
         ],  $messages = [
           'token_price.required' => 'The token_price field is required! and Not 0',
           'ride_token.required' => 'The ride_token field is required! and Not 0',
           'gift_token.required' => 'The gift_token field is required! and Not 0',
-          'passenger_more.required' => 'The passenger_more field is required! and Not 0',
-          'luggage_more.required' => 'The luggage_more field is required! and Not 0',
           'pet_more.required' => 'The pet_more field is required! and Not 0',
-          'package_more.required' => 'The package_more field is required! and Not 0',
+
         ]);
 
         if ($validator->fails()) {
@@ -44,10 +39,10 @@ class RideSettingController extends Controller
                 'token_price' => $request->token_price,
                 'ride_token' => $request->ride_token,
                 'gift_token' => $request->gift_token,
-                'passenger_more' => $request->passenger_more,
-                'luggage_more' => $request->luggage_more,
+                'passenger_more' => $request->passenger_more ?? '',
+                'luggage_more' => $request->luggage_more ?? '',
                 'pet_more' => $request->pet_more,
-                'package_more' => $request->package_more,
+                'package_more' => $request->package_more ?? '',
             ]);
         }
         else{

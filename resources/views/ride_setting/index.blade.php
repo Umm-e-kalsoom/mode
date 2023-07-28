@@ -48,30 +48,30 @@
                                     <input type="text" class="form-control" name="ride_token"  value='{{ $setting->ride_token ?? '1'}}'>
                                  </div>
                               </div>
-                              <div class="form-group row width-50">
+                              {{-- <div class="form-group row width-50">
                                  <label class="col-3 control-label">More Than 4 Passenger Fare</label>
                                  <div class="col-7">
                                     <input type="text" class="form-control" name="passenger_more" value='{{ $setting->passenger_more ?? '1'}}'>
                                  </div>
-                              </div>
-                              <div class="form-group row width-50">
+                              </div> --}}
+                              {{-- <div class="form-group row width-50">
                                  <label class="col-3 control-label">More Than One luggage Fare</label>
                                  <div class="col-7">
                                     <input type="text" class="form-control" name="luggage_more" value='{{ $setting->luggage_more ?? '1' }}'>
                                  </div>
-                              </div>
+                              </div> --}}
                               <div class="form-group row width-50">
-                                <label class="col-3 control-label">More Than One Pet Fare</label>
+                                <label class="col-3 control-label"> Pet Fare</label>
                                 <div class="col-7">
                                    <input type="text" class="form-control" name="pet_more" value='{{ $setting->pet_more ?? '1'}}'>
                                 </div>
                              </div>
-                             <div class="form-group row width-50">
+                             {{-- <div class="form-group row width-50">
                                 <label class="col-3 control-label">More Than One Package Fare</label>
                                 <div class="col-7">
                                    <input type="text" class="form-control" name="package_more"  value='{{ $setting->package_more ?? '1'}}'>
                                 </div>
-                             </div>
+                             </div> --}}
                             <div class="form-group row width-50">
                                 <label class="col-3 control-label">Coupon Award Token</label>
                                 <div class="col-7">
