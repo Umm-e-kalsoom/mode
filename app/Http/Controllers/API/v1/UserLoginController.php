@@ -171,7 +171,7 @@ class UserLoginController extends Controller
 
 		                        $row['photo'] = '';
 		                        if ($row['photo_path'] != '') {
-		                            if (file_exists('assets/images/driver' . '/' . $row['photo_path'])) {
+		                            if ( $row['photo_path'] ){
 		                                $image_user = asset('assets/images/driver') . '/' . $row['photo_path'];
 		                            } else {
 		                                $image_user = asset('assets/images/placeholder_image.jpg');
