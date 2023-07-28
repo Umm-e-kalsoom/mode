@@ -101,7 +101,7 @@ class DriverController extends Controller
                 if ($row->photo != '') {
 
                     if (file_exists('assets/images/driver' . '/' . $row->photo)) {
-                        $image_user = asset('my-assets/images/driver') . '/' . $row->photo;
+                        $image_user = asset('assets/images/driver') . '/' . $row->photo;
                     } else {
                         $image_user = asset('assets/images/placeholder_image.jpg');
 

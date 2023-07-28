@@ -187,7 +187,7 @@
 							<input type="file" class="col-6 photo" name="photo_path" onchange="readURL(this);">
 
 							@if (file_exists('assets/images/users'.'/'.$user->photo_path) && !empty($user->photo_path))
-                                            <img class="rounded" id="uploding_image" style="width:50px" src="{{asset('my-assets/images/users').'/'.$user->photo_path}}" alt="image">
+                                            <img class="rounded" id="uploding_image" style="width:50px" src="{{asset('assets/images/users').'/'.$user->photo_path}}" alt="image">
                                         @else
                                         <img class="rounded" id="uploding_image" style="width:50px" src="{{asset('assets/images/placeholder_image.jpg')}}" alt="image">
 

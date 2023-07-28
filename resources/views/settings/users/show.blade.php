@@ -132,12 +132,12 @@
 		                                	</div>
 										</div>
 
-										<div class="col-md-6">
+										{{-- <div class="col-md-6">
 		                                  	<div class="col-group">
 		                                  	  <label for="" class="font-weight-bold">{{trans('lang.wallet_balance')}} :</label>
 		                                    	<span>{{$currency->symbole." ".number_format($user->amount,$currency->decimal_digit)}}</span>
 		                                	</div>
-										</div>
+										</div> --}}
 
 										<div class="col-md-12">
 		                                    <div class="col-group-btn">

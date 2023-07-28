@@ -109,7 +109,7 @@
 
                                             @if (file_exists('assets/images/users'.'/'.$customer->photo_path) && !empty($customer->photo_path))
                                                 <td><img class="rounded" style="width:50px"
-                                                         src="{{asset('my-assets/images/users').'/'.$customer->photo_path}}"
+                                                         src="{{asset('assets/images/users').'/'.$customer->photo_path}}"
                                                          alt="image"></td>
                                             @else
                                                 <td><img class="rounded" style="width:50px"

@@ -152,7 +152,7 @@
                                     @if (file_exists('assets/images/driver'.'/'.$driver->photo_path) &&
                                     !empty($driver->photo_path))
                                     <td><img class="rounded" style="width:50px"
-                                             src="{{asset('my-assets/images/driver').'/'.$driver->photo_path}}"
+                                             src="{{asset('assets/images/driver').'/'.$driver->photo_path}}"
                                              alt="image"></td>
                                     @else
                                     <td><img class="rounded" style="width:50px"

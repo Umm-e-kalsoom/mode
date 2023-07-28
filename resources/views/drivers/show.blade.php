@@ -47,7 +47,7 @@
 										<div class="profile-img">
 
 	                                       @if (file_exists('assets/images/driver'.'/'.$driver->photo_path) && !empty($driver->photo_path))
-	                                            <td><img class="profile-pic" src="{{asset('my-assets/images/driver').'/'.$driver->photo_path}}" alt="image"></td>
+	                                            <td><img class="profile-pic" src="{{asset('assets/images/driver').'/'.$driver->photo_path}}" alt="image"></td>
 	                                        @else
 	                                        <td><img class="profile-pic" src="{{asset('assets/images/placeholder_image.jpg')}}" alt="image"></td>
 
