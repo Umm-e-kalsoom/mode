@@ -261,14 +261,14 @@ class UserController extends Controller
                 $extenstion = $file->getClientOriginalExtension();
                 $time = time() . '.' . $extenstion;
                 $filename = 'user_' . $id . '.' . $extenstion;
-                $file->move(public_path('users'), $filename);
-               // $file->move('public_path(', $filename);
+                $file->move(public_path('assets/images/users/'), $imageName);
+
                 $user->photo_path = $filename;
             }
             $user->save();
         }
 
-        return redirect()->back();
+        return redirect('users');
     }
 
     public function deleteUser($id)
