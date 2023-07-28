@@ -41,7 +41,7 @@ Route::post('payments/stripepaymentintent', [App\Http\Controllers\PaymentControl
 
 Route::post('payments/razorpay/createorder', [App\Http\Controllers\RazorPayController::class, 'createOrderid']);
 
-Route::get('/users/', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::get('/users/all/', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 Route::get('/user/delete/{id}', [App\Http\Controllers\UserController::class, 'deleteUser'])->name('user.delete');
 Route::put('user/update/{id}', [App\Http\Controllers\UserController::class, 'userUpdate'])->name('user.update');
