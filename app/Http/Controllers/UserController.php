@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-
+        dd('uu');
         if ($request->has('search') && $request->search != '' && $request->selected_search == 'prenom') {
             $search = $request->input('search');
             $users = DB::table('tj_user_app')
