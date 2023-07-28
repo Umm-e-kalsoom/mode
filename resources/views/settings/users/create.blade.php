@@ -10,7 +10,7 @@
 		<div class="col-md-7 align-self-center">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{trans('lang.dashboard')}}</a></li>
-				<li class="breadcrumb-item"><a href= "{!! route('users') !!}" >{{trans('lang.user_plural')}}</a></li>
+				<li class="breadcrumb-item"><a href= "{{ route('users.index') }}" >{{trans('lang.user_plural')}}</a></li>
 				<li class="breadcrumb-item active">{{trans('lang.user_create')}}</li>
 			</ol>
 		</div>
@@ -149,7 +149,7 @@
 						<img class="rounded" style="width:50px" id="uploding_image" src="#" alt="image">
 						</div>
 					</div>
-					
+
 					<!-- <div class="form-group row width-50">
 						<label class="col-3 control-label">{{trans('lang.nic_image')}}</label>
 						<input type="file" class="col-7" name="nic_path" onchange="readURLNic(this);">
@@ -166,7 +166,7 @@
 							<label class="col-3 control-label" for="user_active">{{trans('lang.active')}}</label>
 
 						</div>
-					</div>	
+					</div>
 <!--
 					<div class="form-group row width-50">
 						<div class="form-check">
@@ -270,7 +270,7 @@
 
 			<div class="form-group col-12 text-center btm-btn" >
 				<button type="submit" class="btn btn-primary  create_user_btn" ><i class="fa fa-save"></i> {{ trans('lang.save')}}</button>
-				<a href="{!! route('users') !!}" class="btn btn-default"><i class="fa fa-undo"></i>{{ trans('lang.cancel')}}</a>
+				<a href="{{ route('users.index') }}" class="btn btn-default"><i class="fa fa-undo"></i>{{ trans('lang.cancel')}}</a>
 			</div>
 
 		</form>
@@ -298,7 +298,7 @@
 				$('#image_preview').show();
                 $('#uploding_image').attr('src', e.target.result);
 
-				
+
             }
 
             reader.readAsDataURL(input.files[0]);
