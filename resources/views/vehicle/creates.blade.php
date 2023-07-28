@@ -87,7 +87,7 @@
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label"> Day Rate Per {{$delivery_distance}}</label>
                                                 <div class="col-7">
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                            value="{{ Request::old('day_charges_per_km') }}"
                                                            name="day_charges_per_km">
                                                     <!-- <div class="form-text text-muted"></div> -->
@@ -96,7 +96,7 @@
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label"> Flag Day Rate </label>
                                                 <div class="col-7">
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                            value="{{ Request::old('flag_day_rate') }}"
                                                            name="flag_day_rate">
                                                     <!-- <div class="form-text text-muted"></div> -->
@@ -106,7 +106,7 @@
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label"> Overnight Rate Per {{$delivery_distance}}</label>
                                                 <div class="col-7">
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                            name="overnight_charges_per_km"
                                                            value="{{ Request::old('overnight_charges_per_km') }}">
                                                     <!-- <div class="form-text text-muted"></div> -->
@@ -115,7 +115,7 @@
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label">Flag Overnight Rate</label>
                                                 <div class="col-7">
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                            name="flag_overnight_rate"
                                                            value="{{ Request::old('flag_overnight_rate') }}">
                                                     <!-- <div class="form-text text-muted"></div> -->
@@ -124,7 +124,7 @@
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label">Peak Rate Per {{$delivery_distance}}</label>
                                                 <div class="col-7">
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                            name="peak_charges_km"
                                                            value="{{ Request::old('peak_charges_km') }}">
                                                     <!-- <div class="form-text text-muted"></div> -->
@@ -134,7 +134,7 @@
                                             <div class="form-group row width-100">
                                                 <label class="col-3 control-label">Flag Peak Rate </label>
                                                 <div class="col-7">
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                            name="flag_peak_rate"
                                                            value="{{ Request::old('flag_peak_rate') }}">
                                                     <!-- <div class="form-text text-muted"></div> -->

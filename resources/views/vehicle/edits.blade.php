@@ -101,11 +101,11 @@
                                                 <label class="col-3 control-label">Day Rate per {{$delivery_distance}}</label>
                                                 <div class="col-7">
                                                     @if(!empty($delivery_charges))
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                value="{{ $delivery_charges->day_charges_per_km }}"
                                                                name="day_charges_per_km">
                                                     @else
-                                                        <input type="number" class="form-control" value=""
+                                                        <input type="text" class="form-control" value=""
                                                                name="day_charges_per_km">
 
                                                     @endif
@@ -115,11 +115,11 @@
                                                 <label class="col-3 control-label">Flag Day Rate </label>
                                                 <div class="col-7">
                                                     @if(!empty($delivery_charges))
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                value="{{ $delivery_charges->flag_day_rate }}"
                                                                name="flag_day_rate">
                                                     @else
-                                                        <input type="number" class="form-control" value=""
+                                                        <input type="text" class="form-control" value=""
                                                                name="flag_day_rate">
 
                                                     @endif
@@ -129,11 +129,11 @@
                                                 <label class="col-3 control-label">Overnight ate per {{$delivery_distance}}</label>
                                                 <div class="col-7">
                                                     @if(!empty($delivery_charges))
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                name="overnight_charges_per_km"
                                                                value="{{ $delivery_charges->overnight_charges_per_km }}">
                                                     @else
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                name="overnight_charges_per_km" value="">
 
                                                     @endif
@@ -143,11 +143,11 @@
                                                 <label class="col-3 control-label">Flag Overnight Rate </label>
                                                 <div class="col-7">
                                                     @if(!empty($delivery_charges))
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                value="{{ $delivery_charges->flag_overnight_rate }}"
                                                                name="flag_overnight_rate">
                                                     @else
-                                                        <input type="number" class="form-control" value=""
+                                                        <input type="text" class="form-control" value=""
                                                                name="flag_overnight_rate">
 
                                                     @endif
@@ -157,11 +157,11 @@
                                                 <label class="col-3 control-label">Peak Rate {{$delivery_distance}}</label>
                                                 <div class="col-7">
                                                     @if(!empty($delivery_charges))
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                name="peak_charges_km"
                                                                value="{{ $delivery_charges->peak_charges_km }}">
                                                     @else
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                name="peak_charges_km" value="">
 
                                                     @endif
@@ -171,11 +171,11 @@
                                                 <label class="col-3 control-label">Flag Peak Rate </label>
                                                 <div class="col-7">
                                                     @if(!empty($delivery_charges))
-                                                        <input type="number" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                value="{{ $delivery_charges->flag_peak_rate }}"
                                                                name="flag_peak_rate">
                                                     @else
-                                                        <input type="number" class="form-control" value=""
+                                                        <input type="text" class="form-control" value=""
                                                                name="flag_peak_rate">
 
                                                     @endif
