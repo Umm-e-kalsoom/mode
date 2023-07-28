@@ -22,7 +22,7 @@
                         <div class="col-lg-4">
 
                             <div class="card">
-                            <a href="{{ route('users') }}" >
+                            <a href="{{ route('users.index') }}" >
                                 <div class="card-body d-flex icon-blue">
 
                                     <div class="card-left">
