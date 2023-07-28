@@ -172,7 +172,7 @@ class DocumentsController extends Controller
 
             if($get_driver_document){
 
-				$get_driver_document->document_path = url('my-assets/images/driver/documents/'.$get_driver_document->document_path);
+				$get_driver_document->document_path = url('assets/images/driver/documents/'.$get_driver_document->document_path);
 				$get_driver_document->document_name = $document_name->title;
 				$get_driver_document->id = $get_driver_document->document_id;
 
@@ -212,7 +212,7 @@ class DocumentsController extends Controller
 				$get_driver_document = DB::table('driver_document')->where('document_id', $document->id)->where('driver_id', $driver_id)->first();
 
 				if($get_driver_document){
-					$document->document_path = url('my-assets/images/driver/documents/'.$get_driver_document->document_path);
+					$document->document_path = url('assets/images/driver/documents/'.$get_driver_document->document_path);
 					$document->document_status = $get_driver_document->document_status;
 					$document->comment = $get_driver_document->comment;
 				}else{

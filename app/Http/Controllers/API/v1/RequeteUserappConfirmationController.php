@@ -87,7 +87,7 @@ class RequeteUserappConfirmationController extends Controller
         }
         if ($row->photo_path != '') {
             if (file_exists('assets/images/driver' . '/' . $row->photo_path)) {
-                $image_user = asset('my-assets/images/driver') . '/' . $row->photo_path;
+                $image_user = asset('assets/images/driver') . '/' . $row->photo_path;
             } else {
                 $image_user = asset('assets/images/placeholder_image.jpg');
 
@@ -96,7 +96,7 @@ class RequeteUserappConfirmationController extends Controller
         }
         // if ($row->payment_image != '') {
         //     if (file_exists('assets/images/payment_method' . '/' . $row->payment_image)) {
-        //         $image = asset('my-assets/images/payment_method') . '/' . $row->payment_image;
+        //         $image = asset('assets/images/payment_method') . '/' . $row->payment_image;
         //     } else {
         //         $image = asset('assets/images/placeholder_image.jpg');
 
@@ -291,7 +291,7 @@ class RequeteUserappConfirmationController extends Controller
             }
             if ($row->photo_path != '') {
                 if (file_exists('assets/images/driver' . '/' . $row->photo_path)) {
-                    $image_user = asset('my-assets/images/driver') . '/' . $row->photo_path;
+                    $image_user = asset('assets/images/driver') . '/' . $row->photo_path;
                 } else {
                     $image_user = asset('assets/images/placeholder_image.jpg');
 
@@ -300,7 +300,7 @@ class RequeteUserappConfirmationController extends Controller
             }
             if ($row->payment_image != '') {
                 if (file_exists('assets/images/payment_method' . '/' . $row->payment_image)) {
-                    $image = asset('my-assets/images/payment_method') . '/' . $row->payment_image;
+                    $image = asset('assets/images/payment_method') . '/' . $row->payment_image;
                 } else {
                     $image = asset('assets/images/placeholder_image.jpg');
 

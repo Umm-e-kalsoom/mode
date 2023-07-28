@@ -307,7 +307,7 @@ class VehicleController extends Controller
             $row->nb_reserve = $nb;
             if ($row->image != '') {
                 if (file_exists('assets/images/type_vehicle_rental' . '/' . $row->image)) {
-                    $image_user = asset('my-assets/images/type_vehicle_rental') . '/' . $row->image;
+                    $image_user = asset('assets/images/type_vehicle_rental') . '/' . $row->image;
                 } else {
                     $image_user = asset('assets/images/placeholder_image.jpg');
 
@@ -348,13 +348,13 @@ class VehicleController extends Controller
             $selected_image = $row->selected_image;
 
             if (file_exists('assets/images/type_vehicle' . '/' . $row->image) && !empty($row->image)) {
-                $image_path = asset('my-assets/images/type_vehicle') . '/' . $row->image;
+                $image_path = asset('assets/images/type_vehicle') . '/' . $row->image;
             } else {
                 $image_path = asset('assets/images/placeholder_image.jpg');
 
             }
             if (file_exists('assets/images/type_vehicle' . '/' . $row->selected_image) && !empty($row->selected_image)) {
-                $selected_image_path = asset('my-assets/images/type_vehicle') . '/' . $row->selected_image;
+                $selected_image_path = asset('assets/images/type_vehicle') . '/' . $row->selected_image;
             } else {
                 $selected_image_path = asset('assets/images/placeholder_image.jpg');
 

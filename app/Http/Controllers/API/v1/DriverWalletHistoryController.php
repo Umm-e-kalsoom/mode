@@ -89,7 +89,7 @@ class DriverWalletHistoryController extends Controller
                                 if (file_exists('assets/images/users' . '/' . $row_app_user->photo_path)) {
                                     $image_user = asset('assets/images/users') . '/' . $row_app_user->photo_path;
                                 } else {
-                                    $image_user = asset('my-assets/images/placeholder_image.jpg');
+                                    $image_user = asset('assets/images/placeholder_image.jpg');
 
                                 }
                                 $row_app_user->photo_path = $image_user;

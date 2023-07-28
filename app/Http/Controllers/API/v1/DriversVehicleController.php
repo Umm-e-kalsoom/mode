@@ -40,13 +40,13 @@ class DriversVehicleController extends Controller
         $sql['model'] = DriverModel::where('id',$sql->model)->select('id','model')->first();
         $tyep = VehicleType::where('id', $sql->id_type_vehicule)->first();
         if (file_exists('assets/images/type_vehicle' . '/' . $tyep->image) && !empty($tyep->image)) {
-            $image_path = asset('my-assets/images/type_vehicle') . '/' . $tyep->image;
+            $image_path = asset('assets/images/type_vehicle') . '/' . $tyep->image;
         } else {
             $image_path = asset('assets/images/placeholder_image.jpg');
 
         }
         if (file_exists('assets/images/type_vehicle' . '/' . $tyep->selected_image) && !empty($tyep->selected_image)) {
-            $selected_image_path = asset('my-assets/images/type_vehicle') . '/' . $tyep->selected_image;
+            $selected_image_path = asset('assets/images/type_vehicle') . '/' . $tyep->selected_image;
         } else {
             $selected_image_path = asset('assets/images/placeholder_image.jpg');
 

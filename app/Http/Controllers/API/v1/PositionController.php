@@ -45,7 +45,7 @@ class PositionController extends Controller
             if($image_user != ''){
                 if(file_exists('assets/images/driver'.'/'.$image_user ))
                 {
-                    $image_user = asset('my-assets/images/driver').'/'. $image_user;
+                    $image_user = asset('assets/images/driver').'/'. $image_user;
                 }
                 else
                 {
@@ -59,7 +59,7 @@ class PositionController extends Controller
             if($image != ''){
                 if(file_exists('assets/images/driver'.'/'.$image ))
                 {
-                    $image = asset('my-assets/images/driver').'/'. $image;
+                    $image = asset('assets/images/driver').'/'. $image;
                 }
                 else
                 {
@@ -72,7 +72,7 @@ class PositionController extends Controller
             if($car != ''){
               if(file_exists('assets/images/driver'.'/'.$car ))
               {
-                  $car = asset('my-assets/images/driver').'/'. $car;
+                  $car = asset('assets/images/driver').'/'. $car;
               }
               else
               {
@@ -85,7 +85,7 @@ class PositionController extends Controller
           if($licence != ''){
             if(file_exists('assets/images/driver'.'/'.$licence ))
             {
-                $licence = asset('my-assets/images/driver').'/'. $licence;
+                $licence = asset('assets/images/driver').'/'. $licence;
             }
             else
             {
@@ -97,7 +97,7 @@ class PositionController extends Controller
         if($row['photo_road_worthy_path'] != ''){
             if(file_exists('assets/images/driver'.'/'.$row['photo_road_worthy_path'] ))
             {
-                $road = asset('my-assets/images/driver').'/'. $row['photo_road_worthy_path'];
+                $road = asset('assets/images/driver').'/'. $row['photo_road_worthy_path'];
             }
             else
             {

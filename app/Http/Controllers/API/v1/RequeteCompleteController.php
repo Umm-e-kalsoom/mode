@@ -184,7 +184,7 @@ class RequeteCompleteController extends Controller
             if($row->photo_path != ''){
                 if(file_exists('assets/images/users'.'/'.$row->photo_path ))
                 {
-                    $image = asset('my-assets/images/users').'/'. $row->photo_path;
+                    $image = asset('assets/images/users').'/'. $row->photo_path;
                 }
                 else
                 {
@@ -208,7 +208,7 @@ class RequeteCompleteController extends Controller
             if($row->payment_image != ''){
                 if(file_exists('assets/images/payment_method'.'/'.$row->payment_image ))
                 {
-                    $image_payment = asset('my-assets/images/payment_method').'/'. $row->payment_image;
+                    $image_payment = asset('assets/images/payment_method').'/'. $row->payment_image;
                 }
                 else
                 {

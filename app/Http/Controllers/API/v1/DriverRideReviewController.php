@@ -42,7 +42,7 @@ class DriverRideReviewController extends Controller
             $sql->map(function ($item){
                 if (!is_null($item->photo_path)) {
                     if (file_exists('assets/images/users' . '/' . $item->photo_path)) {
-                        $image_user = asset('my-assets/images/users') . '/' . $item->photo_path;
+                        $image_user = asset('assets/images/users') . '/' . $item->photo_path;
                     } else {
                         $image_user = asset('assets/images/placeholder_image.jpg');
                     }

@@ -186,7 +186,7 @@ class RequeteOnrideController extends Controller
             if($row->photo_path != ''){
                 if(file_exists('assets/images/users'.'/'.$row->photo_path ))
                 {
-                    $image_user = asset('my-assets/images/users').'/'. $row->photo_path;
+                    $image_user = asset('assets/images/users').'/'. $row->photo_path;
                 }
                 else
                 {
@@ -198,7 +198,7 @@ class RequeteOnrideController extends Controller
             if($row->payment_image != ''){
                 if(file_exists('assets/images/payment_method'.'/'.$row->payment_image ))
                 {
-                    $image = asset('my-assets/images/payment_method').'/'. $row->payment_image;
+                    $image = asset('assets/images/payment_method').'/'. $row->payment_image;
                 }
                 else
                 {

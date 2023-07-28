@@ -56,7 +56,7 @@ class UserPhotoController extends Controller
             if($row->photo_path != ''){
                 if(file_exists('assets/images/users'.'/'.$row->photo_path ))
                 {
-                    $image = asset('my-assets/images/users').'/'. $row->photo_path;
+                    $image = asset('assets/images/users').'/'. $row->photo_path;
                 }
                 else
                 {
@@ -70,7 +70,7 @@ class UserPhotoController extends Controller
             if($image_nic != ''){
                 if(file_exists('assets/images/users'.'/'.$image_nic ))
                 {
-                    $image_user = asset('my-assets/images/users').'/'. $image_nic;
+                    $image_user = asset('assets/images/users').'/'. $image_nic;
                 }
                 else
                 {
@@ -125,7 +125,7 @@ class UserPhotoController extends Controller
             if( $row->photo_path != ''){
                 if(file_exists('assets/images/driver'.'/'. $row->photo_path))
                 {
-                    $image = asset('my-assets/images/driver').'/'. $row->photo_path;
+                    $image = asset('assets/images/driver').'/'. $row->photo_path;
                 }
                 else
                 {
@@ -137,7 +137,7 @@ class UserPhotoController extends Controller
             if($row->photo_licence_path != ''){
                 if(file_exists('assets/images/driver'.'/'.$row->photo_licence_path ))
                 {
-                    $image_lic = asset('my-assets/images/driver').'/'. $row->photo_licence_path;
+                    $image_lic = asset('assets/images/driver').'/'. $row->photo_licence_path;
                 }
                 else
                 {
@@ -149,7 +149,7 @@ class UserPhotoController extends Controller
             if($row->photo_nic_path != ''){
                 if(file_exists('assets/images/driver'.'/'.$row->photo_nic_path ))
                 {
-                    $image_user = asset('my-assets/images/driver').'/'. $row->photo_nic_path;
+                    $image_user = asset('assets/images/driver').'/'. $row->photo_nic_path;
                 }
                 else
                 {
@@ -161,7 +161,7 @@ class UserPhotoController extends Controller
             if($row->photo_car_service_book_path != ''){
                 if(file_exists('assets/images/driver'.'/'.$row->photo_car_service_book_path ))
                 {
-                    $image_car = asset('my-assets/images/driver').'/'. $row->photo_car_service_book_path;
+                    $image_car = asset('assets/images/driver').'/'. $row->photo_car_service_book_path;
                 }
                 else
                 {
@@ -173,7 +173,7 @@ class UserPhotoController extends Controller
             if($row->photo_road_worthy_path != ''){
                 if(file_exists('assets/images/driver'.'/'.$row->photo_road_worthy_path ))
                 {
-                    $image_road = asset('my-assets/images/driver').'/'. $row->photo_road_worthy_path;
+                    $image_road = asset('assets/images/driver').'/'. $row->photo_road_worthy_path;
                 }
                 else
                 {
