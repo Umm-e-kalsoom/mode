@@ -458,7 +458,8 @@ class DriverController extends Controller
             $time = time() . '.' . $extenstion;
             $filename = 'vehicle_' . $time;
             $Selectedfilename = 'selected_vehicleType_' . $time;
-            $file->move('assets/images/vehicle', $filename);
+            $file->move(public_path('assets/images/drivers/'), $filename);
+
             $vehicle_image->image_path = $filename;
             // $vehicle_image->selected_image = $Selectedfilename;
 
@@ -645,7 +646,7 @@ class DriverController extends Controller
                 $extenstion = $file->getClientOriginalExtension();
                 $time = time() . '.' . $extenstion;
                 $filename = 'vehicle_' . $id . '.' . $extenstion;
-                $file->move('assets/images/vehicle', $filename);
+                $file->move(public_path('assets/images/drivers/'), $filename);
                 $vehicle_image->image_path = $filename;
                 $vehicle_image->save();
             }
@@ -659,7 +660,7 @@ class DriverController extends Controller
                 $time = time() . '.' . $extenstion;
                 $filename = 'vehicle_' . $id . '.' . $extenstion;
                 //print_r($filename);die();
-                $file->move('assets/images/vehicle', $filename);
+                $file->move(public_path('assets/images/drivers/'), $filename);
                 $vehicle_image->image_path = $filename;
                 // $vehicle_image->selected_image = $Selectedfilename;
 

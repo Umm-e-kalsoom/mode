@@ -120,7 +120,7 @@ class VehicleController extends Controller
             $time = time() . '.' . $extenstion;
             $filename = 'image_vehicleType' . $time;
             $selectedfilename = 'selected_image_vehicleType' . $time;
-            $file->move('assets/images/type_vehicle', $filename);
+            $file->move(public_path('assets/images/type_vehicle/'), $filename);
             $vehicle->image = $filename;
         }
         $vehicle->creer = date('Y-m-d H:i:s');
@@ -230,7 +230,7 @@ class VehicleController extends Controller
                 $time = time() . '.' . $extenstion;
                 $filename = 'image_vehicleType' . $time;
                 $selectedfilename = 'selected_image_vehicleType' . $time;
-                $file->move('assets/images/type_vehicle', $filename);
+                $file->move(public_path('assets/images/type_vehicle/'), $filename);
                 $vehicle->selected_image = $selectedfilename;
                 $vehicle->image = $filename;
             }
