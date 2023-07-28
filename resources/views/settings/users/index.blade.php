@@ -107,9 +107,9 @@
                                                         class="col-3 control-label"
                                                         for="is_open_{{$customer->id}}"></label></td>
 
-                                            @if (file_exists('assets/images/users'.'/'.$customer->photo_path) && !empty($customer->photo_path))
+                                            @if (!empty($customer->photo_path))
                                                 <td><img class="rounded" style="width:50px"
-                                                         src="{{asset('assets/images/users').'/'.$customer->photo_path}}"
+                                                         src="{{asset('/public/assets/images/users').'/'.$customer->photo_path}}"
                                                          alt="image"></td>
                                             @else
                                                 <td><img class="rounded" style="width:50px"
