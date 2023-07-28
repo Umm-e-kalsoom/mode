@@ -35,7 +35,7 @@
                                 </div>
                                 <div id="users-table_filter" class="ml-auto">
                                     <div class="form-group mb-0">
-                                        <form action="{{ route('users') }}" method="get">
+                                        <form action="{{ route('users.index') }}" method="get">
                                             @if(isset($_GET['selected_search']) &&  $_GET['selected_search'] != '')
                                                 <?php //dd($_GET['selected_search']);?>
                                                 <select name="selected_search" id="selected_search"

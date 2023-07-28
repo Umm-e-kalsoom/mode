@@ -10,7 +10,7 @@
         </li>
 
         <li>
-        	<a class="waves-effect waves-dark" href="{!! url('/users') !!}" >
+        	<a class="waves-effect waves-dark" href="{!! url('users.index') !!}" >
         		<i class="mdi mdi-account-multiple"></i>
                 <span class="hide-menu">{{trans('lang.user_plural')}}</span>
         	</a>
