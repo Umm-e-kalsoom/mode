@@ -186,8 +186,8 @@
 							<label class="col-2 control-label">{{trans('lang.profile_image')}}</label>
 							<input type="file" class="col-6 photo" name="photo_path" onchange="readURL(this);">
 
-							@if (file_exists('assets/images/users'.'/'.$user->photo_path) && !empty($user->photo_path))
-                                            <img class="rounded" id="uploding_image" style="width:50px" src="{{asset('assets/images/users').'/'.$user->photo_path}}" alt="image">
+							@if (file_exists('/public/assets/images/users'.'/'.$user->photo_path) && !empty($user->photo_path))
+                                            <img class="rounded" id="uploding_image" style="width:50px" src="{{asset('/public/assets/images/users').'/'.$user->photo_path}}" alt="image">
                                         @else
                                         <img class="rounded" id="uploding_image" style="width:50px" src="{{asset('assets/images/placeholder_image.jpg')}}" alt="image">
 
