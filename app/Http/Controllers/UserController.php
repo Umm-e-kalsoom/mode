@@ -261,7 +261,8 @@ class UserController extends Controller
                 $extenstion = $file->getClientOriginalExtension();
                 $time = time() . '.' . $extenstion;
                 $filename = 'user_' . $id . '.' . $extenstion;
-                $file->move('assets/images/users/', $filename);
+                $file->move(public_path('images'), $filename);
+               // $file->move('public_path(', $filename);
                 $user->photo_path = $filename;
             }
             $user->save();
