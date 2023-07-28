@@ -40,7 +40,7 @@ class DriverController extends Controller
         $lng2 = $request->get('lng2');
         $sql = DB::table('tj_type_vehicule')
             ->crossJoin('tj_vehicule')
-            ->leftJoin('delivery_charges', 'delivery_charges.id_vehicle_type', '=', 'tj_vehicule.id')
+            ->crossJoin('delivery_charges')
             ->leftJoin('brands', 'brands.id', '=', 'tj_vehicule.brand')
             ->leftJoin('car_model', 'car_model.brand_id', '=', 'brands.id')
             ->crossJoin('tj_conducteur')
