@@ -127,7 +127,7 @@
 										<div class="col-md-6">
 											<div class="col-group">
 												<label for="" class="font-weight-bold">{{trans('lang.Image')}}:</label>
-												<span><img alt="Image" style="width:50px;" src="{{url('/assets/images/type_vehicle_rental/'.$rentals->image) }}"></span>
+												<span><img alt="Image" style="width:50px;" src="{{url('/public/assets/images/type_vehicle_rental/'.$rentals->image) }}"></span>
 											</div>
 										</div>
 
@@ -160,7 +160,7 @@
 										<div class="col-md-6">
 											<div class="col-group">
 												<label for="" class="font-weight-bold">Price:</label>
-												<?php 
+												<?php
 													if($rentals->nb_jour !== 0) {
 														$price= $rentals->prix*$rentals->nb_jour;
 													}
@@ -182,7 +182,7 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        
+
 									</div>
 
 								</div>
@@ -220,12 +220,12 @@
 
                                     dataType: 'json',
                                     success: function (data) {
-										
+
                                       alert(data.data);
-                                       
+
                                     }
                                 });
-                            } 
+                            }
                         });
 
 

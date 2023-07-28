@@ -75,9 +75,9 @@
                                                 <div class="col-7">
                                                     <input type="file" class="form-control" name="image"
                                                            onchange="readURL(this);">
-                                                    @if (file_exists('assets/images/type_vehicle'.'/'.$type->image) && !empty($type->image))
+                                                    @if ( !empty($type->image))
                                                         <img class="rounded" style="width:50px" id="uploding_image"
-                                                             src="{{asset('assets/images/type_vehicle')}}/{{ $type->image }}"
+                                                             src="{{asset('/public/assets/images/type_vehicle')}}/{{ $type->image }}"
                                                              alt="image">
                                                     @else
                                                         <img class="rounded" style="width:50px" id="uploding_image"

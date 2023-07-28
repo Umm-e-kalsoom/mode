@@ -107,10 +107,9 @@
                                                                   dataid="{{$type->id}}"><label
                                                 class="col-3 control-label"
                                                 for="is_open_{{$type->id}}"></label></td>
-                                    @if (file_exists('assets/images/type_vehicle'.'/'.$type->image) &&
-                                    !empty($type->image))
+                                    @if (!empty($type->image))
                                     <td><img class="rounded" style="width:50px"
-                                             src="{{asset('assets/images/type_vehicle').'/'.$type->image}}" alt="image">
+                                             src="{{asset('/public/assets/images/type_vehicle').'/'.$type->image}}" alt="image">
                                     </td>
                                     @else
                                     <td><img class="rounded" style="width:50px"

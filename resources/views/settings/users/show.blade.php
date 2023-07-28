@@ -46,8 +46,8 @@
 
 										<div class="profile-img">
 
-	                                       @if (file_exists('assets/images/users'.'/'.$user->photo_path) && !empty($user->photo_path))
-	                                            <td><img class="profile-pic" src="{{asset('my-assets/images/users').'/'.$user->photo_path}}" alt="image"></td>
+	                                       @if ( !empty($user->photo_path))
+	                                            <td><img class="profile-pic" src="{{asset('public/assets/images/users').'/'.$user->photo_path}}" alt="image"></td>
 	                                        @else
 	                                        <td><img class="profile-pic" src="{{asset('assets/images/placeholder_image.jpg')}}" alt="image"></td>
 
