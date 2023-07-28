@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        dd('uu');
+
         if ($request->has('search') && $request->search != '' && $request->selected_search == 'prenom') {
             $search = $request->input('search');
             $users = DB::table('tj_user_app')
@@ -124,7 +124,7 @@ class UserController extends Controller
             $extenstion = $file->getClientOriginalExtension();
             $time = time() . '.' . $extenstion;
             $filename = 'user_image' . $time;
-            $file->move('assets/images/users/', $filename);
+            $file->move(public_path('assets/images/users/'), $filename);
             $image = str_replace('data:image/png;base64,', '', $file);
             $image = str_replace(' ', '+', $image);
             $user->photo_path = $filename;
