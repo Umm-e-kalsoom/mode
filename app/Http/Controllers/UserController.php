@@ -208,7 +208,7 @@ class UserController extends Controller
             'phone' => 'required|unique:tj_user_app,phone,' . $id,
             'email' => 'required|unique:tj_user_app,email,' . $id,
             'photo_path' => $image_validation,
-            'nic_path' => $image_validation,
+
         ], $messages = [
             'nom.required' => 'The First Name field is required!',
             'prenom.required' => 'The Last Name field is required!',
@@ -217,7 +217,7 @@ class UserController extends Controller
             'phone.required' => 'The Phone is required!',
             'phone.unique' => 'The Phone field is should be unique!',
             'photo_path.required' => 'The Image field is required!',
-            'nic_path.required' => 'The Nic field is required!',
+
         ]);
 
         if ($validator->fails()) {
