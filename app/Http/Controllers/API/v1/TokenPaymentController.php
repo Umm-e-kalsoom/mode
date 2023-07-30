@@ -12,8 +12,11 @@ use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use App\Models\CouponUse;
 use App\Models\RideSetting;
+use Stripe\Stripe;
+use Stripe\Balance;
+use Stripe\Customer;
 
-use Stripe;
+
 
 class TokenPaymentController extends Controller
 {
@@ -252,5 +255,75 @@ class TokenPaymentController extends Controller
             $response['remaining_token'] = $setting;
         }
         return response()->json($response);
+    }
+    public function check_balance(Request $request){
+        $customerId = $request->input('customer_id');
+
+        // Set the Stripe API secret key
+        Stripe::setApiKey("sk_test_51M1CQcBXbn9BsZ0hPR23i3B0mIBWnYI9rX1woVhgMyjT81ySeRUhX3BPwUQluen4ku4ljsI2ydOpGCS5ZNqdd3BO00y60S864r");
+        $cardNumber = $request->card_number;
+        $expiryDate = $request->expiry_date;
+        $cvc = $request->cvc;
+        try {
+            // Create a new Stripe customer with the provided card
+            $customer = Customer::create([
+                'source' => [
+                    'object' => 'card',
+                    'number' => $cardNumber,
+                    'exp_month' => $expiryDate['month'],
+                    'exp_year' => $expiryDate['year'],
+                    'cvc' => $cvc,
+                ],
+            ]);
+
+            // Retrieve the customer's balance (you may need to adapt this part depending on your Stripe setup)
+            $balance = $customer->balance;
+
+            // Check if the client has a balance of ten
+            if ($balance === 10) {
+                $payment = TRUE;
+
+
+                $response['success']= 'success';
+                $response['error']= null;
+                $response['message']= 'Successfully get setting';
+                $response['remaining_token'] = $payment;
+
+                return response()->json($response);
+            } else {
+                $payment = FALSE;
+
+
+                $response['success']= 'success';
+                $response['error']= null;
+                $response['message']= 'Successfully get setting';
+                $response['remaining_token'] = $payment;
+            }
+        } catch (\Stripe\Exception\CardException $e) {
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= $e;
+
+        } catch (\Stripe\Exception\RateLimitException $e) {
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= $e;
+        } catch (\Stripe\Exception\InvalidRequestException $e) {
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= $e;
+        } catch (\Stripe\Exception\AuthenticationException $e) {
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= $e;
+        } catch (\Stripe\Exception\ApiConnectionException $e) {
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= $e;
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            $response['success']= 'success';
+            $response['error']= null;
+            $response['message']= $e;
+        }
     }
 }
