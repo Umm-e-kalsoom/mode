@@ -265,7 +265,7 @@ class TokenPaymentController extends Controller
         $exp_month = $request->exp_month;
         $exp_year = $request->exp_year;
         $cvc = $request->cvc;
-        try {
+
             // Create a new Stripe customer with the provided card
             $customer = Customer::create([
                 'source' => [
@@ -300,31 +300,31 @@ class TokenPaymentController extends Controller
                 $response['message']= 'Successfully get setting';
                 $response['remaining_token'] = $payment;
             }
-        } catch (\Stripe\Exception\CardException $e) {
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= $e;
+        // } catch (\Stripe\Exception\CardException $e) {
+        //     $response['success']= 'success';
+        //     $response['error']= null;
+        //     $response['message']= $e;
 
-        } catch (\Stripe\Exception\RateLimitException $e) {
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= $e;
-        } catch (\Stripe\Exception\InvalidRequestException $e) {
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= $e;
-        } catch (\Stripe\Exception\AuthenticationException $e) {
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= $e;
-        } catch (\Stripe\Exception\ApiConnectionException $e) {
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= $e;
-        } catch (\Stripe\Exception\ApiErrorException $e) {
-            $response['success']= 'success';
-            $response['error']= null;
-            $response['message']= $e;
-        }
+        // } catch (\Stripe\Exception\RateLimitException $e) {
+        //     $response['success']= 'success';
+        //     $response['error']= null;
+        //     $response['message']= $e;
+        // } catch (\Stripe\Exception\InvalidRequestException $e) {
+        //     $response['success']= 'success';
+        //     $response['error']= null;
+        //     $response['message']= $e;
+        // } catch (\Stripe\Exception\AuthenticationException $e) {
+        //     $response['success']= 'success';
+        //     $response['error']= null;
+        //     $response['message']= $e;
+        // } catch (\Stripe\Exception\ApiConnectionException $e) {
+        //     $response['success']= 'success';
+        //     $response['error']= null;
+        //     $response['message']= $e;
+        // } catch (\Stripe\Exception\ApiErrorException $e) {
+        //     $response['success']= 'success';
+        //     $response['error']= null;
+        //     $response['message']= $e;
+        // }
     }
 }
