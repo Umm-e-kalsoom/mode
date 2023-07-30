@@ -276,7 +276,7 @@ class TokenPaymentController extends Controller
                     'cvc' => $cvc,
                 ],
             ]);
-
+            dd('as');
             // Retrieve the customer's balance (you may need to adapt this part depending on your Stripe setup)
             $balance = $customer->balance;
 
