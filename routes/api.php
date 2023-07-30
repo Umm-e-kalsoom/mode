@@ -324,7 +324,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
 
     Route::post('v1/destination', [DriverController::class, 'destination']);
     Route::get('v1/ride_settings', [TokenPaymentController::class, 'settings']);
-    Route::get('v1/check_balance', [TokenPaymentController::class, 'check_balance']);
+    Route::post('v1/check_balance', [TokenPaymentController::class, 'check_balance']);
 
 Route::get('v1/wallet-history/', [DriverWalletHistoryController::class, 'getData']);
 
