@@ -286,7 +286,7 @@ class TokenPaymentController extends Controller
             $balance = $customer->balance;
 
             // Check if the client has a balance of ten
-            if ($balance === 10) {
+            if ($balance >= 10) {
                 $payment = TRUE;
 
 
