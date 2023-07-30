@@ -281,7 +281,7 @@ class TokenPaymentController extends Controller
             $customer = Customer::create([
                 'source' => $token->id,
             ]);
-            dd($customer);
+            dd($customer->balance);
             // Retrieve the customer's balance (you may need to adapt this part depending on your Stripe setup)
             $balance = $customer->balance;
 
