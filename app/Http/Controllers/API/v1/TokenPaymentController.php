@@ -262,7 +262,8 @@ class TokenPaymentController extends Controller
         // Set the Stripe API secret key
         Stripe::setApiKey("sk_test_51M1CQcBXbn9BsZ0hPR23i3B0mIBWnYI9rX1woVhgMyjT81ySeRUhX3BPwUQluen4ku4ljsI2ydOpGCS5ZNqdd3BO00y60S864r");
         $cardNumber = $request->card_number;
-        $expiryDate = $request->expiry_date;
+        $exp_month = $request->exp_month;
+        $exp_year = $request->exp_year;
         $cvc = $request->cvc;
         try {
             // Create a new Stripe customer with the provided card
@@ -270,8 +271,8 @@ class TokenPaymentController extends Controller
                 'source' => [
                     'object' => 'card',
                     'number' => $cardNumber,
-                    'exp_month' => $expiryDate['month'],
-                    'exp_year' => $expiryDate['year'],
+                    'exp_month' =>$exp_month,
+                    'exp_year' => $exp_year,
                     'cvc' => $cvc,
                 ],
             ]);
