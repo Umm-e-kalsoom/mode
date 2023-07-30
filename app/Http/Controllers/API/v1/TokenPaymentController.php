@@ -15,6 +15,7 @@ use App\Models\RideSetting;
 use Stripe\Stripe;
 use Stripe\Balance;
 use Stripe\Customer;
+use Stripe\Token;
 
 
 
@@ -267,16 +268,20 @@ class TokenPaymentController extends Controller
         $cvc = $request->cvc;
 
             // Create a new Stripe customer with the provided card
-            $customer = Customer::create([
-                'source' => [
-                    'object' => 'card',
+            $token = Token::create([
+                'card' => [
                     'number' => $cardNumber,
-                    'exp_month' =>$exp_month,
+                    'exp_month' => $exp_month,
                     'exp_year' => $exp_year,
                     'cvc' => $cvc,
                 ],
             ]);
-            dd('as');
+
+            // Create a new Stripe customer using the token
+            $customer = Customer::create([
+                'source' => $token->id,
+            ]);
+
             // Retrieve the customer's balance (you may need to adapt this part depending on your Stripe setup)
             $balance = $customer->balance;
 
