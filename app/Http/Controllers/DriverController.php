@@ -363,8 +363,9 @@ class DriverController extends Controller
             'phone' => 'required',
             'email' => 'required|email',
             'id_type_vehicule'=>'required',
-            'brand'=>'required',
-            'model'=>'required',
+            'brand_name'=>'required',
+            'model_name'=>'required',
+            'car_category'=>'required',
             'car_number'=>'required',
             'color'=>'required',
             'passenger'=>'required',
@@ -377,8 +378,9 @@ class DriverController extends Controller
             'phone.required' => 'The Phone field is required!',
             'phone.unique' => 'The Phone field is should be unique!',
             'id_type_vehicule.required' => 'The Vehicle type field is required!',
-            'brand.required' => 'The brand field is required!',
-            'model.required' => 'The model field is required!',
+            'brand_name.required' => 'The brand field is required!',
+            'model_name.required' => 'The model field is required!',
+            'car_category.required' => 'The car_category field is required!',
             'car_number.required' => 'The NumberPlate field is required!',
             'color.required' => 'The Color field is required!',
             'passenger.required' => 'The Number of Passenger field is required!',
@@ -430,8 +432,9 @@ class DriverController extends Controller
 
 
         $vehicle = new Vehicle;
-        $vehicle->brand = $request->input('brand');
-        $vehicle->model = $request->input('model');
+        $vehicle->brand_name = $request->input('brand_name');
+        $vehicle->model_name = $request->input('model_name');
+        $vehicle->car_category = $request->input('car_category');
         $vehicle->color = $request->input('color');
         $vehicle->numberplate = $request->input('car_number');
         $vehicle->car_make = '';
@@ -448,6 +451,18 @@ class DriverController extends Controller
         // $vehicle->package_weight = $request->input('package_weight');
         // $vehicle->num_of_pets = $request->input('num_of_pets');
         // $vehicle->package_size = $request->input('package_size');
+        if ($request->hasfile('car_image')) {
+            $file = $request->file('car_image');
+            $extenstion = $file->getClientOriginalExtension();
+            $time = time() . '.' . $extenstion;
+            $filename = 'vehicle_' . $time;
+            $Selectedfilename = 'selected_vehicleType_' . $time;
+           // $file->move('assets/images/vehicle', $filename);
+            $file->move(public_path('assets/images/vehicle/'), $filename);
+            $vehicle->car_image = $filename;
+            // $vehicle_image->selected_image = $Selectedfilename;
+
+        }
         $vehicle->save();
         $vehicle_id = $vehicle->id;
 
@@ -460,10 +475,11 @@ class DriverController extends Controller
             $Selectedfilename = 'selected_vehicleType_' . $time;
            // $file->move('assets/images/vehicle', $filename);
             $file->move(public_path('assets/images/vehicle/'), $filename);
-            $vehicle_image->image_path = $filename;
+            $vehicle->image_path = $filename;
             // $vehicle_image->selected_image = $Selectedfilename;
 
         }
+
         $vehicle_image->id_vehicle = $vehicle_id;
         $vehicle_image->id_driver = $driver_id;
         $vehicle_image->creer = date('Y-m-d H:i:s');
@@ -548,9 +564,9 @@ class DriverController extends Controller
             'phone' => 'required',
             'email' => 'required|email',
             'id_type_vehicule'=>'required',
-            'brand'=>'required',
-            'model'=>'required',
-
+            'brand_name.required' => 'The brand field is required!',
+            'model_name.required' => 'The model field is required!',
+            'car_category.required' => 'The car_category field is required!',
             'numberplate'=>'required',
             'color'=>'required',
             'passenger'=>'required',
@@ -560,11 +576,11 @@ class DriverController extends Controller
             'email.required' => 'The Email field is required!',
             'email.unique' => 'The Email field is should be unique!',
             'phone.required' => 'The Phone field is required!',
+            'brand_name.required' => 'The brand_name field is required!',
+            'model_name.required' => 'The model_name field is required!',
+            'car_category.required' => 'The car_category field is required!',
             'phone.unique' => 'The Phone field is should be unique!',
             'id_type_vehicule.required' => 'The Vehicle type field is required!',
-            'brand.required' => 'The brand field is required!',
-            'model.required' => 'The model field is required!',
-
             'numberplate.required' => 'The NumberPlate field is required!',
             'color.required' => 'The Color field is required!',
             'passenger.required' => 'The Number of Passenger field is required!',
@@ -583,8 +599,9 @@ class DriverController extends Controller
         $device_id = $request->input('device_id');
         $status = $request->input('statut');
         $id_type_vehicule = $request->input('id_type_vehicule');
-        $brand = $request->input('brand');
-        $model = $request->input('model');
+        $brand_name = $request->input('brand_name');
+        $model_name = $request->input('model_name');
+        $car_category = $request->input('car_category');
         $color = $request->input('color');
         $km = $request->input('km') ?? '';
         $milage = $request->input('milage') ?? '';
@@ -635,6 +652,36 @@ class DriverController extends Controller
 
             $user->save();
         }
+        if($vehicle->car_image) {
+            if ($request->hasfile('car_image')) {
+                $destination = 'assets/images/vehicle' .$vehicle->car_image;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('car_image');
+                $extenstion = $file->getClientOriginalExtension();
+                $time = time() . '.' . $extenstion;
+                $filename = 'vehicle_' . $id . '.' . $extenstion;
+                $file->move(public_path('assets/images/vehicle/'), $filename);
+                $vehicle->car_image = $filename;
+
+            }
+        }else{
+
+            if ($request->hasfile('car_image')) {
+                $file = $request->file('car_image');
+
+                $extenstion = $file->getClientOriginalExtension();
+
+                $time = time() . '.' . $extenstion;
+                $filename = 'vehicle_' . $id . '.' . $extenstion;
+                //print_r($filename);die();
+                $file->move(public_path('assets/images/vehicle/'), $filename);
+                $vehicle->car_image = $filename;
+                // $vehicle_image->selected_image = $Selectedfilename;
+
+            }
+        }
         $vehicle_image = vehicleImages::where('id_driver', "=", $id)->first();
         if ($vehicle_image) {
             if ($request->hasfile('image_path')) {
@@ -673,8 +720,9 @@ class DriverController extends Controller
         }
         if ($vehicle) {
             $vehicle->id_type_vehicule = $id_type_vehicule;
-            $vehicle->brand = $brand;
-            $vehicle->model = $model;
+            $vehicle->brand_name = $brand_name;
+            $vehicle->model_name = $model_name;
+            $vehicle->car_category = $car_category;
             $vehicle->color = $color;
             $vehicle->km = $km;
             $vehicle->milage = $milage;

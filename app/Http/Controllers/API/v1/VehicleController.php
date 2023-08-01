@@ -38,6 +38,7 @@ class VehicleController extends Controller
         $brand = $request->get('brand_name');
         // $prenom = str_replace("'", "\'", $brand);
         $model = $request->get('model_name');
+        $car_category = $request->get('car_category');
         $color = $request->get('color');
         $numberplate = $request->get('carregistration');
         $passenger = $request->get('passenger');
@@ -67,7 +68,7 @@ class VehicleController extends Controller
 //            DB::update('update tj_conducteur set model=?',[$vehicleModel->id]);
                 $row = $chkid->toArray();
                 $id_vehicule = $row['id'];
-                $updatedata = DB::update('update tj_vehicule set brand_name = ?,model_name = ?,passenger = ?,$package_size = ?,$package_weight = ?,$num_of_pets = ?,$num_of_luggage = ?,num_of_petscolor = ?,numberplate = ?,modifier = ?,id_type_vehicule = ?,car_make = ?,
+                $updatedata = DB::update('update tj_vehicule set brand_name = ?,model_name = ?,car_category = ?,passenger = ?,$package_size = ?,$package_weight = ?,$num_of_pets = ?,$num_of_luggage = ?,num_of_petscolor = ?,numberplate = ?,modifier = ?,id_type_vehicule = ?,car_make = ?,
                        km = ?,milage = ? where id = ?', [$brand, $vehicleModel->id, $passenger, $color, $numberplate, $date_heure, $id_categorie_vehicle, $car_make, $km, $milage, $id_vehicule]);
 
                 if (!empty($updatedata)) {
@@ -92,8 +93,8 @@ class VehicleController extends Controller
                     ]);
                 }
 //                DB::update('update tj_conducteur set model=?',[$vehicleModel->id]);
-                $insertdata = DB::insert("insert into tj_vehicule(passenger,package_size,package_weight,num_of_luggage,num_of_pets,brand,model,color,numberplate,id_conducteur,statut,creer,updated_at,id_type_vehicule,car_make,milage,km)
-	        values('" . $passenger . "','" . $package_size . "','" .$package_weight. "','".$num_of_luggage."','".$num_of_pets."','" . $brand . "','" . $model . "','" . $color . "','" . $numberplate . "','" . $id_driver . "','yes','" .
+                $insertdata = DB::insert("insert into tj_vehicule(passenger,package_size,package_weight,num_of_luggage,num_of_pets,brand_name,model_name,car_category,color,numberplate,id_conducteur,statut,creer,updated_at,id_type_vehicule,car_make,milage,km)
+	        values('" . $passenger . "','" . $package_size . "','" .$package_weight. "','".$num_of_luggage."','".$num_of_pets."','" . $brand . "','" . $model . "','" . $car_category . "','" . $color . "','" . $numberplate . "','" . $id_driver . "','yes','" .
                     $date_heure . "','" . $date_heure . "','" . $id_categorie_vehicle . "','" . $car_make . "','" . $milage . "','" . $km . "')");
                 $id = DB::getPdo()->lastInsertId();
                 if ($id > 0) {
