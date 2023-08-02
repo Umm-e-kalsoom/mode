@@ -16,7 +16,7 @@ class TokenController extends Controller
     public function index()
     {
         $tokens = RemainingToken::latest()->get();
-        $drivers = Driver::where('statut','yes')->latest()->get();
+        $drivers = Driver::where('statut','yes')->get();
         return view('tokens.index',compact('tokens','drivers'));
     }
 
