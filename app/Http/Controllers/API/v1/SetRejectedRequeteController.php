@@ -262,5 +262,19 @@ class SetRejectedRequeteController extends Controller
         return response()->json($response);
     }
 
+    public function get_single_ride(Request $request){
+        $vehicleType = DB::table('tj_vehicule')->select('statut')->where('id_user_app',$request->user_id)->latest()->skip(1)->first();
 
+        if($vehicleType != null ){
+            $response['success'] = 'success';
+            $response['error'] = 'false';
+            $response['data'] =  $vehicleType;
+
+
+        }
+        else{
+            $response['success'] = 'Failed';
+            $response['error'] = 'Not Found';
+        }
+    }
 }

@@ -294,6 +294,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::post('v1/user-phone/', [UserPhoneController::class, 'UpdateUserPhone']);
     Route::post('v1/not-feel-safe/', [ReqNotFeelSafeController::class, 'UpdateReq']);
 
+    Route::post('v1/get_previous/', [SetRejectedRequeteController::class, 'get_single_ride']);
 
     Route::post('v1/change-status-payment/', [ChangeStatusForpaymentController::class, 'ChangeStatus']);
     Route::get('v1/requete-book-cancel/', [RequeteBookCancelController::class, 'getData']);
