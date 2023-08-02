@@ -60,10 +60,9 @@
                                      <div class="form-group row width-100">
                                         <label class="col-3 control-label">Drivers</label>
                                         <div class="col-9">
-                                           <input type="text" class="form-control " name="title"
-                                           required>
-                                           <select class=""  class="form-control " name="user_id">
-                                            <option class="form-control " value="" >--! Select Driver !--</option>
+
+                                           <select   class="form-control" name="user_id">
+                                            <option class="form-control" value="" >--! Select Driver !--</option>
                                             @foreach ($drivers as $driver)
                                                 <option class="form-control " value="{{ $driver->id }}" >{{ $driver->nom }}</option>
                                             @endforeach
