@@ -313,3 +313,6 @@ Route::get('/delete_tokens/{id}', [App\Http\Controllers\TokenController::class, 
 //Ride Setting
 Route::get('/ride_setting', [App\Http\Controllers\RideSettingController::class, 'index'])->name('ride_setting');
 Route::post('/ride_settings', [App\Http\Controllers\RideSettingController::class, 'store'])->name('ride_setting_save');
+
+Route::get('/passenger_notification', [App\Http\Controllers\PassengerNotificationController::class, 'index'])->name('p_notification');
+Route::post('/send_passenger_notification', [App\Http\Controllers\PassengerNotificationController::class, 'send_notify'])->name('send_p_notification');

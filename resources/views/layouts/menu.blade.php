@@ -71,7 +71,12 @@
                 <span class="hide-menu">Ride Settings</span>
             </a>
         </li>
-
+        <li>
+            <a class="waves-effect waves-dark" href="{{ route('p_notification') }}">
+                <i class="fa fa-list-alt"></i>
+                <span class="hide-menu">Passeneger Notification</span>
+            </a>
+        </li>
         {{-- <li>
          	<a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                 <i class="mdi mdi-car-connected"></i>
