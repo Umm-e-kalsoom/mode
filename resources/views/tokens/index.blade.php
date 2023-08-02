@@ -110,10 +110,10 @@
 
                             <div class="userlist-topsearch d-flex mb-3">
 
-                                <div class="userlist-top-left">
+                                {{--  <div class="userlist-top-left">
                                     <a class="nav-link" href="{!! route('tokens.create') !!}"><i
                                             class="fa fa-plus mr-2"></i>Token Create</a>
-                                </div>
+                                </div>  --}}
 
 
                             </div>
@@ -135,9 +135,14 @@
                                     <tbody id="append_list12">
                                     @if(!empty($tokens) )
                                         @foreach($tokens as $token)
+
                                         <tr>
 
-                                            <td>{{  $token->user_id }}</td>
+                                            <td>
+                                                @php
+                                                    $driver = App\Models\Driver::where('id',$token->user_id)->first();
+                                                    echo $driver->nom;
+                                                @endphp </td>
                                             <td>{{  $token->tokens }}</td>
 
 
