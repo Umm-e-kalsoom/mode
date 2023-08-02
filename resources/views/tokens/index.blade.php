@@ -141,7 +141,7 @@
                                             <td>
                                                 @php
                                                     $driver = App\Models\Driver::where('id',$token->user_id)->first();
-                                                    echo $driver->nom;
+                                                    echo $driver->nom ?? '';
                                                 @endphp </td>
                                             <td>{{  $token->tokens }}</td>
 
