@@ -7,7 +7,7 @@
 
             <div class="col-md-5 align-self-center">
 
-                <h3 class="text-themecolor">Tokens</h3>
+                <h3 class="text-themecolor"> Driver Tokens</h3>
 
             </div>
 
@@ -34,7 +34,66 @@
         </div>
 
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                   <div class="card pb-4">
+                      <div class="card-body">
+                         <div id="data-table_processing" class="dataTables_processing panel panel-default"
+                            style="display: none;">{{trans('lang.processing')}}</div>
+                         <div class="error_top"></div>
+                         @if($errors->any())
+                         <div class="alert alert-danger">
+                            <ul>
+                               @foreach($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                               @endforeach
+                            </ul>
+                         </div>
+                         @endif
+                         <form action="{{route('tokens.store')}}" method="post" enctype="multipart/form-data"
+                            id="create_driver">
+                            @csrf
+                            <div class="row restaurant_payout_create">
+                               <div class="restaurant_payout_create-inner">
+                                  <fieldset>
+                                     <legend>Token Details</legend>
+                                     <div class="form-group row width-100">
+                                        <label class="col-3 control-label">Drivers</label>
+                                        <div class="col-9">
+                                           <input type="text" class="form-control " name="title"
+                                           required>
+                                           <select class=""  class="form-control " name="user_id">
+                                            <option class="form-control " value="" >--! Select Driver !--</option>
+                                            @foreach ($drivers as $driver)
+                                                <option class="form-control " value="{{ $driver->id }}" >{{ $driver->nom }}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group row width-100">
+                                            <label class="col-3 control-label">Tokens</label>
+                                            <div class="col-9">
 
+                                            <input type="number" class="form-control " name="tokens" required>
+
+                                            </div>
+                                     </div>
+
+
+
+                                  </fieldset>
+
+                                  <div class="form-group col-12 text-center btm-btn">
+                                     <button type="submit" class="btn btn-primary save_driver_btn"><i
+                                        class="fa fa-save"></i> {{ trans('lang.save')}}</button>
+
+                                  </div>
+                         </form>
+                         </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
             <div class="row">
 
                 <div class="col-12">
@@ -68,11 +127,10 @@
                                     <thead>
                                     <tr>
 
-                                        <th>Title</th>
+                                        <th>Driver</th>
                                         <th>Tokens</th>
-                                        <th>Expiry Date</th>
-                                        <th>Amount</th>
-                                        <th>Action</th>
+
+
                                     </tr>
                                     </thead>
                                     <tbody id="append_list12">
@@ -80,19 +138,10 @@
                                         @foreach($tokens as $token)
                                         <tr>
 
-                                            <td>{{  $token->title }}</td>
-                                            <td>{{  $token->up_to }}</td>
-                                            <td>{{ $token->expiry_date }}</td>
-                                            <td>{{ $token->amount }}</td>
-                                            <td>
+                                            <td>{{  $token->user_id }}</td>
+                                            <td>{{  $token->tokens }}</td>
 
-                                                 <a href="{{route('tokens.edit', $token->id)}}"><i
-                                                             class="fa fa-edit mx-auto"></i></a>
-                                                             <a id="'+val.id+'" class=" mx-auto text-primary do_not_delete text-danger"
-                                                                                           name="coupon-delete"
-                                                                                           href="{{route('delete_tokens', $token->id)}}"><i
-                                                             class="fa fa-trash"></i></a>
-                                            </td>
+
                                         </tr>
 
                                         @endforeach
