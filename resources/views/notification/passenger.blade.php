@@ -31,6 +31,11 @@
                </ul>
             </div>
             @endif
+            @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             <form action="{{route('send_p_notification')}}" method="post" enctype="multipart/form-data"
                id="create_driver">
                @csrf
@@ -39,9 +44,15 @@
                      <fieldset>
                         <legend>Passenger Notification</legend>
                         <div class="form-group row width-100">
-                           <label class="col-3 control-label">Notification</label>
+                           <label class="col-3 control-label">Notification Title</label>
                            <div class="col-9">
-                            <textarea type="text" class="form-control " name="title"></textarea>
+                            <input  type="text" class="form-control " name="title">
+                           </div>
+                        </div>
+                        <div class="form-group row width-100">
+                           <label class="col-3 control-label">Notification Body</label>
+                           <div class="col-9">
+                            <textarea type="text" class="form-control " name="body"></textarea>
 
                            </div>
                         </div>
