@@ -317,8 +317,8 @@ class TokenPaymentController extends Controller
 
                 $response['success']= 'success';
                 $response['error']= null;
-                $response['message']= 'Balance is zero';
-                $response['remaining_token'] = $payment;
+                $response['message']= 'Balance getted';
+                $response['balance'] = $payment;
 
 
             } else {
@@ -327,8 +327,8 @@ class TokenPaymentController extends Controller
 
                 $response['success']= 'success';
                 $response['error']= null;
-                $response['message']= 'Successfully get setting';
-                $response['remaining_token'] = $payment;
+                $response['message']= 'balance is zero plz recharge';
+                $response['balance'] = $payment;
             }
             return response()->json($response);
         // } catch (\Stripe\Exception\CardException $e) {
