@@ -14,7 +14,7 @@ class PassengerNotificationController extends Controller
         return view('notification.passenger');
     }
     public function send_notify(Request $request){
-        dd($request->all());
+      //  dd($request->all());
         $firebaseToken = UserApp::whereNotNull('fcm_id')->pluck('fcm_id')->all();
 
         $SERVER_API_KEY = "AAAA0u9BeJI:APA91bHFNEgnMMAWSJr5lfxj1S5JF1NOcPvyJzxMIIrnmTJEfoVRBdm8v3QKXTpKBGFKL6ACdU4R88eYmUi0QaSno_QJxa8WiE2Ci5wgMCGy9R5MtqNPblaGmOA9eeX7y56042X2tTBV";
