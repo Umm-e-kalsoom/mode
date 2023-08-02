@@ -317,7 +317,7 @@ class TokenPaymentController extends Controller
 
                 $response['success']= 'success';
                 $response['error']= null;
-                $response['message']= 'Successfully get setting';
+                $response['message']= 'Balance is zero';
                 $response['remaining_token'] = $payment;
 
 
