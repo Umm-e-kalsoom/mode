@@ -79,10 +79,10 @@ class SetRejectedRequeteController extends Controller
                     ->join('tj_vehicule', 'tj_vehicule.id_conducteur', '=', 'tj_conducteur.id')
                     ->select("tj_conducteur.id"
                         , DB::raw("3959  * acos(cos(radians(" . $lat . "))
-            * cos(radians(tj_conducteur.latitude))
-            * cos(radians(tj_conducteur.longitude) - radians(" . $long . "))
-            + sin(radians(" . $lat . "))
-            * sin(radians(tj_conducteur.latitude))) AS distance"))
+                * cos(radians(tj_conducteur.latitude))
+                * cos(radians(tj_conducteur.longitude) - radians(" . $long . "))
+                + sin(radians(" . $lat . "))
+                * sin(radians(tj_conducteur.latitude))) AS distance"))
                     ->having('distance', '<=', 10)
                     ->orderBy('distance', 'asc')
                     ->where('tj_conducteur.id', '!=', $driver_id)
@@ -139,7 +139,7 @@ class SetRejectedRequeteController extends Controller
                 }
 
             } elseif ($user_cat == 'user_app') {
-                $updatedata = DB::update('update tj_requete set statut = ? where id = ?', ['rejected', $id_requete]);
+                $updatedata = DB::update('update tj_requete set statut = ? where id = ?', ['cancelled', $id_requete]);
 
                 $tmsg = '';
                 $terrormsg = '';
