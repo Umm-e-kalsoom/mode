@@ -24,7 +24,7 @@ class TokenPaymentController extends Controller
 {
     public function token_pay(Request $request){
 
-        Stripe\Stripe::setApiKey('sk_test_51M1CQcBXbn9BsZ0hPR23i3B0mIBWnYI9rX1woVhgMyjT81ySeRUhX3BPwUQluen4ku4ljsI2ydOpGCS5ZNqdd3BO00y60S864r');
+        //Stripe\Stripe::setApiKey('sk_test_51M1CQcBXbn9BsZ0hPR23i3B0mIBWnYI9rX1woVhgMyjT81ySeRUhX3BPwUQluen4ku4ljsI2ydOpGCS5ZNqdd3BO00y60S864r');
 
         // $stripe = Stripe\Charge::create ([
         //         "amount" => $request->amount * 100,
