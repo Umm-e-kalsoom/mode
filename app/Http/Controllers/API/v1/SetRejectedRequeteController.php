@@ -276,5 +276,6 @@ class SetRejectedRequeteController extends Controller
             $response['success'] = 'Failed';
             $response['error'] = 'Not Found';
         }
+        return response()->json($response);
     }
 }
