@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use App\Models\CouponUse;
+use App\Models\UserCard;
 use App\Models\RideSetting;
 use Stripe\Stripe;
 use Stripe\Balance;
@@ -281,12 +282,36 @@ class TokenPaymentController extends Controller
             $customer = Customer::create([
                 'source' => $token->id,
             ]);
-            dd($customer->balance);
+
             // Retrieve the customer's balance (you may need to adapt this part depending on your Stripe setup)
             $balance = $customer->balance;
 
             // Check if the client has a balance of ten
             if ($balance >= 10) {
+
+
+                $bal = UserCard::where('user_id',$request->customer_id)->first();
+                if($bal != Null){
+                    $bal = UserCard::where('user_id',$request->customer_id)->update([
+                        'cvc' => $cvc,
+                        'card_number' =>  $cardNumber,
+                        'exp_month' => $exp_month,
+                        'exp_year' => $exp_year,
+                        'balance' => $balance,
+                        'card_name' =>$request->card_name ?? '',
+                    ]);
+                }
+                else{
+                    $bal = UserCard::create([
+                        'cvc' => $cvc,
+                        'card_number' =>  $cardNumber,
+                        'exp_month' => $exp_month,
+                        'exp_year' => $exp_year,
+                        'balance' => $balance,
+                        'user_id' => $customerId,
+                        'card_name' =>$request->card_name ?? '',
+                    ]);
+                }
                 $payment = TRUE;
 
 
