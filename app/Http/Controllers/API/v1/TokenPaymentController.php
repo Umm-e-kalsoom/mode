@@ -111,7 +111,7 @@ class TokenPaymentController extends Controller
             $discounts->discription = $description;
             $discounts->user_id = $user_id;
 
-            $discounts->statut = $statut;
+            $discounts->statut = "yes";
             $discounts->creer = $date;
             $discounts->modifier = $date;
             $discounts->save();
