@@ -327,7 +327,7 @@ class TokenPaymentController extends Controller
 
                 $response['success']= 'success';
                 $response['error']= null;
-                $response['message']= 'balance is zero plz recharge'.;
+                $response['message']= 'balance is zero plz recharge';
                 $response['balance'] = $payment;
             }
             return response()->json($response);
