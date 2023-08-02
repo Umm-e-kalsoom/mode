@@ -320,7 +320,7 @@ class TokenPaymentController extends Controller
                 $response['message']= 'Successfully get setting';
                 $response['remaining_token'] = $payment;
 
-                return response()->json($response);
+
             } else {
                 $payment = FALSE;
 
@@ -330,6 +330,7 @@ class TokenPaymentController extends Controller
                 $response['message']= 'Successfully get setting';
                 $response['remaining_token'] = $payment;
             }
+            return response()->json($response);
         // } catch (\Stripe\Exception\CardException $e) {
         //     $response['success']= 'success';
         //     $response['error']= null;
