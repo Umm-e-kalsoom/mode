@@ -42,7 +42,7 @@ class TokenController extends Controller
         $rem = RemainingToken::where('user_id',$request->user_id)->first();
         if($rem != Null){
             $token = RemainingToken::where('user_id',$request->user_id)->update([
-                'tokens' => $rem>tokens + $request->tokens,
+                'tokens' => $rem->tokens + $request->tokens,
             ]);
         }
         else
