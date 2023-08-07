@@ -122,7 +122,7 @@ class UserPhotoController extends Controller
             $row->photo_licence =  $photo;
             $row->photo_road_worthy =  $photo;
             if( $row->photo_path != ''){
-                if(file_exists('assets/images/driver'.'/'. $row->photo_path))
+                if($row->photo_path)
                 {
                     $image = asset('assets/images/driver').'/'. $row->photo_path;
                 }
