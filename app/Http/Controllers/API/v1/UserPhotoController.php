@@ -18,7 +18,7 @@ class UserPhotoController extends Controller
 
   public function updateUserPhoto(Request $request)
   {
-
+    dd('sa');
 
         $user_cat =  $request->get('user_cat');
         $image= $request->file('image');
@@ -26,19 +26,18 @@ class UserPhotoController extends Controller
         $photo = '';
         if($user_cat == "user_app"){
         $id_user = $request->get('id_user');
-        dd($image);
         if(empty($image))
         {
             $response['success']= 'Failed';
             $response['error']= 'Image Not Found';
         } else
         {
-
+        $image = '';
         $file = $request->file('image');
         $extenstion = $file->getClientOriginalExtension();
         $time = time().'.'.$extenstion;
         $filename = 'User_photo'.$time;
-        $file->move(public_path('assets/images/users/'), $filename);
+        $file->move('assets/images/users', $filename);
 
         $updatedata = DB::update('update tj_user_app set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
@@ -55,7 +54,7 @@ class UserPhotoController extends Controller
             $image = $row->photo_path;
             $image_nic = $row->photo_nic_path;
             if($row->photo_path != ''){
-                if($row->photo_path )
+                if(file_exists('assets/images/users'.'/'.$row->photo_path ))
                 {
                     $image = asset('assets/images/users').'/'. $row->photo_path;
                 }
@@ -69,7 +68,7 @@ class UserPhotoController extends Controller
             $row->photo =  $photo;
             $row->photo_nic =  $photo;
             if($image_nic != ''){
-                if($image_nic )
+                if(file_exists('assets/images/users'.'/'.$image_nic ))
                 {
                     $image_user = asset('assets/images/users').'/'. $image_nic;
                 }
@@ -97,13 +96,12 @@ class UserPhotoController extends Controller
                 $response['error']= 'Image Not Found';
             } else
             {
-
+            $image = '';
             $file = $request->file('image');
-
             $extenstion = $file->getClientOriginalExtension();
-            $time = time() . '.' . $extenstion;
-            $filename = 'driver_image_' . $time;
-            $file->move(public_path('assets/images/driver/'), $filename);
+            $time = time().'.'.$extenstion;
+            $filename = 'Driver_photo'.$time;
+            $file->move('assets/images/driver', $filename);
 
             $updatedata = DB::update('update tj_conducteur set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
@@ -125,7 +123,7 @@ class UserPhotoController extends Controller
             $row->photo_licence =  $photo;
             $row->photo_road_worthy =  $photo;
             if( $row->photo_path != ''){
-                if( $row->photo_path)
+                if(file_exists('assets/images/driver'.'/'. $row->photo_path))
                 {
                     $image = asset('assets/images/driver').'/'. $row->photo_path;
                 }
@@ -137,7 +135,8 @@ class UserPhotoController extends Controller
                 $row->photo_path = $image;
             }
             if($row->photo_licence_path != ''){
-                if($row->photo_licence_path )
+                if(file_exists('assets/images/driver'.'/'.$row->photo_licence_path ))
+                {
                     $image_lic = asset('assets/images/driver').'/'. $row->photo_licence_path;
                 }
                 else
@@ -148,7 +147,7 @@ class UserPhotoController extends Controller
                 $row->photo_licence_path = $image_lic;
             }
             if($row->photo_nic_path != ''){
-                if($row->photo_nic_path )
+                if(file_exists('assets/images/driver'.'/'.$row->photo_nic_path ))
                 {
                     $image_user = asset('assets/images/driver').'/'. $row->photo_nic_path;
                 }
@@ -160,7 +159,7 @@ class UserPhotoController extends Controller
                 $row->photo_nic_path = $image_user;
             }
             if($row->photo_car_service_book_path != ''){
-                if($row->photo_car_service_book_path )
+                if(file_exists('assets/images/driver'.'/'.$row->photo_car_service_book_path ))
                 {
                     $image_car = asset('assets/images/driver').'/'. $row->photo_car_service_book_path;
                 }
@@ -172,7 +171,7 @@ class UserPhotoController extends Controller
                 $row->photo_car_service_book_path = $image_car;
             }
             if($row->photo_road_worthy_path != ''){
-                if($row->photo_road_worthy_path )s
+                if(file_exists('assets/images/driver'.'/'.$row->photo_road_worthy_path ))
                 {
                     $image_road = asset('assets/images/driver').'/'. $row->photo_road_worthy_path;
                 }
