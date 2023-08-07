@@ -37,7 +37,7 @@ class UserPhotoController extends Controller
         $extenstion = $file->getClientOriginalExtension();
         $time = time().'.'.$extenstion;
         $filename = 'User_photo'.$time;
-        $file->move(public_path('assets/images/users'), $filename);
+        $file->move(public_path('assets/images/driver/'), $filename);
 
         $updatedata = DB::update('update tj_user_app set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
