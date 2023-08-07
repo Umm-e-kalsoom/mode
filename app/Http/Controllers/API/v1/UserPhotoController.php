@@ -26,6 +26,7 @@ class UserPhotoController extends Controller
         $photo = '';
         if($user_cat == "user_app"){
         $id_user = $request->get('id_user');
+        dd($image);
         if(empty($image))
         {
             $response['success']= 'Failed';
@@ -98,7 +99,7 @@ class UserPhotoController extends Controller
             {
 
             $file = $request->file('image');
-            dd($file);
+
             $extenstion = $file->getClientOriginalExtension();
             $time = time() . '.' . $extenstion;
             $filename = 'driver_image_' . $time;
