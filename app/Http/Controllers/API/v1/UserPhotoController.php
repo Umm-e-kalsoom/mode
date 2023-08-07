@@ -18,7 +18,6 @@ class UserPhotoController extends Controller
 
   public function updateUserPhoto(Request $request)
   {
-    dd('sa');
 
         $user_cat =  $request->get('user_cat');
         $image= $request->file('image');
@@ -37,8 +36,8 @@ class UserPhotoController extends Controller
         $extenstion = $file->getClientOriginalExtension();
         $time = time().'.'.$extenstion;
         $filename = 'User_photo'.$time;
-        $file->move('assets/images/users', $filename);
-
+       // $file->move('assets/images/users', $filename);
+        $file->move(public_path('assets/images/users/'), $filename);
         $updatedata = DB::update('update tj_user_app set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
         $sql = DB::table('tj_user_app')
@@ -101,8 +100,8 @@ class UserPhotoController extends Controller
             $extenstion = $file->getClientOriginalExtension();
             $time = time().'.'.$extenstion;
             $filename = 'Driver_photo'.$time;
-            $file->move('assets/images/driver', $filename);
-
+           // $file->move('assets/images/driver', $filename);
+            $file->move(public_path('assets/images/driver/'), $filename);
             $updatedata = DB::update('update tj_conducteur set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
             $sql = DB::table('tj_conducteur')
