@@ -37,7 +37,7 @@ class UserPhotoController extends Controller
         $extenstion = $file->getClientOriginalExtension();
         $time = time().'.'.$extenstion;
         $filename = 'User_photo'.$time;
-        $file->move(public_path('assets/images/driver/'), $filename);
+        $file->move(public_path('assets/images/users/'), $filename);
 
         $updatedata = DB::update('update tj_user_app set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
@@ -96,12 +96,12 @@ class UserPhotoController extends Controller
                 $response['error']= 'Image Not Found';
             } else
             {
-            $image = '';
+
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
-            $time = time().'.'.$extenstion;
-            $filename = 'Driver_photo'.$time;
-            $file->move('assets/images/driver', $filename);
+            $time = time() . '.' . $extenstion;
+            $filename = 'driver_image_' . $time;
+            $file->move(public_path('assets/images/driver/'), $filename);
 
             $updatedata = DB::update('update tj_conducteur set photo = ?,photo_path = ?,modifier = ? where id = ?',[$image,$filename,$date_heure,$id_user]);
 
