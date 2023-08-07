@@ -32,7 +32,7 @@ class UserPhotoController extends Controller
             $response['error']= 'Image Not Found';
         } else
         {
-        $image = '';
+
         $file = $request->file('image');
         $extenstion = $file->getClientOriginalExtension();
         $time = time().'.'.$extenstion;
@@ -98,6 +98,7 @@ class UserPhotoController extends Controller
             {
 
             $file = $request->file('image');
+            dd($file);
             $extenstion = $file->getClientOriginalExtension();
             $time = time() . '.' . $extenstion;
             $filename = 'driver_image_' . $time;
