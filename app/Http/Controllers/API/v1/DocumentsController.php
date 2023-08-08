@@ -79,8 +79,8 @@ class DocumentsController extends Controller
 
                     $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
 
-                    //$image_path->move('assets/images/driver/documents/', $filename);
-                    $image_path->storeAs('public/assets/images/driver/documents/',$filename);
+                    $image_path->move('assets/images/driver/documents/', $filename);
+
                     if (file_exists('assets/images/driver/documents' . '/' . $filename)) {
 
                         /*$image_path = asset('assets/images/driver/documents') . '/' . $filename;
@@ -148,8 +148,8 @@ class DocumentsController extends Controller
 
             $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
-           // $file->move('assets/images/driver/documents/', $filename);
-            $file->storeAs('public/assets/images/driver/documents/',$filename);
+            $file->move('assets/images/driver/documents/', $filename);
+
             $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
 			if($get_driver_document){
 				if(file_exists('assets/images/driver/documents' . '/' . $get_driver_document->document_path)) {
