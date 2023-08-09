@@ -120,7 +120,7 @@ class DocumentsController extends Controller
 
     public function updateDriverDocuments(Request $request)
     {
-        dd('sad');
+
 		$driver_id = $request->get('driver_id');
 
 		$document_id = $request->get('document_id');
@@ -143,7 +143,7 @@ class DocumentsController extends Controller
             $response['error'] = 'Attachment Not Found';
 
 		} else {
-
+            dd('sad');
 			$file = $request->file('attachment');
             $extenstion = $file->getClientOriginalExtension();
 
