@@ -179,7 +179,7 @@ class DocumentsController extends Controller
                 if($get_driver_document){
 
 
-                    $get_driver_document->document_path = url('assets/images/driver/documents/'.$get_driver_document->document_path);
+                    // $get_driver_document->document_path = url('assets/images/driver/documents/'.$get_driver_document->document_path);
                     $get_driver_document->document_name = $document_name->title;
                     $get_driver_document->id = $get_driver_document->document_id;
 
