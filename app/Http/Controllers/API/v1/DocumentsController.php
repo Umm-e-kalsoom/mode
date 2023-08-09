@@ -191,7 +191,7 @@ class DocumentsController extends Controller
             }
             else{
 
-                $driver = new DriversDocuments;
+                $driver_doc = new DriversDocuments;
 
                 if ($request->hasfile('attachment')) {
 
@@ -208,11 +208,11 @@ class DocumentsController extends Controller
                     $driver->document_status = 'Pending';
                 }
 
-                $driver->driver_id = $driver_id;
+                $driver_doc->driver_id = $driver_id;
 
-                $driver->document_id = $request->input('document_id');
+                $driver_doc->document_id = $request->input('document_id');
 
-                $driver->save();
+                $driver_doc->save();
             }
             $response['success'] = 'updated';
 
