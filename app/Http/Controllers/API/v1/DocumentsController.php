@@ -143,10 +143,10 @@ class DocumentsController extends Controller
             $response['error'] = 'Attachment Not Found';
 
 		} else {
-            dd('sad');
+
 			$file = $request->file('attachment');
             $extenstion = $file->getClientOriginalExtension();
-
+            dd($extenstion);
             $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
             dd($driver);
