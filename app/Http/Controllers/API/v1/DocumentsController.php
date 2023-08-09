@@ -208,7 +208,7 @@ class DocumentsController extends Controller
                     $driver_doc->document_status = 'Pending';
                 }
 
-                $driver_doc->driver_id = $driver_id;
+                $driver_doc->driver_id = $request->get('driver_id');
 
                 $driver_doc->document_id = $request->input('document_id');
 
