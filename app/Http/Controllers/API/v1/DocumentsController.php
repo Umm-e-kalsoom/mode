@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\DriversDocuments;
-use Illuminate\Support\Facades\File;
 use App\Models\Driver;
 
 class DocumentsController extends Controller
@@ -80,10 +79,10 @@ class DocumentsController extends Controller
                     $document_name = DB::table('admin_documents')->where('id', $document_id)->first();
 
                     $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
-                    $image_path->move(public_path('assets/images/driver/documents/'), $filename);
-                  // $image_path->move('assets/images/driver/documents/', $filename);
 
-                    if ($filename) {
+                   $image_path->move('assets/images/driver/documents/', $filename);
+
+                    if (file_exists('assets/images/driver/documents' . '/' . $filename)) {
 
                         /*$image_path = asset('assets/images/driver/documents') . '/' . $filename;
                         DB::insert("INSERT INTO driver_document(driver_id, document_id, document_path, document_status, created_at) VALUES('" . $driver_id . "','" . $document_id . "','" . $filename . "', 'Pending','" . $created_at . "')");
@@ -145,23 +144,19 @@ class DocumentsController extends Controller
 
 		} else {
 
-            $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
-
-            $file = $request->file('attachment');
-
+			$file = $request->file('attachment');
             $extenstion = $file->getClientOriginalExtension();
 
+            $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
 
-            $file->move(public_path('assets/images/driver/documents/'), $filename);
+            $file->move('assets/images/driver/documents', $filename);
             $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
             $driver = Driver::where('driver_id',$driver_id)->first();
             if(!empty($driver) && $driver->statut_vehicule == 'yes'){
                 if($get_driver_document){
-
-                    $destination = 'assets/images/driver/documents/' . $get_driver_document->document_path;
-                    if (File::exists($destination)) {
-                        File::delete($destination);
+                    if(file_exists('assets/images/driver/documents' . '/' . $get_driver_document->document_path)) {
+                        unlink('assets/images/driver/documents' . '/' . $get_driver_document->document_path);
                     }
                     $driver_document = DriversDocuments::find($get_driver_document->id);
                     $driver_document->document_path = $filename;
