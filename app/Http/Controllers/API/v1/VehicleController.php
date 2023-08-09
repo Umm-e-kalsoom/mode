@@ -195,7 +195,7 @@ class VehicleController extends Controller
         if (!empty($id_user) && !empty($brand)) {
             $updatedata = DB::table('tj_vehicule')
                 ->where('id_conducteur', $id_user)
-                ->update(['brand' => $brand, 'modifier' => $date_heure]);
+                ->update(['brand_name' => $brand, 'modifier' => $date_heure]);
             if (!empty($updatedata)) {
                 $sql = Vehicle::where('id_conducteur', $id_user)->first();
                 $row = $sql->toArray();
@@ -220,20 +220,12 @@ class VehicleController extends Controller
     {
         $id_user = $request->get('id_conducteur');
         $model = $request->get('model');
-        //$model = str_replace("'","\'",$model);
-        if (!is_null(DriverModel::where('model', $model)->first())) {
-            $modelCreated = DriverModel::where('model', $model)->first();
-        } else {
-            DriverModel::where('id_conducteur', $id_user)->delete();
-            $modelCreated = DriverModel::create([
-                'model' => $model,
-                'id_conducteur' => $id_user
-            ]);
-        }
+        // $brand = str_replace("'","\'",$brand);
         $date_heure = date('Y-m-d H:i:s');
         if (!empty($id_user) && !empty($model)) {
-            $updatedata = DB::update('update tj_vehicule set model = ?, modifier = ? where id_conducteur = ?', [$modelCreated->id, $date_heure, $id_user]);
-
+            $updatedata = DB::table('tj_vehicule')
+                ->where('id_conducteur', $id_user)
+                ->update(['model_name' => $brand, 'modifier' => $date_heure]);
             if (!empty($updatedata)) {
                 $sql = Vehicle::where('id_conducteur', $id_user)->first();
                 $row = $sql->toArray();
