@@ -120,7 +120,7 @@ class DocumentsController extends Controller
 
     public function updateDriverDocuments(Request $request)
     {
-
+        dd('sad');
 		$driver_id = $request->get('driver_id');
 
 		$document_id = $request->get('document_id');
