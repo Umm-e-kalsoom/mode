@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\DriversDocuments;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Driver;
 
 class DocumentsController extends Controller
@@ -128,94 +129,92 @@ class DocumentsController extends Controller
 
         $attachment = $request->file('attachment');
 
-		if (empty($document_id) || $document_id == 0) {
-
-		    $response['success'] = 'Failed';
-            $response['error'] = 'Document Id Not Found';
-
-		}else if (empty($driver_id) || $driver_id == 0) {
-
-		    $response['success'] = 'Failed';
-            $response['error'] = 'Driver Id Not Found';
-
-		} else if (empty($attachment)) {
-
-		    $response['success'] = 'Failed';
-            $response['error'] = 'Attachment Not Found';
-
-		} else {
 
 
+        $validator = Validator::make($request->all(), $rules = [
+            'attachment' => "required",
+            'driver_id' => "required",
+            'document_id' => 'required',
 
-            $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
+        ], $messages = [
+            'attachment.required' => 'The docuemnt field is required!',
+            'driver_id.required' => 'The driver_id field is required!',
+            'document_id.required' => 'The document_id field is required!',
 
-            $destination = 'assets/images/driver/documents/' . $get_driver_document->document_path;
+        ]);
 
-            if (File::exists($destination)) {
-                File::delete($destination);
-            }
-            $file = $request->file('attachment');
-            $extenstion = $file->getClientOriginalExtension();
+        if ($validator->fails()) {
+            $response['success'] = 'Failed';
 
-            $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
-            $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
+            $response['error'] =$validator;
 
-            $file->move(public_path('assets/images/driver/documents/'), $filename);
+            $response['message'] =$messages;
 
-            $driver = Driver::where('driver_id',$driver_id)->first();
-
-            if(!empty($driver) && $driver->statut_vehicule == 'yes'){
-                if($get_driver_document){
-
-                    $driver_document = DriversDocuments::find($get_driver_document->id);
-                    $driver_document->document_path = $filename;
-                    $driver_document->document_status = 'Pending';
-                    $driver_document->save();
-                }else{
-                    $driver_document = new DriversDocuments;
-                    $driver_document->driver_id = $driver_id;
-                    $driver_document->document_id = $document_id;
-                    $driver_document->document_path = $filename;
-                    $driver_document->document_status = 'Pending';
-                    $driver_document->save();
-                }
-
-                $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
-
-                $driver->status = 'no';
-                $driver->save();
-
-                if($get_driver_document){
-
-
-                    // $get_driver_document->document_path = url('assets/images/driver/documents/'.$get_driver_document->document_path);
-                    $get_driver_document->document_name = $document_name->title;
-                    $get_driver_document->id = $get_driver_document->document_id;
-
-                    // unset($get_driver_document->document_id);
-
-                    $response['success'] = 'Success';
-
-                    $response['error'] = null;
-
-                    $response['message'] = $document_name->title . ' Updated';
-
-                    $response['data'] = $get_driver_document;
-
-                } else {
-
-                    $response['success'] = 'Failed';
-
-                    $response['error'] = $document_name->title . ' Not Updated';
-                }
-            }
-            else {
-                $response['success'] = 'Failed';
-
-                $response['error'] = $driver->nom . 'has  Not Vehicle';
-            }
-
+            return response()->json($response);
         }
+
+        $document_id = $request->input('document_id');
+
+		$document_name = DB::table('admin_documents')->where('id', $document_id)->first();
+        // print_r($document_id);
+        // exit;
+        $driver = DriversDocuments::where('driver_id', "=", $driver_id)->where('document_id','=',$document_id)->first();
+
+        if ($driver) {
+
+            if ($request->hasfile('attachment')) {
+
+                $destination = 'assets/images/driver/documents/' . $driver->document_path;
+
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+
+                $file = $request->file('attachment');
+
+                $extenstion = $file->getClientOriginalExtension();
+
+                $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
+
+                $file->move(public_path('assets/images/driver/documents/'), $filename);
+
+                $driver->document_path = $filename;
+
+                $driver->document_status = 'Pending';
+            }
+
+            $driver->save();
+
+        }else{
+
+          $driver = new DriversDocuments;
+
+          if ($request->hasfile('attachment')) {
+
+              $file = $request->file('document_path');
+
+              $extenstion = $file->getClientOriginalExtension();
+
+              $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
+
+              $file->move(public_path('assets/images/driver/documents/'), $filename);
+
+              $driver->document_path = $filename;
+
+              $driver->document_status = 'Pending';
+          }
+
+          $driver->driver_id = $id;
+
+          $driver->document_id = $request->input('document_id');
+
+          $driver->save();
+        }
+
+        $response['success'] = 'Failed';
+
+        $response['error'] = 'has  Not Vehicle';
+
 
         return response()->json($response);
 
