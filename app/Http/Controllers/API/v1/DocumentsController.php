@@ -153,11 +153,10 @@ class DocumentsController extends Controller
             $file->move('assets/images/driver/documents/', $filename);
             $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
             $driver = Driver::where('driver_id',$driver_id)->first();
+            dd($driver);
             if(!empty($driver) && $driver->statut_vehicule == 'yes'){
                 if($get_driver_document){
-                    if(file_exists('assets/images/driver/documents' . '/' . $get_driver_document->document_path)) {
-                        unlink('assets/images/driver/documents' . '/' . $get_driver_document->document_path);
-                    }
+
                     $driver_document = DriversDocuments::find($get_driver_document->id);
                     $driver_document->document_path = $filename;
                     $driver_document->document_status = 'Pending';
