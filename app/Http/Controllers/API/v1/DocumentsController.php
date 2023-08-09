@@ -160,60 +160,70 @@ class DocumentsController extends Controller
         // exit;
         $driver = DriversDocuments::where('driver_id', "=", $driver_id)->where('document_id','=',$document_id)->first();
 
-        if ($driver) {
+        $driver_id = Driver::where('id',$driver_id)->first();
+        if(!empty($driver_id) && $driver_id->statut_vehicule == 'yes')
+        {
+            if ($driver) {
 
-            if ($request->hasfile('attachment')) {
+                if ($request->hasfile('attachment')) {
 
-                $destination = 'assets/images/driver/documents/' . $driver->document_path;
+                    $destination = 'assets/images/driver/documents/' . $driver->document_path;
 
-                if (File::exists($destination)) {
-                    File::delete($destination);
+                    if (File::exists($destination)) {
+                        File::delete($destination);
+                    }
+
+                    $file = $request->file('attachment');
+
+                    $extenstion = $file->getClientOriginalExtension();
+
+                    $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
+
+                    $file->move(public_path('assets/images/driver/documents/'), $filename);
+
+                    $driver->document_path = $filename;
+
+                    $driver->document_status = 'Pending';
                 }
 
-                $file = $request->file('attachment');
+                $driver->save();
 
-                $extenstion = $file->getClientOriginalExtension();
-
-                $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
-
-                $file->move(public_path('assets/images/driver/documents/'), $filename);
-
-                $driver->document_path = $filename;
-
-                $driver->document_status = 'Pending';
             }
+            else{
 
-            $driver->save();
+                $driver = new DriversDocuments;
 
-        }else{
+                if ($request->hasfile('attachment')) {
 
-          $driver = new DriversDocuments;
+                    $file = $request->file('document_path');
 
-          if ($request->hasfile('attachment')) {
+                    $extenstion = $file->getClientOriginalExtension();
 
-              $file = $request->file('document_path');
+                    $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
 
-              $extenstion = $file->getClientOriginalExtension();
+                    $file->move(public_path('assets/images/driver/documents/'), $filename);
 
-              $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
+                    $driver->document_path = $filename;
 
-              $file->move(public_path('assets/images/driver/documents/'), $filename);
+                    $driver->document_status = 'Pending';
+                }
 
-              $driver->document_path = $filename;
+                $driver->driver_id = $id;
 
-              $driver->document_status = 'Pending';
-          }
+                $driver->document_id = $request->input('document_id');
 
-          $driver->driver_id = $id;
+                $driver->save();
+            }
+            $response['success'] = 'updated';
 
-          $driver->document_id = $request->input('document_id');
-
-          $driver->save();
+            $response['error'] = 'Nt found';
         }
 
-        $response['success'] = 'Failed';
+        else{
+            $response['success'] = 'failed';
 
-        $response['error'] = 'has  Not Vehicle';
+            $response['error'] = 'Vehicle not found';
+        }
 
 
         return response()->json($response);
