@@ -159,8 +159,9 @@ class DocumentsController extends Controller
 
             $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
-            dd($filename);
+
             $file->move(public_path('assets/images/driver/documents/'), $filename);
+            dd($filename);
             $driver = Driver::where('driver_id',$driver_id)->first();
 
             if(!empty($driver) && $driver->statut_vehicule == 'yes'){
