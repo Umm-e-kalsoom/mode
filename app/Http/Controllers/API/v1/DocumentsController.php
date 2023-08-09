@@ -146,10 +146,10 @@ class DocumentsController extends Controller
 
 			$file = $request->file('attachment');
             $extenstion = $file->getClientOriginalExtension();
-            dd($extenstion);
+
             $document_name = DB::table('admin_documents')->where('id',$document_id)->first();
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
-            dd($driver);
+            dd($filename);
             $file->move('assets/images/driver/documents/', $filename);
             $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
             $driver = Driver::where('driver_id',$driver_id)->first();
