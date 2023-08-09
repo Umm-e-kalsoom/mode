@@ -161,7 +161,7 @@ class DocumentsController extends Controller
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
 
             $file->move(public_path('assets/images/driver/documents/'), $filename);
-            dd($filename);
+
             $driver = Driver::where('driver_id',$driver_id)->first();
 
             if(!empty($driver) && $driver->statut_vehicule == 'yes'){
