@@ -195,7 +195,7 @@ class DocumentsController extends Controller
 
                 if ($request->hasfile('attachment')) {
 
-                    $file = $request->file('document_path');
+                    $file = $request->file('attachment');
 
                     $extenstion = $file->getClientOriginalExtension();
 
