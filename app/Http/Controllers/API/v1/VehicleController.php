@@ -214,6 +214,34 @@ class VehicleController extends Controller
         return response()->json($response);
 
     }
+    public function updateVehicleCat(Request $request)
+    {
+        $id_user = $request->get('id_conducteur');
+        $car_category = $request->get('car_category');
+
+        $date_heure = date('Y-m-d H:i:s');
+        if (!empty($id_user) && !empty($car_category)) {
+            $updatedata = DB::table('tj_vehicule')
+                ->where('id_conducteur', $id_user)
+                ->update(['car_category' => $car_category, 'modifier' => $date_heure]);
+            if (!empty($updatedata)) {
+                $sql = Vehicle::where('id_conducteur', $id_user)->first();
+                $row = $sql->toArray();
+                $response['success'] = 'success';
+                $response['error'] = null;
+                $response['message'] = 'status successfully updated';
+                $response['data'] = $row;
+            } else {
+                $response['success'] = 'Failed';
+                $response['error'] = 'failed to update';
+            }
+        } else {
+            $response['success'] = 'Failed';
+            $response['error'] = 'some field are missing';
+        }
+        return response()->json($response);
+
+    }
 
     /*Update Vehicle Model */
     public function updateVehicleModel(Request $request)

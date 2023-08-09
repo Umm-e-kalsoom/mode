@@ -174,7 +174,7 @@ Route::post('v1/resert-password/', [ResertPasswordController::class, 'resertPass
     Route::post('v1/update-vehicle-color/', [VehicleController::class, 'updateVehicleColor']);
     Route::post('v1/update-vehicle-brand/', [VehicleController::class, 'updateVehicleBrand']);
     Route::post('v1/update-vehicle-model/', [VehicleController::class, 'updateVehicleModel']);
-
+    Route::post('v1/update-vehicle-car_category/', [VehicleController::class, 'updateVehicleCat']);
     Route::get('v1/Vehicle-category/', [VehicleController::class, 'getVehicleCategoryData']);
 
     Route::post('v1/update-Vehicle-category/', [VehicleController::class, 'updateVehicleType']);
