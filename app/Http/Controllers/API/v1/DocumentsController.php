@@ -203,9 +203,9 @@ class DocumentsController extends Controller
 
                     $file->move(public_path('assets/images/driver/documents/'), $filename);
 
-                    $driver->document_path = $filename;
+                    $driver_doc->document_path = $filename;
 
-                    $driver->document_status = 'Pending';
+                    $driver_doc->document_status = 'Pending';
                 }
 
                 $driver_doc->driver_id = $driver_id;
