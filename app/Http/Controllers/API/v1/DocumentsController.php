@@ -151,7 +151,7 @@ class DocumentsController extends Controller
             $filename = str_replace(' ','_',$document_name->title) . '_' . time() . '.' . $extenstion;
 
             $file->move(public_path('assets/images/driver/documents/'), $filename);
-            dd($filename);
+
             $get_driver_document = DB::table('driver_document')->where('document_id',$document_id)->where('driver_id',$driver_id)->first();
             $driver = Driver::where('driver_id',$driver_id)->first();
 
@@ -175,6 +175,7 @@ class DocumentsController extends Controller
 
                 $driver->status = 'no';
                 $driver->save();
+
                 if($get_driver_document){
 
 
@@ -182,7 +183,7 @@ class DocumentsController extends Controller
                     $get_driver_document->document_name = $document_name->title;
                     $get_driver_document->id = $get_driver_document->document_id;
 
-                    unset($get_driver_document->document_id);
+                    // unset($get_driver_document->document_id);
 
                     $response['success'] = 'Success';
 
