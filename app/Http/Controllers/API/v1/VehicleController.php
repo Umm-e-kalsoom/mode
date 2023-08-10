@@ -248,7 +248,7 @@ class VehicleController extends Controller
     {
         $id_user = $request->get('id_conducteur');
         $model = $request->get('model');
-         $brand = str_replace("'","\'",$brand);
+        // $brand = str_replace("'","\'",$brand);
         $date_heure = date('Y-m-d H:i:s');
         if (!empty($id_user) && !empty($model)) {
             $updatedata = DB::table('tj_vehicule')
