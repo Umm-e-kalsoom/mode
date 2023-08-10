@@ -40,9 +40,9 @@ class DriversVehicleController extends Controller
         $sql['model'] = $sql->model_name;
         $tyep = VehicleType::where('id', $sql->id_type_vehicule)->first();
         if (!empty($sql->car_image)) {
-            $image_path = asset('assets/images/vehicle').'/'.$sql->car_image;
+            $car_image = asset('assets/images/vehicle').'/'.$sql->car_image;
         } else {
-            $image_path = asset('assets/images/placeholder_image.jpg');
+            $car_image = asset('assets/images/placeholder_image.jpg');
 
         }
         if (  !empty($sql->image)) {
@@ -60,6 +60,7 @@ class DriversVehicleController extends Controller
         $tyep['image'] = $image_path;
         $tyep['selected_image'] = $selected_image_path;
         $sql['category'] = $tyep;
+        $sql['car_image'] = $car_image;
         $row = $sql->toArray();
 
         if (!empty($row)) {
