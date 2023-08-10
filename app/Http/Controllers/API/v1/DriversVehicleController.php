@@ -39,7 +39,13 @@ class DriversVehicleController extends Controller
         $sql['brand'] =  $sql->brand_name;
         $sql['model'] = $sql->model_name;
         $tyep = VehicleType::where('id', $sql->id_type_vehicule)->first();
-        if (  !empty($tyep->image)) {
+        if (!empty($sql->car_image)) {
+            $image_path = asset('assets/images/vehicle').'/'.$sql->car_image;
+        } else {
+            $image_path = asset('assets/images/placeholder_image.jpg');
+
+        }
+        if (  !empty($sql->image)) {
             $image_path = asset('assets/images/type_vehicle') . '/' . $tyep->image;
         } else {
             $image_path = asset('assets/images/placeholder_image.jpg');
