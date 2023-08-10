@@ -78,18 +78,14 @@ class UserLoginController extends Controller
                             }
 
                             if (!empty($row)) {
-                                if($row['photo_path'] != '') {
-<<<<<<< HEAD
-                                    if ( $row['photo_path']) {
-=======
-                                    if ($row['photo_path']) {
->>>>>>> 04f4cd6bc85c337d5e3b9be97d115de3c0e769af
-                                        $image_user = asset('assets/images/users') . '/' . $row['photo_path'];
-                                    } else {
-                                        $image_user = asset('assets/images/placeholder_image.jpg');
-                                    }
-                                    $row['photo_path'] = $image_user;
+
+                                if ( $row['photo_path']) {
+                                    $image_user = asset('assets/images/users') . '/' . $row['photo_path'];
+                                } else {
+                                    $image_user = asset('assets/images/placeholder_image.jpg');
                                 }
+                                $row['photo_path'] = $image_user;
+
                                 $row['accesstoken'] = $accesstoken;
                                 $response['data'] = $row;
 
