@@ -159,9 +159,10 @@ class DocumentsController extends Controller
         // print_r($document_id);
         // exit;
         $driver = DriversDocuments::where('driver_id', "=", $driver_id)->where('document_id','=',$document_id)->first();
+        $driver_log = Driver::where('id',$driver_id)->first();
 
         $driver_id = Driver::where('id',$driver_id)->first();
-        if(!empty($driver_id) && $driver_id->statut_vehicule == 'yes')
+        if(!empty($driver_id) && $driver_log->statut_vehicule == 'yes')
         {
             if ($driver) {
 
@@ -184,6 +185,10 @@ class DocumentsController extends Controller
                     $driver->document_path = $filename;
 
                     $driver->document_status = 'Pending';
+
+                    $driver_log->statut = 'no';
+
+                    $driver_log->save;
                 }
 
                 $driver->save();

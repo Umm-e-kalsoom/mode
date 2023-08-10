@@ -193,6 +193,9 @@ class VehicleController extends Controller
         // $brand = str_replace("'","\'",$brand);
         $date_heure = date('Y-m-d H:i:s');
         if (!empty($id_user) && !empty($brand)) {
+            $driver = Driver::where('id',$id_user)->first();
+            $driver->statut = 'no';
+            $driver->save;
             $updatedata = DB::table('tj_vehicule')
                 ->where('id_conducteur', $id_user)
                 ->update(['brand_name' => $brand, 'modifier' => $date_heure]);
@@ -221,6 +224,9 @@ class VehicleController extends Controller
 
         $date_heure = date('Y-m-d H:i:s');
         if (!empty($id_user) && !empty($car_category)) {
+            $driver = Driver::where('id',$id_user)->first();
+            $driver->statut = 'no';
+            $driver->save;
             $updatedata = DB::table('tj_vehicule')
                 ->where('id_conducteur', $id_user)
                 ->update(['car_category' => $car_category, 'modifier' => $date_heure]);
@@ -251,6 +257,9 @@ class VehicleController extends Controller
         // $brand = str_replace("'","\'",$brand);
         $date_heure = date('Y-m-d H:i:s');
         if (!empty($id_user) && !empty($model)) {
+            $driver = Driver::where('id',$id_user)->first();
+            $driver->statut = 'no';
+            $driver->save;
             $updatedata = DB::table('tj_vehicule')
                 ->where('id_conducteur', $id_user)
                 ->update(['model_name' => $model, 'modifier' => $date_heure]);
