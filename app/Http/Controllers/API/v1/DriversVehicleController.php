@@ -36,16 +36,16 @@ class DriversVehicleController extends Controller
         // ->where('tj_vehicule.statut','=','yes')
         // ->first();
         $sql = Vehicle::where('id_conducteur', $id_driver)->where('tj_vehicule.statut', '=', 'yes')->first();
-        $sql['brand'] = Brand::where('id',$sql->brand)->select('id','name','status')->first();
-        $sql['model'] = DriverModel::where('id',$sql->model)->select('id','model')->first();
+        $sql['brand'] =  $sql->brand_name;
+        $sql['model'] = $sql->model_name;
         $tyep = VehicleType::where('id', $sql->id_type_vehicule)->first();
-        if (file_exists('assets/images/type_vehicle' . '/' . $tyep->image) && !empty($tyep->image)) {
+        if (  !empty($tyep->image)) {
             $image_path = asset('assets/images/type_vehicle') . '/' . $tyep->image;
         } else {
             $image_path = asset('assets/images/placeholder_image.jpg');
 
         }
-        if (file_exists('assets/images/type_vehicle' . '/' . $tyep->selected_image) && !empty($tyep->selected_image)) {
+        if (!empty($tyep->selected_image)) {
             $selected_image_path = asset('assets/images/type_vehicle') . '/' . $tyep->selected_image;
         } else {
             $selected_image_path = asset('assets/images/placeholder_image.jpg');
