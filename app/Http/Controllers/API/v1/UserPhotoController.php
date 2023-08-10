@@ -53,7 +53,7 @@ class UserPhotoController extends Controller
             $image = $row->photo_path;
             $image_nic = $row->photo_nic_path;
             if($row->photo_path != ''){
-                if(file_exists('assets/images/users'.'/'.$row->photo_path ))
+                if($row->photo_path )
                 {
                     $image = asset('assets/images/users').'/'. $row->photo_path;
                 }
