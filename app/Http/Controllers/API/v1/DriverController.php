@@ -42,8 +42,9 @@ class DriverController extends Controller
             ->crossJoin('tj_vehicule')
             ->crossJoin('delivery_charges')
             // ->leftJoin('brands', 'brands.id', '=', 'tj_vehicule.brand')
-            // ->leftJoin('car_model', 'car_model.brand_id', '=', 'brands.id')
+            // ->leftJoin('remaining_tokens', 'remaining_tokens.user_id', '=', 'brands.id')
             ->crossJoin('tj_conducteur')
+            ->leftJoin('remaining_tokens', 'remaining_tokens.user_id', '=', 'tj_conducteur.id')
             ->select('tj_conducteur.id', 'tj_conducteur.nom', 'tj_conducteur.wheel_chair', 'tj_type_vehicule.libelle', 'tj_type_vehicule.status', 'tj_type_vehicule.currency',
                 'tj_type_vehicule.prix', 'tj_conducteur.prenom', 'tj_conducteur.phone', 'tj_conducteur.email',
                 'tj_conducteur.online', 'tj_conducteur.photo_path as photo', 'tj_conducteur.latitude', 'tj_conducteur.longitude','delivery_charges.flag_day_rate','delivery_charges.overnight_charges_per_km','delivery_charges.flag_overnight_rate','delivery_charges.peak_charges_km','delivery_charges.flag_peak_rate',
@@ -56,6 +57,7 @@ class DriverController extends Controller
             ->where('tj_conducteur.is_verified', '=', '1')->where('tj_conducteur.online', '!=', 'no')
             ->where('tj_type_vehicule.status', '=', 'yes')
             ->where('tj_conducteur.latitude', '!=', '')->where('tj_conducteur.longitude', '!=', '')
+            ->where('remaining_tokens.tokens', '>', 0)
             //->groupBy('tj_conducteur.id')
             ->get();
 
