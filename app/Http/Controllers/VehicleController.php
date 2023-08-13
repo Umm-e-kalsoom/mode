@@ -172,17 +172,9 @@ class VehicleController extends Controller
     public function vehicleTypeUpdate(Request $request, $id)
     {
 
-        if ($request->id > 0) {
-            $image_validation = "required";
-
-        } else {
-            $image_validation = "required";
-
-        }
 
         $validator = Validator::make($request->all(), $rules = [
             'libelle' => 'required',
-            'image' => $image_validation,
             'day_charges_per_km'=>'required',
             'overnight_charges_per_km'=>'required',
             'peak_charges_km'=>'required',
@@ -192,7 +184,6 @@ class VehicleController extends Controller
 
         ], $messages = [
             'libelle.required' => 'The Vehicle Type field is required!',
-            'image.required' => 'The Image field is required!',
             'day_charges_per_km.required'=>'Delivery Charges per Miles is required!',
             'overnight_charges_per_km.required' => 'Minimum Delivery Charges is required!',
             'peak_charges_km.required'=>'Minimum Delivery Charges Within Miles is required!',
@@ -214,6 +205,7 @@ class VehicleController extends Controller
         $updated_at = $request->updated_at = date('Y-m-d H:i:s');
 
         $vehicle = VehicleType::find($id);
+        $filename = $vehicle->image;
         if ($vehicle) {
             $vehicle->Libelle = $Libelle;
             $vehicle->status = $status;
@@ -232,6 +224,9 @@ class VehicleController extends Controller
                 $selectedfilename = 'selected_image_vehicleType' . $time;
                 $file->move(public_path('assets/images/type_vehicle/'), $filename);
                 $vehicle->selected_image = $selectedfilename;
+                $vehicle->image = $filename;
+            }
+            else{
                 $vehicle->image = $filename;
             }
             $vehicle->save();
