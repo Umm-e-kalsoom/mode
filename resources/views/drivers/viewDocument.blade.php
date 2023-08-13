@@ -89,7 +89,7 @@
 	                                                            @if($document->driver_document)
 	                                                            <td>
 	    	                                                    	<a href="#" data-toggle="modal" data-target="#exampleModal_{{$document->id}}" class="open-image" title="View Document"><i class="imageresource fas fa fa-file-image-o"></i></a>
-																	<a class="" href="{{ asset('assets/images/driver/document',['id' => $document->driver_document?$document->driver_document->driver_id:$driver->id,'document_id'=>$document->id]) }}"><i class="fa fa-edit"></i></a>
+																	<a class="" href="{{ asset('assets/images/driver/documents',['id' => $document->driver_document?$document->driver_document->driver_id:$driver->id,'document_id'=>$document->id]) }}"><i class="fa fa-edit"></i></a>
 
 																	<div class="modal fade" id="exampleModal_{{$document->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				                                                        <div class="modal-dialog" role="document" style="max-width: 50%;">
