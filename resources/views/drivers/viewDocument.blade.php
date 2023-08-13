@@ -106,7 +106,7 @@
 				                                                                <div class="modal-body">
 				                                                                    <div class="form-group">
 			                                                                            <embed
-			                                                                                src="{{asset('my-assets/images/driver/documents').'/'.$document->driver_document->document_path}}"
+			                                                                                src="{{asset('assets/images/driver/documents').'/'.$document->driver_document->document_path}}"
 			                                                                                frameBorder="0"
 			                                                                                scrolling="auto"
 			                                                                                height="100%"
@@ -116,7 +116,7 @@
 				                                                                    </div>
 
 				                                                                    <div class="modal-footer">
-				                                                                        <a class="btn btn-primary" href="{{asset('my-assets/images/driver/documents').'/'.$document->driver_document->document_path}}">Download</a>
+				                                                                        <a class="btn btn-primary" href="{{asset('assets/images/driver/documents').'/'.$document->driver_document->document_path}}">Download</a>
 				                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang.close')}}</button>
 				                                                                    </div>
 				                                                                </div>
