@@ -9,20 +9,20 @@ use DB;
 class FavoriteRideController extends Controller
 {
 
-   public function __construct()
-   {
-      $this->limit=20;   
-   }
-  /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
+//    public function __construct()
+//    {
+//       $this->limit=20;
+//    }
+//   /**
+//     * Display a listing of the resource.
+//     *
+//     * @return \Illuminate\Http\Response
+//     */
 
 
   public function register(Request $request)
   {
-         
+
         $user_id = $request->get('id_user_app');
         $lat1 = $request->get('lat1');
         $lng1 = $request->get('lng1');
@@ -34,7 +34,7 @@ class FavoriteRideController extends Controller
         $destination_name = $request->get('destination_name');
         $fav_name = $request->get('fav_name');
         $date_heure = date('Y-m-d H:i:s');
-     
+
         $reqchkonride = DB::table('tj_favorite_ride')
         ->select('id')
         ->where('id_user_app','=',DB::raw($user_id))
@@ -50,7 +50,7 @@ class FavoriteRideController extends Controller
         }else{
             $query = DB::insert("insert into tj_favorite_ride(libelle,depart_name,destination_name,id_user_app,latitude_depart,longitude_depart,latitude_arrivee,longitude_arrivee,statut,creer,modifier,distance,distance_unit)
             values('".$fav_name."','".$depart_name."','".$destination_name."','".$user_id."','".$lat1."','".$lng1."','".$lat2."','".$lng2."','yes','".$date_heure."','".$date_heure."','".$distance."','".$distance_unit."')");
-           
+
             if($query > 0){
                 $response['success']= 'Success';
                 $response['error']= null;
